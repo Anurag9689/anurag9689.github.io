@@ -9,8 +9,6 @@
       --paper-width: 210mm;
       --paper-height: 297mm;
       --text-color: #0f172a;
-      --muted-color: #334155;
-      --border-color: #000000;
     }
 
     * {
@@ -23,13 +21,12 @@
       background: #0f172a;
       font-family: "Times New Roman", Times, Georgia, serif;
       color: var(--text-color);
-      line-height: 1.26;
+      line-height: 1.32;
       padding: 68px 16px 40px;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
 
-    /* Floating Action Toolbar (hidden when printing) */
     .toolbar {
       position: fixed;
       top: 0;
@@ -95,19 +92,18 @@
       background: rgba(255, 255, 255, 0.15);
     }
 
-    /* Resume Paper Container */
     .page {
       width: var(--paper-width);
       min-height: var(--paper-height);
       margin: 0 auto;
       background: #ffffff;
-      padding: 9.5mm 11mm;
+      padding: 11.5mm 12.5mm;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
 
     header {
       text-align: center;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     header h1 {
@@ -120,14 +116,14 @@
     }
 
     header .subtitle {
-      font-size: 9.6pt;
+      font-size: 9.8pt;
       font-style: italic;
       color: #1e293b;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
 
     header .contact {
-      font-size: 9.2pt;
+      font-size: 9.4pt;
       color: #000;
     }
 
@@ -141,7 +137,7 @@
     }
 
     section {
-      margin-top: 6px;
+      margin-top: 8px;
     }
 
     .section-title {
@@ -151,29 +147,29 @@
       letter-spacing: 0.5px;
       border-bottom: 1px solid #000;
       padding-bottom: 1px;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
       color: #000;
     }
 
     .skills-block {
-      font-size: 9.2pt;
-      line-height: 1.32;
+      font-size: 9.4pt;
+      line-height: 1.38;
       padding-left: 2px;
     }
 
     .skills-block div {
-      margin-bottom: 1.5px;
+      margin-bottom: 2px;
     }
 
     .entry {
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
     .entry-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      font-size: 9.8pt;
+      font-size: 10pt;
     }
 
     .entry-title {
@@ -183,23 +179,23 @@
 
     .entry-location {
       font-style: italic;
-      font-size: 9.2pt;
+      font-size: 9.4pt;
     }
 
     .entry-subheader {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      font-size: 9.2pt;
+      font-size: 9.4pt;
       font-style: italic;
-      margin-top: 0.5px;
+      margin-top: 1px;
     }
 
     .project-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      font-size: 9.4pt;
+      font-size: 9.6pt;
     }
 
     .project-header a {
@@ -210,18 +206,18 @@
     ul.bullets {
       list-style-type: disc;
       margin-left: 16px;
-      margin-top: 2px;
-      font-size: 9.15pt;
+      margin-top: 2.5px;
+      font-size: 9.35pt;
     }
 
     ul.bullets li {
-      margin-bottom: 1.8px;
+      margin-bottom: 2.2px;
       text-align: justify;
     }
 
     code {
       font-family: "Courier New", Courier, monospace;
-      font-size: 8.7pt;
+      font-size: 8.8pt;
     }
 
     @page {
@@ -241,7 +237,7 @@
         width: 100%;
         min-height: auto;
         box-shadow: none;
-        padding: 9mm 10.5mm;
+        padding: 11mm 12mm;
       }
     }
 
@@ -272,7 +268,7 @@
   <main class="page">
     <header>
       <h1>Anurag Pandey</h1>
-      <div class="subtitle">AI/ML &amp; 3D Computer Vision Engineer &nbsp;|&nbsp; Robotics &amp; Backend Systems Architect</div>
+      <div class="subtitle">AI/ML &amp; 3D Computer Vision Engineer &nbsp;|&nbsp; Backend Systems</div>
       <div class="contact">
         Delhi, India &nbsp;|&nbsp; +91-7217841908 &nbsp;|&nbsp;
         <a href="mailto:anuragpandey9689@gmail.com">anuragpandey9689@gmail.com</a> &nbsp;|&nbsp;
@@ -282,13 +278,13 @@
       </div>
     </header>
 
-    <!-- TECHNICAL SKILLS -->
+    <!-- SKILLS -->
     <section>
-      <div class="section-title">Technical Skills</div>
+      <div class="section-title">Skills</div>
       <div class="skills-block">
-        <div><strong>Languages &amp; Low-Level:</strong> Python, Go (Golang), C++17, CUDA C++, JavaScript/TypeScript (ES6+), Dart, SQL, Bash</div>
-        <div><strong>3D Vision, Robotics &amp; AI:</strong> PyTorch, Open3D, OpenCV, MuJoCo 3.x, FoundationPose, Meta SAM 2/3, DINOv2, ViT, DeBERTa-v3, Whisper, LightGBM, ONNX Runtime, FAISS, Trimesh, SciPy, IKFast, Intel RealSense SDK, ABB RAPID, FANUC Karel</div>
-        <div><strong>Backend, Web &amp; Cloud:</strong> FastAPI, Flask, Django/DRF, Go (Gorilla WebSockets/Mux, GORM), React 18, Next.js, Three.js, Flutter, LiveKit WebRTC, Socket.IO, Celery, Redis, PostgreSQL (<code>pgvector</code>), AWS (EC2, S3, Bedrock), Docker, Nginx, uWSGI, Linux</div>
+        <div><strong>Languages:</strong> Python, Go, C++, CUDA, JavaScript/TypeScript, Dart, SQL</div>
+        <div><strong>AI &amp; 3D Vision:</strong> PyTorch, Open3D, OpenCV, MuJoCo, FoundationPose, SAM 2/3, DINOv2, ViT, DeBERTa, Whisper, LightGBM, ONNX, FAISS</div>
+        <div><strong>Backend &amp; Cloud:</strong> FastAPI, Flask, Django/DRF, Go WebSockets, React, Next.js, Three.js, Flutter, WebRTC, PostgreSQL, Redis, AWS (EC2, S3), Docker, Nginx, Linux</div>
       </div>
     </section>
 
@@ -302,38 +298,37 @@
           <span class="entry-location">Chandigarh, India</span>
         </div>
         <div class="entry-subheader">
-          <span>Jr. Software Engineer — AI/ML &amp; Vision (Full-Time / PPO)</span>
+          <span>Jr. Software Engineer — AI/ML &amp; Vision</span>
           <span>Jan 2026 – Sep 2026</span>
         </div>
         <div class="entry-subheader">
-          <span>AI/ML &amp; Vision Engineer Intern (Summer + Part-Time)</span>
+          <span>AI/ML &amp; Vision Engineer Intern</span>
           <span>Jun 2024 – Dec 2025</span>
         </div>
         <ul class="bullets">
-          <li>Authored <strong>790+ commits</strong> across 24+ repositories as <strong>#1 contributor</strong> to Terafac's core edge vision (<code>vision-301</code>), cloud/edge backend (<code>api-103</code>), and 6D pose server (<code>terafac-vision-6</code>), powering autonomous robotic welding cells across 5 industrial sites.</li>
-          <li>Engineered a closed-loop <strong>Vision-Tactile 6D Pose Calibration pipeline</strong> combining RealSense RGB-D, FoundationPose, BFS raycast surface probing (<code>&lt;3s</code> on 50k-face meshes), Kabsch/SVD plane fitting with lever-arm reliability gating, and 3-plane intersection, <strong>reducing weld seam localization error by 85–90% (from 2.5–4.5 mm to 0.3–0.5 mm)</strong> in <strong>18–22s</strong> cycle time.</li>
-          <li>Built a <strong>Coarse Touch Alignment &amp; Analytical IK Follower</strong> (<code>coarse_touch.py</code>) modeling 3D torch geometry with 10 mm/3° joint-window tracking and automatic wrist unwinding, tightening probe windows to 12 mm and <strong>cutting fixture search cycle time by 79% (282s → 58s)</strong>.</li>
-          <li>Designed an <strong>Object-Frame Fixture Calibration schema</strong> (eliminating 90.8 mm static transform drift to <strong>0.000 mm</strong> reconstruction error) and a sub-pixel <strong>STag Fiducial PnP Torch Calibrator</strong> (<code>solvePnPRefineLM</code>) to auto-compensate camera mount drift.</li>
-          <li>Architected <strong><code>api-103</code></strong> (Flask, Socket.IO, SQLAlchemy, S3 across 178+ projects &amp; 2,000+ weld cycles) with a batched <strong>64-ray Golden-Ratio Spiral hemisphere raycaster</strong> (<code>reach_check_j6.py</code>) and SLERP corner extrapolation to optimize part placement within Joint-6 (±180°) limits.</li>
-          <li>Productionized <strong>NVIDIA FoundationPose (<code>terafac-vision-6</code>)</strong> and <strong>Meta SAM 3 / FastSAM microservices (<code>sam-101..106</code>)</strong>, eliminating <code>nvdiffrast</code> CUDA OOM leaks to run on <strong>4 GB VRAM / Jetson Orin NX</strong>, adding Hu-moment shape matching, and compressing mask payloads by <strong>25× (2500%)</strong>.</li>
-          <li>Developed a C++17 <code>pybind11</code> EtherNet/IP welder driver (<code>anr-301</code>), a non-linear least-squares TCP tool calibrator achieving <strong>0.006° joint reproduction accuracy</strong> (<code>anr-302</code>), and a Vertex AI Gemini multi-agent 3D CAD/AP214 STEP generator (<code>obj_maker</code>).</li>
+          <li>Led development of core 3D vision (<code>vision-301</code>), cloud/edge backend (<code>api-103</code>), and 6D pose estimation (<code>vision-106</code>) across 5 industrial robotic welding sites.</li>
+          <li>Built a closed-loop <strong>Vision-Tactile 6D Pose Calibration</strong> pipeline combining RealSense RGB-D, FoundationPose, and Kabsch/SVD plane fitting, <strong>reducing weld seam error by 85–90% (from 4.5 mm to 0.3 mm)</strong> in 18–22s.</li>
+          <li>Engineered a coarse-touch alignment and analytical IK follower that tightened probe search windows to 12 mm, <strong>cutting calibration cycle time by 79% (282s → 58s)</strong>.</li>
+          <li>Designed an object-frame fixture calibration system (<strong>0.000 mm</strong> reconstruction drift) and a sub-pixel STag fiducial PnP calibrator for automatic camera-to-torch drift compensation.</li>
+          <li>Architected <code>api-103</code> (Flask, Socket.IO, SQLAlchemy, AWS S3) and a batched 3D hemisphere raycaster to automatically orient parts within robot wrist limits.</li>
+          <li>Optimized <strong>FoundationPose</strong> and <strong>Meta SAM 3 / FastSAM</strong> microservices for <strong>4 GB VRAM / Jetson Orin NX</strong>, compressing mask payloads by <strong>25×</strong>; built a Gemini multi-agent 3D CAD/STEP generator (<code>obj_maker</code>).</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="entry-header">
-          <span class="entry-title">AttentionVerse (TheCoder / Repetition / Enterprise Client Platforms)</span>
-          <span class="entry-location">Delhi, India (Hybrid)</span>
+          <span class="entry-title">AttentionVerse (TheCoder &amp; Enterprise Platforms)</span>
+          <span class="entry-location">Delhi, India</span>
         </div>
         <div class="entry-subheader">
           <span>Software Engineer — Backend &amp; AI Systems</span>
           <span>Jan 2022 – Apr 2024</span>
         </div>
         <ul class="bullets">
-          <li>Authored <strong>500+ commits</strong> building <strong><code>thecoder-backend</code></strong> and <strong><code>thecoder-ai</code></strong>, a dynamic Django + Celery + Redis meta-backend and GPT-3.5 conversational app generator (with a custom C extension <code>json_extractor.so</code>) that spins up live REST APIs, DB schemas, and Nginx reverse proxies on the fly.</li>
-          <li>Engineered <strong><code>thecoder-search-2</code></strong>, an AST-based semantic GitHub code search engine using Python <code>ast</code>, JS <code>esprima</code>, LangChain, and <strong>ChromaDB</strong> to index function call-graph dependencies and natural-language code embeddings.</li>
-          <li>Built and deployed the <strong>IIT Mandi iHUB Health API (<code>iitmandi-health-api</code>)</strong> in Django REST + PostgreSQL + AWS S3 with OpenCV/OCR medical report scanning and automated Expo/Firebase push notifications alerting doctors upon abnormal patient vitals.</li>
-          <li>Developed <strong>Act Master (<code>coal-india-chatbot</code>)</strong>, a local RAG legal assistant (Django, FastAPI, ChromaDB, quantized Falcon-Q4) for Indian mining regulations, and <strong>GAIL India's (<code>gail-backend</code>)</strong> automated PDF/Excel pricing &amp; fuzzy Levenshtein freight-extraction backend on AWS EC2.</li>
+          <li>Built <code>thecoder-backend</code> and <code>thecoder-ai</code> (Django, Celery, Redis, OpenAI) to dynamically generate live REST APIs, database schemas, and Nginx reverse proxies from natural language prompts.</li>
+          <li>Developed <code>thecoder-search-2</code>, an AST-based semantic GitHub code search engine using Python <code>ast</code>, LangChain, and <strong>ChromaDB</strong>.</li>
+          <li>Built the <strong>IIT Mandi iHUB Health API</strong> (Django REST, PostgreSQL, OpenCV OCR, Firebase Push) to scan medical reports and alert doctors on abnormal vitals.</li>
+          <li>Delivered <strong>Act Master</strong> (local Falcon-Q4 RAG chatbot for Coal India mining regulations) and <strong>GAIL India's</strong> automated PDF/Excel pricing and freight extraction backend on AWS EC2.</li>
         </ul>
       </div>
 
@@ -347,7 +342,7 @@
           <span>Apr 2021 – Jan 2022</span>
         </div>
         <ul class="bullets">
-          <li>Collaborated with South Korean machine engineers in the Outer Lead Bonding (OLB) unit on automated bonding equipment troubleshooting, PLC diagnostics, quality assurance, and display panel yield optimization.</li>
+          <li>Worked with South Korean engineers in the Outer Lead Bonding (OLB) unit on machine troubleshooting, PLC diagnostics, and display panel yield optimization.</li>
         </ul>
       </div>
     </section>
@@ -358,41 +353,41 @@
 
       <div class="entry">
         <div class="project-header">
-          <span><strong>DexGraspVLA MuJoCo Simulation Bridge</strong> &nbsp;|&nbsp; <em>MuJoCo 3.x, PyTorch, SAM 2, Cutie, DINOv2, Diffusion Policy</em></span>
+          <span><strong>DexGraspVLA MuJoCo Simulation Bridge</strong> &nbsp;|&nbsp; <em>MuJoCo, PyTorch, SAM 2, Cutie, DINOv2</em></span>
           <span><em>Nov 2025 – Dec 2025</em></span>
         </div>
         <ul class="bullets">
-          <li>Replaced proprietary RealMan/PsiBot hardware APIs with a thread-safe <code>MuJoCoInterface</code> driving a <strong>7-DoF Franka Emika Panda arm + 18-DoF Shadow Dexterous Hand</strong> via a custom bidirectional <strong>6-DoF ↔ 18-DoF kinematic joint mapper</strong>, SAM 2 + Cutie temporal mask tracking, and a multiprocess multi-head ViT attention heatmap visualizer.</li>
+          <li>Ported the DexGraspVLA grasping policy to MuJoCo using a <strong>7-DoF Franka Panda arm + 18-DoF Shadow Hand</strong>, custom <strong>6D-to-18D kinematic joint mapping</strong>, SAM 2 + Cutie mask tracking, and a multi-head ViT attention visualizer.</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="project-header">
-          <span><strong>Chess Stream Arena &amp; NPC World</strong> &nbsp;|&nbsp; <em>Go, Flutter, LiveKit WebRTC, FastAPI, PostgreSQL (<code>pgvector</code>), Godot 4.7</em></span>
+          <span><strong>Chess Stream Arena &amp; NPC World</strong> &nbsp;|&nbsp; <em>Go, Flutter, LiveKit WebRTC, FastAPI, PostgreSQL (<code>pgvector</code>), Godot</em></span>
           <span><a href="https://github.com/Anurag9689/chess_stream" target="_blank">GitHub</a> &nbsp;|&nbsp; <em>2026</em></span>
         </div>
         <ul class="bullets">
-          <li>Built <strong>Chess Stream</strong> (Go matchmaking/LiveKit JWT server + 3,293-LOC Flutter app) streaming low-latency 1v1 camera video while syncing chess moves and clocks over lossless <strong>WebRTC Data Channels</strong>; built <strong>NPC World</strong>, an authoritative 2D multiplayer server where LLM-driven NPCs form episodic memories and update 7-D relationship vectors in PostgreSQL.</li>
+          <li>Built <strong>Chess Stream</strong> (Go matchmaking server + Flutter app) streaming 1v1 video and syncing chess moves via <strong>WebRTC Data Channels</strong>; built <strong>NPC World</strong>, a 2D multiplayer server where LLM NPCs store episodic memories and 7-D relationship vectors.</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="project-header">
-          <span><strong>SyncHub (Dew Computing Edge Storage) &amp; Quizzer (Go Real-Time Engine)</strong> &nbsp;|&nbsp; <em>Flask, Go, WebSockets, AWS S3, Fernet</em></span>
+          <span><strong>SyncHub (Dew Computing Storage) &amp; Quizzer (Go Real-Time Engine)</strong> &nbsp;|&nbsp; <em>Flask, Go, WebSockets, AWS S3</em></span>
           <span><a href="https://github.com/Anurag9689/SyncHub" target="_blank">GitHub</a> &nbsp;|&nbsp; <em>2024 – 2025</em></span>
         </div>
         <ul class="bullets">
-          <li>Architected <strong>SyncHub</strong>, an offline-first LAN object storage platform with self-referential bucket trees, Fernet-encrypted streams, and a 60s background daemon auto-syncing to AWS S3; built <strong>Quizzer-Backend</strong> in Go using Gorilla WebSockets, channels, and <code>atomic.Bool</code> rooms for live multiplayer quizzes.</li>
+          <li>Built <strong>SyncHub</strong>, an offline-first LAN storage platform with a background daemon that auto-syncs local buckets to AWS S3; built <strong>Quizzer-Backend</strong> in Go using Gorilla WebSockets and channels for live multiplayer quizzes.</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="project-header">
-          <span><strong>Deep Learning Competitions &amp; From-Scratch GPU Systems</strong> &nbsp;|&nbsp; <em>PyTorch, ViT, DeBERTa-v3, Whisper, LightGBM, CUDA C++</em></span>
+          <span><strong>ML Competitions</strong> &nbsp;|&nbsp; <em>PyTorch, ViT, DeBERTa-v3, SE-ResNet-50, Whisper, LightGBM</em></span>
           <span><em>2025 – 2026</em></span>
         </div>
         <ul class="bullets">
-          <li><strong>Terafac ML Challenge (FOOD-101):</strong> Achieved <strong>84.24% Top-1 accuracy</strong> on 101k images via a weighted <code>ViT + Custom SE-ResNet-50 + ResNet-50</code> ensemble (+23.8% over baseline) with Grad-CAM. <strong>I2V Vehicle Challenge:</strong> Reached <strong>86.80% F1</strong> on 12 imbalanced classes with verified ONNX Runtime parity (<code>&lt;6.9e-4</code> diff). <strong>Amazon ML 2025:</strong> Trained a joint <code>DeBERTa-v3 + ViT</code> extractor with differentiable <code>SMAPELoss</code> + 2,500-tree LightGBM stack on 150k products.</li>
+          <li><strong>Terafac ML Challenge (FOOD-101):</strong> Achieved <strong>84.24% accuracy</strong> on 101k images with a <code>ViT + SE-ResNet-50 + ResNet-50</code> ensemble. <strong>I2V Challenge:</strong> Scored <strong>86.80% F1</strong> on 12-class vehicle detection with ONNX export. <strong>Amazon ML 2025:</strong> Built a <code>DeBERTa-v3 + ViT + LightGBM</code> pricing model with custom <code>SMAPELoss</code> on 150k products.</li>
         </ul>
       </div>
     </section>
@@ -407,11 +402,11 @@
           <span class="entry-location">Delhi, India</span>
         </div>
         <div class="entry-subheader">
-          <span>B.Tech in Artificial Intelligence &amp; Machine Learning (CGPA: 7.43/10 &nbsp;|&nbsp; 8th-Sem Dissertation: 36/40, 1st in Batch)</span>
+          <span>B.Tech in Artificial Intelligence &amp; Machine Learning (CGPA: 7.43/10 &nbsp;|&nbsp; Major Project: 36/40, 1st in Batch)</span>
           <span>Aug 2023 – Aug 2026</span>
         </div>
         <ul class="bullets">
-          <li><strong>Cloud Computing Team Lead, AWS Cloud Club GGSIPU (May 2024 – Jan 2025):</strong> Led student cloud engineering projects and AWS workshops.</li>
+          <li><strong>Cloud Computing Team Lead, AWS Cloud Club GGSIPU (May 2024 – Jan 2025):</strong> Led cloud deployments and technical workshops on AWS.</li>
         </ul>
       </div>
 

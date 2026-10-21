@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[empty]{fullpage}
-\usepackage[top=0.36in, bottom=0.36in, left=0.42in, right=0.42in]{geometry}
+\usepackage[top=0.45in, bottom=0.45in, left=0.5in, right=0.5in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
@@ -12,66 +12,66 @@
 
 % Section Formatting
 \titleformat{\section}{
-  \vspace{-6pt}\scshape\raggedright\normalsize\bfseries
+  \vspace{-5pt}\scshape\raggedright\large\bfseries
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Custom commands for compact 1-page layout
+% Custom commands for clean, readable 1-page layout
 \newcommand{\resumeItem}[1]{
   \item\small{
-    {#1 \vspace{-2.5pt}}
+    {#1 \vspace{-2pt}}
   }
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
+  \vspace{-1pt}\item
     \begin{tabular*}{0.99\textwidth}[t]{@{}l@{\extracolsep{\fill}}r@{}}
       \textbf{#1} & \textit{\small #2} \\
       \textit{\small #3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-5.5pt}
+    \end{tabular*}\vspace{-5pt}
 }
 
 \newcommand{\resumeDualSubheading}[6]{
-  \vspace{-2pt}\item
+  \vspace{-1pt}\item
     \begin{tabular*}{0.99\textwidth}[t]{@{}l@{\extracolsep{\fill}}r@{}}
       \textbf{#1} & \textit{\small #2} \\
       \textit{\small #3} & \textit{\small #4} \\
       \textit{\small #5} & \textit{\small #6} \\
-    \end{tabular*}\vspace{-5.5pt}
+    \end{tabular*}\vspace{-5pt}
 }
 
 \newcommand{\resumeProjectHeading}[2]{
-    \vspace{-2pt}\item
+    \vspace{-1pt}\item
     \begin{tabular*}{0.99\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
       \small #1 & \textit{\small #2} \\
-    \end{tabular*}\vspace{-5.5pt}
+    \end{tabular*}\vspace{-5pt}
 }
 
 \renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.16in, topsep=1pt, itemsep=1pt, parsep=0pt]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.18in, topsep=2pt, itemsep=1.5pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
 
 \begin{document}
 
 %----------HEADER----------
 \begin{center}
-    {\LARGE \textbf{ANURAG PANDEY}} \\ \vspace{1.5pt}
-    {\small AI/ML \& 3D Computer Vision Engineer $|$ Robotics \& Backend Systems Architect} \\ \vspace{1.5pt}
+    {\LARGE \textbf{ANURAG PANDEY}} \\ \vspace{2pt}
+    {\small AI/ML \& 3D Computer Vision Engineer $|$ Backend Systems} \\ \vspace{2pt}
     \small Delhi, India $|$ +91-7217841908 $|$ \href{mailto:anuragpandey9689@gmail.com}{anuragpandey9689@gmail.com} $|$ \href{https://www.linkedin.com/in/-anurag-pandey-}{linkedin.com/in/-anurag-pandey-} $|$ \href{https://github.com/Anurag9689}{github.com/Anurag9689} $|$ \href{https://www.feignbird.live/}{feignbird.live}
 \end{center}
-\vspace{-8pt}
+\vspace{-6pt}
 
 %-----------TECHNICAL SKILLS-----------
-\section{TECHNICAL SKILLS}
+\section{SKILLS}
  \begin{itemize}[leftmargin=0.05in, label={}]
     \small{\item{
-     \textbf{Languages \& Low-Level}{: Python, Go (Golang), C++17, CUDA C++, JavaScript/TypeScript, Dart, SQL, Bash} \\
-     \textbf{3D Vision, Robotics \& AI}{: PyTorch, Open3D, OpenCV, MuJoCo 3.x, FoundationPose, Meta SAM 2/3, DINOv2, ViT, DeBERTa-v3, Whisper, LightGBM, ONNX Runtime, FAISS, Trimesh, SciPy, IKFast, Intel RealSense SDK, ABB RAPID, FANUC Karel} \\
-     \textbf{Backend, Web \& Cloud}{: FastAPI, Flask, Django/DRF, Go (Gorilla WebSockets/Mux, GORM), React 18, Next.js, Three.js, Flutter, LiveKit WebRTC, Socket.IO, Celery, Redis, PostgreSQL (\texttt{pgvector}), AWS (EC2, S3, Bedrock), Docker, Nginx, uWSGI, Linux}
+     \textbf{Languages}{: Python, Go, C++, CUDA, JavaScript/TypeScript, Dart, SQL} \\
+     \textbf{AI \& 3D Vision}{: PyTorch, Open3D, OpenCV, MuJoCo, FoundationPose, SAM 2/3, DINOv2, ViT, DeBERTa, Whisper, LightGBM, ONNX, FAISS} \\
+     \textbf{Backend \& Cloud}{: FastAPI, Flask, Django/DRF, Go WebSockets, React, Next.js, Three.js, Flutter, WebRTC, PostgreSQL, Redis, AWS (EC2, S3), Docker, Nginx, Linux}
     }}
  \end{itemize}
-\vspace{-8pt}
+\vspace{-6pt}
 
 %-----------WORK EXPERIENCE-----------
 \section{WORK EXPERIENCE}
@@ -79,77 +79,76 @@
 
     \resumeDualSubheading
       {Terafac Technologies Pvt. Ltd.}{Chandigarh, India}
-      {Jr. Software Engineer -- AI/ML \& Vision (Full-Time / PPO)}{Jan 2026 -- Sep 2026}
-      {AI/ML \& Vision Engineer Intern (Summer + Part-Time)}{Jun 2024 -- Dec 2025}
+      {Jr. Software Engineer -- AI/ML \& Vision}{Jan 2026 -- Sep 2026}
+      {AI/ML \& Vision Engineer Intern}{Jun 2024 -- Dec 2025}
       \resumeItemListStart
-        \resumeItem{Authored \textbf{790+ commits} across 24+ repositories as \textbf{\#1 contributor} to Terafac's core edge vision (\texttt{vision-301}), cloud/edge backend (\texttt{api-103}), and 6D pose server (\texttt{terafac-vision-6}), powering autonomous robotic welding cells across 5 industrial sites.}
-        \resumeItem{Engineered a closed-loop \textbf{Vision-Tactile 6D Pose Calibration pipeline} combining RealSense RGB-D, FoundationPose, BFS raycast surface probing (\texttt{<3s} on 50k-face meshes), Kabsch/SVD plane fitting with lever-arm reliability gating, and 3-plane intersection, \textbf{reducing weld seam localization error by 85--90\% (from 2.5--4.5 mm to 0.3--0.5 mm)} in \textbf{18--22s} cycle time.}
-        \resumeItem{Built a \textbf{Coarse Touch Alignment \& Analytical IK Follower} (\texttt{coarse\_touch.py}) modeling 3D torch geometry with 10 mm/3$^\circ$ joint-window tracking and automatic wrist unwinding, tightening probe windows to 12 mm and \textbf{cutting fixture search cycle time by 79\% (282s $\to$ 58s)}.}
-        \resumeItem{Designed an \textbf{Object-Frame Fixture Calibration schema} (eliminating 90.8 mm static transform drift to \textbf{0.000 mm} reconstruction error) and a sub-pixel \textbf{STag Fiducial PnP Torch Calibrator} (\texttt{solvePnPRefineLM}) to auto-compensate camera mount drift.}
-        \resumeItem{Architected \textbf{\texttt{api-103}} (Flask, Socket.IO, SQLAlchemy, S3 across 178+ projects \& 2,000+ weld cycles) with a batched \textbf{64-ray Golden-Ratio Spiral hemisphere raycaster} (\texttt{reach\_check\_j6.py}) and SLERP corner extrapolation to optimize part placement within Joint-6 ($\pm 180^\circ$) limits.}
-        \resumeItem{Productionized \textbf{NVIDIA FoundationPose (\texttt{terafac-vision-6})} and \textbf{Meta SAM 3 / FastSAM microservices (\texttt{sam-101..106})}, eliminating \texttt{nvdiffrast} CUDA OOM leaks to run on \textbf{4 GB VRAM / Jetson Orin NX}, adding Hu-moment shape matching, and compressing mask payloads by \textbf{25$\times$ (2500\%)}.}
-        \resumeItem{Developed a C++17 \texttt{pybind11} EtherNet/IP welder driver (\texttt{anr-301}), a non-linear least-squares TCP tool calibrator achieving \textbf{0.006$^\circ$ joint reproduction accuracy} (\texttt{anr-302}), and a Vertex AI Gemini multi-agent 3D CAD/AP214 STEP generator (\texttt{obj\_maker}).}
+        \resumeItem{Led development of core 3D vision (\texttt{vision-301}), cloud/edge backend (\texttt{api-103}), and 6D pose estimation (\texttt{vision-106}) across 5 industrial robotic welding sites.}
+        \resumeItem{Built a closed-loop \textbf{Vision-Tactile 6D Pose Calibration} pipeline combining RealSense RGB-D, FoundationPose, and Kabsch/SVD plane fitting, \textbf{reducing weld seam error by 85--90\% (from 4.5 mm to 0.3 mm)} in 18--22s.}
+        \resumeItem{Engineered a coarse-touch alignment and analytical IK follower that tightened probe search windows to 12 mm, \textbf{cutting calibration cycle time by 79\% (282s $\to$ 58s)}.}
+        \resumeItem{Designed an object-frame fixture calibration system (\textbf{0.000 mm} reconstruction drift) and a sub-pixel STag fiducial PnP calibrator for automatic camera-to-torch drift compensation.}
+        \resumeItem{Architected \texttt{api-103} (Flask, Socket.IO, SQLAlchemy, AWS S3) and a batched 3D hemisphere raycaster to automatically orient parts within robot wrist limits.}
+        \resumeItem{Optimized \textbf{FoundationPose} and \textbf{Meta SAM 3 / FastSAM} microservices for \textbf{4 GB VRAM / Jetson Orin NX}, compressing mask payloads by \textbf{25$\times$}; built a Gemini multi-agent 3D CAD/STEP generator (\texttt{obj\_maker}).}
       \resumeItemListEnd
 
     \resumeSubheading
-      {AttentionVerse (TheCoder / Repetition / Enterprise Client Platforms)}{Delhi, India (Hybrid)}
+      {AttentionVerse (TheCoder \& Enterprise Platforms)}{Delhi, India}
       {Software Engineer -- Backend \& AI Systems}{Jan 2022 -- Apr 2024}
       \resumeItemListStart
-        \resumeItem{Authored \textbf{500+ commits} building \textbf{\texttt{thecoder-backend}} and \textbf{\texttt{thecoder-ai}}, a dynamic Django + Celery + Redis meta-backend and GPT-3.5 conversational app generator (with a custom C extension \texttt{json\_extractor.so}) that spins up live REST APIs, DB schemas, and Nginx reverse proxies on the fly.}
-        \resumeItem{Engineered \textbf{\texttt{thecoder-search-2}}, an AST-based semantic GitHub code search engine using Python \texttt{ast}, JS \texttt{esprima}, LangChain, and \textbf{ChromaDB} to index function call-graph dependencies and natural-language code embeddings.}
-        \resumeItem{Built and deployed the \textbf{IIT Mandi iHUB Health API (\texttt{iitmandi-health-api})} in Django REST + PostgreSQL + AWS S3 with OpenCV/OCR medical report scanning and automated Expo/Firebase push notifications alerting doctors upon abnormal patient vitals.}
-        \resumeItem{Developed \textbf{Act Master (\texttt{coal-india-chatbot})}, a local RAG legal assistant (Django, FastAPI, ChromaDB, quantized Falcon-Q4) for Indian mining regulations, and \textbf{GAIL India's (\texttt{gail-backend})} automated PDF/Excel pricing \& fuzzy Levenshtein freight-extraction backend on AWS EC2.}
+        \resumeItem{Built \texttt{thecoder-backend} and \texttt{thecoder-ai} (Django, Celery, Redis, OpenAI) to dynamically generate live REST APIs, database schemas, and Nginx reverse proxies from natural language prompts.}
+        \resumeItem{Developed \texttt{thecoder-search-2}, an AST-based semantic GitHub code search engine using Python \texttt{ast}, LangChain, and \textbf{ChromaDB}.}
+        \resumeItem{Built the \textbf{IIT Mandi iHUB Health API} (Django REST, PostgreSQL, OpenCV OCR, Firebase Push) to scan medical reports and alert doctors on abnormal vitals.}
+        \resumeItem{Delivered \textbf{Act Master} (local Falcon-Q4 RAG chatbot for Coal India mining regulations) and \textbf{GAIL India's} automated PDF/Excel pricing and freight extraction backend on AWS EC2.}
       \resumeItemListEnd
 
     \resumeSubheading
       {Samsung Display Noida Pvt. Ltd.}{Noida, India}
       {Assistant Engineer (Manufacturing / OLB Core)}{Apr 2021 -- Jan 2022}
       \resumeItemListStart
-        \resumeItem{Collaborated with South Korean machine engineers in the Outer Lead Bonding (OLB) unit on automated bonding equipment troubleshooting, PLC diagnostics, quality assurance, and display panel yield optimization.}
+        \resumeItem{Worked with South Korean engineers in the Outer Lead Bonding (OLB) unit on machine troubleshooting, PLC diagnostics, and display panel yield optimization.}
       \resumeItemListEnd
 
   \end{itemize}
-\vspace{-8pt}
+\vspace{-6pt}
 
 %-----------PROJECTS-----------
 \section{PROJECTS \& COMPETITIONS}
   \begin{itemize}[leftmargin=0.05in, label={}]
 
     \resumeProjectHeading
-      {\textbf{DexGraspVLA MuJoCo Simulation Bridge} $|$ \emph{MuJoCo 3.x, PyTorch, SAM 2, Cutie, DINOv2, Diffusion Policy}}{Nov 2025 -- Dec 2025}
+      {\textbf{DexGraspVLA MuJoCo Simulation Bridge} $|$ \emph{MuJoCo, PyTorch, SAM 2, Cutie, DINOv2}}{Nov 2025 -- Dec 2025}
       \resumeItemListStart
-        \resumeItem{Replaced proprietary RealMan/PsiBot hardware APIs with a thread-safe \texttt{MuJoCoInterface} driving a \textbf{7-DoF Franka Emika Panda arm + 18-DoF Shadow Dexterous Hand} via a custom bidirectional \textbf{6-DoF $\leftrightarrow$ 18-DoF kinematic joint mapper}, SAM 2 + Cutie temporal mask tracking, and a multiprocess multi-head ViT attention heatmap visualizer.}
+        \resumeItem{Ported the DexGraspVLA grasping policy to MuJoCo using a \textbf{7-DoF Franka Panda arm + 18-DoF Shadow Hand}, custom \textbf{6D-to-18D kinematic joint mapping}, SAM 2 + Cutie mask tracking, and a multi-head ViT attention visualizer.}
       \resumeItemListEnd
 
     \resumeProjectHeading
-      {\textbf{Chess Stream Arena \& NPC World} $|$ \emph{Go, Flutter, LiveKit WebRTC, FastAPI, PostgreSQL (\texttt{pgvector}), Godot 4.7}}{\href{https://github.com/Anurag9689/chess_stream}{GitHub} $|$ 2026}
+      {\textbf{Chess Stream Arena \& NPC World} $|$ \emph{Go, Flutter, LiveKit WebRTC, FastAPI, PostgreSQL (\texttt{pgvector}), Godot}}{\href{https://github.com/Anurag9689/chess_stream}{GitHub} $|$ 2026}
       \resumeItemListStart
-        \resumeItem{Built \textbf{Chess Stream} (Go matchmaking/LiveKit JWT server + 3,293-LOC Flutter app) streaming low-latency 1v1 camera video while syncing chess moves and clocks over lossless \textbf{WebRTC Data Channels}; built \textbf{NPC World}, an authoritative 2D multiplayer server where LLM-driven NPCs form episodic memories and update 7-D relationship vectors in PostgreSQL.}
+        \resumeItem{Built \textbf{Chess Stream} (Go matchmaking server + Flutter app) streaming 1v1 video and syncing chess moves via \textbf{WebRTC Data Channels}; built \textbf{NPC World}, a 2D multiplayer server where LLM NPCs store episodic memories and 7-D relationship vectors.}
       \resumeItemListEnd
 
     \resumeProjectHeading
-      {\textbf{SyncHub (Dew Computing Edge Storage) \& Quizzer (Go Real-Time Engine)} $|$ \emph{Flask, Go, WebSockets, AWS S3, Fernet}}{\href{https://github.com/Anurag9689/SyncHub}{GitHub} $|$ 2024 -- 2025}
+      {\textbf{SyncHub (Dew Computing Storage) \& Quizzer (Go Real-Time Engine)} $|$ \emph{Flask, Go, WebSockets, AWS S3}}{\href{https://github.com/Anurag9689/SyncHub}{GitHub} $|$ 2024 -- 2025}
       \resumeItemListStart
-        \resumeItem{Architected \textbf{SyncHub}, an offline-first LAN object storage platform with self-referential bucket trees, Fernet-encrypted streams, and a 60s background daemon auto-syncing to AWS S3; built \textbf{Quizzer-Backend} in Go using Gorilla WebSockets, channels, and \texttt{atomic.Bool} rooms for live multiplayer quizzes.}
+        \resumeItem{Built \textbf{SyncHub}, an offline-first LAN storage platform with a background daemon that auto-syncs local buckets to AWS S3; built \textbf{Quizzer-Backend} in Go using Gorilla WebSockets and channels for live multiplayer quizzes.}
       \resumeItemListEnd
 
     \resumeProjectHeading
-      {\textbf{Deep Learning Competitions \& From-Scratch GPU Systems} $|$ \emph{PyTorch, ViT, DeBERTa-v3, Whisper, LightGBM, CUDA C++}}{2025 -- 2026}
+      {\textbf{ML Competitions} $|$ \emph{PyTorch, ViT, DeBERTa-v3, SE-ResNet-50, Whisper, LightGBM}}{2025 -- 2026}
       \resumeItemListStart
-        \resumeItem{\textbf{Terafac ML Challenge (FOOD-101):} Achieved \textbf{84.24\% Top-1 accuracy} on 101k images via a weighted \texttt{ViT + Custom SE-ResNet-50 + ResNet-50} ensemble (+23.8\% over baseline) with Grad-CAM. \textbf{I2V Vehicle Challenge:} Reached \textbf{86.80\% F1} on 12 imbalanced classes with verified ONNX Runtime parity (\texttt{<6.9e-4} diff). \textbf{Amazon ML 2025:} Trained a joint \texttt{DeBERTa-v3 + ViT} extractor with differentiable \texttt{SMAPELoss} + 2,500-tree LightGBM stack on 150k products.}
+        \resumeItem{\textbf{Terafac ML Challenge (FOOD-101):} Achieved \textbf{84.24\% accuracy} on 101k images with a \texttt{ViT + SE-ResNet-50 + ResNet-50} ensemble. \textbf{I2V Challenge:} Scored \textbf{86.80\% F1} on 12-class vehicle detection with ONNX export. \textbf{Amazon ML 2025:} Built a \texttt{DeBERTa-v3 + ViT + LightGBM} pricing model with custom \texttt{SMAPELoss} on 150k products.}
       \resumeItemListEnd
 
   \end{itemize}
-\vspace{-8pt}
+\vspace{-6pt}
 
 %-----------EDUCATION & LEADERSHIP-----------
 \section{EDUCATION \& LEADERSHIP}
   \begin{itemize}[leftmargin=0.05in, label={}]
     \resumeSubheading
       {University School of Automation \& Robotics (USAR), GGSIPU}{Delhi, India}
-      {B.Tech in Artificial Intelligence \& Machine Learning (CGPA: 7.43/10 $|$ 8th-Sem Dissertation: 36/40, 1st in Batch)}{Aug 2023 -- Aug 2026}
+      {B.Tech in Artificial Intelligence \& Machine Learning (CGPA: 7.43/10 $|$ Major Project: 36/40, 1st in Batch)}{Aug 2023 -- Aug 2026}
       \resumeItemListStart
-        \resumeItem{\textbf{Cloud Computing Team Lead, AWS Cloud Club GGSIPU (May 2024 -- Jan 2025):} Led student cloud engineering projects and AWS workshops.}
+        \resumeItem{\textbf{Cloud Computing Team Lead, AWS Cloud Club GGSIPU (May 2024 -- Jan 2025):} Led cloud deployments and technical workshops on AWS.}
       \resumeItemListEnd
     \resumeSubheading
       {Ambedkar Institute of Technology (BTE Delhi)}{Delhi, India}

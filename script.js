@@ -4,179 +4,139 @@ const PROJECTS = [
     category: "robotics",
     categoryLabel: "3D Vision & Robotics",
     date: "Feb 2026 – May 2026",
-    highlight: "85–90% Error Reduction (2.5–4.5 mm → 0.3–0.5 mm) · 36/40 (#1 in Batch)",
-    desc: "5-service closed-loop robotic welding architecture (pnc-301, api-103, vision-301, path-301, sim-301) for the ABB IRB 1520ID in MuJoCo 3.x. Combines RealSense RGB-D + FoundationPose coarse alignment with KD-tree/PCA surface framing, <3s BFS raycast grid scanning, 9-point MoveT tactile probing, Kabsch/SVD plane fitting with lever-arm reliability gating (≥50 mm), and 3-plane linear intersection.",
-    tags: ["MuJoCo 3.x", "Open3D", "FoundationPose", "Kabsch / SVD", "IKFast", "ABB IRB 1520ID", "Python"],
+    highlight: "85–90% Error Reduction (4.5 mm → 0.3 mm) · 36/40 (#1 in Batch)",
+    desc: "Closed-loop robotic welding pipeline for the ABB IRB 1520ID in MuJoCo 3.x. Combines RealSense RGB-D and FoundationPose with BFS raycast surface probing, Kabsch/SVD plane fitting, and 3-plane intersection to achieve sub-millimeter weld precision in 18–22s.",
+    tags: ["MuJoCo 3.x", "Open3D", "FoundationPose", "Kabsch / SVD", "Python"],
     link: ""
   },
   {
-    title: "DexGraspVLA MuJoCo Simulation Bridge & Attention Visualizer",
+    title: "DexGraspVLA MuJoCo Simulation Bridge",
     category: "robotics",
     categoryLabel: "3D Vision & Robotics",
     date: "Nov 2025 – Dec 2025",
-    highlight: "7-DoF Franka Panda + 18-DoF Shadow Dexterous Hand VLA Control",
-    desc: "Adapted the hierarchical Vision-Language-Action (DexGraspVLA) model from proprietary RealMan/PsiBot hardware to MuJoCo 3.x. Built a thread-safe MuJoCoInterface with dual head/wrist cameras, a bidirectional 6-DoF ↔ 18-DoF kinematic hand joint mapper, upgraded segmentation to SAM 2 + Cutie video mask tracking, and built a multiprocess DINOv2 multi-head attention heatmap visualizer.",
-    tags: ["MuJoCo 3.x", "PyTorch", "SAM 2", "Cutie", "DINOv2", "Diffusion Policy", "Shadow Hand"],
+    highlight: "7-DoF Franka Panda + 18-DoF Shadow Hand VLA Control",
+    desc: "Ported the DexGraspVLA grasping policy to MuJoCo 3.x with a custom 6D-to-18D kinematic hand joint mapper, SAM 2 + Cutie video mask tracking, and a multi-head DINOv2 attention heatmap visualizer.",
+    tags: ["MuJoCo 3.x", "PyTorch", "SAM 2", "Cutie", "DINOv2"],
     link: ""
   },
   {
-    title: "obj_maker — Autonomous 3D CAD/STEP Compiler & Multi-Agent Pipeline",
+    title: "obj_maker — 3D CAD/STEP Compiler & Gemini Multi-Agent Pipeline",
     category: "robotics",
     categoryLabel: "3D Vision & Robotics",
     date: "Sep 2026",
-    highlight: "20+ Industrial Primitives · Watertight ISO-10303-21 AP214 STEP Exporter",
-    desc: "Deterministic Z-up millimeter 3D geometry compiler and Three.js web builder for welded industrial assemblies with typed port attachments and physical triangle-mesh contact/support validation. Paired with a Vertex AI Gemini 3.5 Flash multi-agent pipeline (Research, SceneSpec, Render, Comparator & Evolution workers) that reconstructs 3D CAD models from manufacturer photographs.",
-    tags: ["Node.js", "Three.js", "ISO AP214 STEP", "Vertex AI Gemini", "Multi-Agent", "CAD B-Rep"],
+    highlight: "20+ Primitives · Watertight ISO AP214 STEP Exporter",
+    desc: "Parametric 3D geometry compiler and Three.js builder for welded industrial assemblies, paired with a Vertex AI Gemini multi-agent pipeline that reconstructs 3D CAD models from manufacturer photos.",
+    tags: ["Node.js", "Three.js", "STEP B-Rep", "Vertex AI Gemini"],
     link: ""
   },
   {
-    title: "Coarse-Touch Analytical IK Follower & STag PnP Torch Calibrator",
+    title: "3D Point Cloud Registration & Hemisphere Reachability",
     category: "robotics",
     categoryLabel: "3D Vision & Robotics",
-    date: "2025 – 2026",
-    highlight: "79% Faster Fixture Search (282s → 58s) · 0.006° TCP Fit Accuracy",
-    desc: "Pre-calibration tactile wall-probing engine modeling 3D torch bend (33°), wire stickout (18 mm), and nozzle clearance (55 mm) with 10 mm/3° analytical IK joint-window tracking and automatic wrist unwinding. Paired with an HD15 STag fiducial PnP camera-drift monitor (solvePnPRefineLM) and non-linear least-squares flange-to-TCP tool fitter.",
-    tags: ["Analytical IKFast", "Open3D Raycast", "STag Fiducials", "solvePnPRefineLM", "SciPy Least-Squares"],
+    date: "2024 – 2026",
+    highlight: "Batched 64-Ray Hemisphere Raycasting · RANSAC + ICP Fusion",
+    desc: "Built batched Golden-Ratio Spiral hemisphere raycasting with SLERP corner extrapolation to orient parts within robot wrist limits, plus multi-camera FPFH + RANSAC + Point-to-Plane ICP registration.",
+    tags: ["Open3D", "Trimesh / PyEmbree", "RANSAC + ICP", "three-mesh-bvh"],
     link: ""
   },
   {
-    title: "J6 Hemisphere Raycast Reachability & BVH Seam Ranking Engine",
-    category: "robotics",
-    categoryLabel: "3D Vision & Robotics",
-    date: "2025 – 2026",
-    highlight: "Batched 64-Ray Golden-Ratio Spiral Raycasting · SLERP Corner Extrapolation",
-    desc: "Evaluates unobstructed 3D welding torch approach cones every 40 mm along candidate seams using a single batched pyembree/trimesh raycast call, extrapolates corner vectors via SLERP, and sweeps part Z-rotations (0°–360°) to maximize Joint-6 (±180°) wrist margin. Also built headless three-mesh-bvh safeEdgeSelection.js for automated seam ranking.",
-    tags: ["Trimesh", "PyEmbree", "Open3D", "SLERP", "three-mesh-bvh", "cKDTree Symmetry"],
-    link: ""
-  },
-  {
-    title: "3D Point Cloud RANSAC/FPFH/ICP Registration & Eigen-Curvature Edge Detector",
-    category: "robotics",
-    categoryLabel: "3D Vision & Robotics",
-    date: "Jul 2024 – Dec 2024",
-    highlight: "80%+ Multi-Camera 3D Registration Reliability · PPF Surface Matching",
-    desc: "Built multi-camera Intel RealSense point cloud fusion using 33-D FPFH features, RANSAC global registration, and Point-to-Plane ICP refinement, alongside a parallelized (multiprocessing.Pool) KDTree covariance eigenvalue 3D sharp-edge detector and OpenCV ppf_match_3d surface matching.",
-    tags: ["Open3D", "FPFH + RANSAC + ICP", "OpenCV ppf_match_3d", "RealSense RGB-D", "Multiprocessing"],
-    link: ""
-  },
-  {
-    title: "Terafac ML Challenge 2026 — FOOD-101 Multi-Architecture Ensemble",
+    title: "Terafac ML Challenge 2026 — FOOD-101 Ensemble",
     category: "aiml",
     categoryLabel: "AI / ML & Competitions",
     date: "Jan 2026",
-    highlight: "84.24% Top-1 Test Accuracy on 101,000 Images (+23.81% over Baseline)",
-    desc: "4-level progressive deep learning pipeline across 101 food classes. Improved ResNet-50 baseline from 60.43% to 79.96% via label smoothing and CosineAnnealingLR, designed a custom Squeeze-and-Excitation ResNet-50 (ResNet50_SE) with Grad-CAM explainability, fine-tuned Google ViT (80.27%), and built a weighted soft-voting ensemble reaching 84.24%.",
-    tags: ["PyTorch AMP", "Vision Transformer (ViT)", "Custom SE-ResNet-50", "Grad-CAM", "FOOD-101"],
+    highlight: "84.24% Top-1 Accuracy on 101k Images (+23.8% over Baseline)",
+    desc: "4-stage deep learning pipeline on 101 food classes combining ResNet-50, a custom Squeeze-and-Excitation ResNet-50 with Grad-CAM explainability, and Google ViT in a weighted ensemble.",
+    tags: ["PyTorch", "ViT", "Custom SE-ResNet-50", "Grad-CAM"],
     link: "https://github.com/Anurag9689/Terafac_ML_Challenge_2026"
   },
   {
-    title: "Amazon ML Challenge 2025 — Multimodal Smart Product Pricing",
+    title: "Amazon ML Challenge 2025 — Multimodal Product Pricing",
     category: "aiml",
     categoryLabel: "AI / ML & Competitions",
     date: "Oct 2025",
-    highlight: "150,000 Products · Custom Differentiable SMAPELoss + 2,500-Tree LightGBM",
-    desc: "Two-phase multimodal price prediction pipeline fusing Microsoft DeBERTa-v3 text representations, Google ViT image embeddings, and regex-extracted Item Pack Quantity (IPQ) features. Trained end-to-end with differential learning rates under a custom HybridLoss (0.7 SMAPE + 0.3 MAE), followed by penultimate deep feature extraction into a 2,500-tree LightGBM stack.",
-    tags: ["DeBERTa-v3", "ViT", "Custom SMAPELoss", "LightGBM", "SentenceTransformers", "PyTorch"],
+    highlight: "150k Products · Custom Differentiable SMAPELoss + LightGBM",
+    desc: "Two-phase multimodal pricing model fusing DeBERTa-v3 text embeddings, ViT image features, and regex pack quantities under a custom HybridLoss (SMAPE + MAE), stacked with a 2,500-tree LightGBM regressor.",
+    tags: ["DeBERTa-v3", "ViT", "Custom SMAPELoss", "LightGBM", "PyTorch"],
     link: ""
   },
   {
-    title: "I2V 24-Hour Indian Traffic Vehicle Classification & ONNX Challenge",
+    title: "I2V 24-Hour Vehicle Classification & ONNX Challenge",
     category: "aiml",
     categoryLabel: "AI / ML & Competitions",
     date: "Jan 2026",
-    highlight: "86.35% Accuracy · 88.27% Precision · 86.80% F1 · <6.9e-4 ONNX Diff",
-    desc: "Audited and cleaned a noisy, severely imbalanced 12-class Indian traffic dataset using CleanVision, trained an imbalance-aware ResNet-50 using WeightedRandomSampler and label smoothing, and exported to ONNX Runtime with verified numerical parity (<0.00069 max abs diff).",
-    tags: ["PyTorch", "ResNet-50", "CleanVision", "ONNX Runtime", "WeightedRandomSampler"],
+    highlight: "86.35% Accuracy · 86.80% F1 · Verified ONNX Runtime Export",
+    desc: "Cleaned a severely imbalanced 12-class Indian traffic dataset using CleanVision, trained ResNet-50 with WeightedRandomSampler and label smoothing, and exported to ONNX Runtime with numerical parity.",
+    tags: ["PyTorch", "ResNet-50", "CleanVision", "ONNX Runtime"],
     link: ""
   },
   {
-    title: "Spoken Grammar Scoring Engine (SHL Hiring Assessment)",
+    title: "Spoken Grammar Scoring Engine (SHL Assessment)",
     category: "aiml",
     categoryLabel: "AI / ML & Competitions",
     date: "Apr 2025",
-    highlight: "0.763 Validation MAE · 0.625 Pearson Correlation (r)",
-    desc: "End-to-end spoken English proficiency evaluator from 45–60s audio recordings. Combines OpenAI Whisper (large/turbo) transcription, regex disfluency cleaning, Flan-T5-Large grammatical synthesis Levenshtein edit ratios, spaCy/textstat linguistic readability features, contextual word-embedding augmentation (nlpaug), and fine-tuned DistilBERT regression meta-ensembling.",
-    tags: ["OpenAI Whisper", "Flan-T5-Large", "DistilBERT", "XGBoost / LightGBM", "spaCy", "nlpaug"],
+    highlight: "0.763 Validation MAE · 0.625 Pearson Correlation",
+    desc: "Evaluates spoken English grammar from voice recordings using OpenAI Whisper transcription, Flan-T5-Large grammatical edit ratios, spaCy linguistic features, and fine-tuned DistilBERT regression.",
+    tags: ["OpenAI Whisper", "Flan-T5-Large", "DistilBERT", "LightGBM"],
     link: ""
   },
   {
-    title: "Gemini 3 Pro Multimodal Book-to-Podcast & Visual Page Tutor",
+    title: "Gemini 3 Pro Multimodal Book-to-Podcast Tutor",
     category: "aiml",
     categoryLabel: "AI / ML & Competitions",
     date: "Nov 2025",
-    highlight: "High-Reasoning Equation/Diagram Parsing · Lossless 24kHz Multi-Speaker FLAC",
-    desc: "Transforms dense technical PDF textbooks (e.g., Goodfellow's Deep Learning) into page-by-page multi-speaker podcasts. Renders 2× pages via PyMuPDF, analyzes equations and diagrams with gemini-3-pro-preview (thinking_level='high') to script a 2-persona dialogue, synthesizes native multi-speaker TTS (Kore & Puck) compressed to FLAC, and prefetches upcoming pages in a background thread.",
-    tags: ["Gemini 3 Pro", "Gemini 2.5 Flash TTS", "PyMuPDF", "FLAC Audio", "Multithreading"],
+    highlight: "High-Reasoning Page Analysis · Multi-Speaker FLAC Audio",
+    desc: "Converts technical PDF textbooks into page-by-page multi-speaker podcasts using Gemini 3 Pro for equation/diagram reasoning and Gemini 2.5 Flash TTS with background page prefetching.",
+    tags: ["Gemini 3 Pro", "Multi-Speaker TTS", "PyMuPDF", "FLAC"],
     link: ""
   },
   {
-    title: "Chess Stream Arena — Cross-Platform 1v1 Video & Chess Platform",
+    title: "Chess Stream Arena — 1v1 Video & Chess Platform",
     category: "systems",
     categoryLabel: "Backend, WebRTC & Agents",
     date: "Oct 2026",
-    highlight: "Go Matchmaking & LiveKit JWT Server · 3,293-LOC Flutter App · WebRTC Data Channels",
-    desc: "Monorepo featuring a stateless Go 1.20+ matchmaking coordinator (thread-safe sync.Map random queue + 6-digit private room codes + LiveKit JWT minting) and a multiplatform Flutter client. Streams bi-directional camera/mic video over LiveKit WebRTC SFU while synchronizing chess moves, increment clocks, and chat over lossless WebRTC Data Channels.",
-    tags: ["Go (Golang)", "Flutter 3.x (Dart)", "LiveKit WebRTC SFU", "Data Channels", "JWT"],
+    highlight: "Go Matchmaking Server · Flutter App · WebRTC Data Channels",
+    desc: "Cross-platform Flutter client and stateless Go matchmaking/JWT coordinator streaming low-latency 1v1 camera video over LiveKit WebRTC SFU while syncing chess moves and clocks over lossless Data Channels.",
+    tags: ["Go", "Flutter (Dart)", "LiveKit WebRTC", "Data Channels"],
     link: "https://github.com/Anurag9689/chess_stream"
   },
   {
-    title: "NPC World — AI-Native Persistent 2D Multiplayer Social World",
+    title: "NPC World — Persistent 2D Multiplayer AI World",
     category: "systems",
     categoryLabel: "Backend, WebRTC & Agents",
     date: "Aug 2026",
-    highlight: "Server-Authoritative WebSockets · Episodic Memory · 7-D Relationship Vectors",
-    desc: "Playable 2D multiplayer world (Godot 4.7 client + FastAPI async WebSocket server) with persistent AI NPCs powered by LiteLLM / AWS Bedrock. NPCs form structured episodic memories (importance, emotional valence), update a 7-dimensional per-player relationship state (familiarity, trust, affection, respect, fear, obligation, grievance) in PostgreSQL 16 + pgvector, and initiate proactive greetings.",
-    tags: ["FastAPI", "Async WebSockets", "PostgreSQL 16 + pgvector", "SQLAlchemy Async", "LiteLLM / Bedrock", "Godot 4.7"],
+    highlight: "Authoritative WebSockets · Episodic Memory · 7-D Relationship State",
+    desc: "2D multiplayer world (Godot 4.7 + FastAPI WebSockets + PostgreSQL/pgvector) where LLM-powered NPCs form episodic memories, update 7-dimensional player relationship vectors, and initiate proactive dialogue.",
+    tags: ["FastAPI", "WebSockets", "PostgreSQL + pgvector", "LiteLLM", "Godot 4.7"],
     link: ""
   },
   {
-    title: "SyncHub — Dew Computing Offline-First Edge Storage & S3 Sync Platform",
+    title: "SyncHub (Dew Computing Storage) & Quizzer (Go Real-Time Engine)",
     category: "systems",
     categoryLabel: "Backend, WebRTC & Agents",
-    date: "Aug 2024 – Dec 2024",
-    highlight: "Self-Referential Storage Trees · Fernet Encryption · 60s Auto AWS S3 Daemon",
-    desc: "Offline-first LAN edge object storage system with adaptive online/offline JWT & concurrent SMTP OTP auth, adjacency-list bucket/folder/object hierarchies, SHA-256 Fernet-encrypted file streaming, and an APScheduler background daemon that automatically provisions public AWS S3 buckets and syncs local edge files when internet connectivity returns.",
-    tags: ["Python", "Flask", "SQLAlchemy", "Fernet Cryptography", "AWS S3 (boto3)", "React + Three.js"],
+    date: "2024 – 2025",
+    highlight: "Offline-First Edge-to-S3 Sync · Concurrent Go WebSocket Hub",
+    desc: "Built SyncHub, an offline-first LAN object storage system with a background daemon that auto-syncs local buckets to AWS S3; and Quizzer-Backend in Go using Gorilla WebSockets and channels for live multiplayer quizzes.",
+    tags: ["Go", "Python / Flask", "Gorilla WebSockets", "AWS S3", "React"],
     link: "https://github.com/Anurag9689/SyncHub"
   },
   {
-    title: "Quizzer-Backend (Go Real-Time Engine), Sunlink & FaceConnect",
-    category: "systems",
-    categoryLabel: "Backend, WebRTC & Agents",
-    date: "Apr 2024 – May 2025",
-    highlight: "Go Gorilla WebSocket Hub · FastAPI GPT-4 Support Portal · 128-D Face Recognition",
-    desc: "Built Quizzer-Backend in Go 1.23 (Gorilla WebSockets, Go channels, atomic.Bool room state machines, GORM/MySQL); Sunlink (Geek Verse Hackathon solar support portal in FastAPI, PostgreSQL, AsyncOpenAI WebSockets & React/TS); and FaceConnect (Django 5 + dlib 128-D face recognition in group photos with multi-threaded email dispatch).",
-    tags: ["Go 1.23", "Gorilla WebSockets", "FastAPI", "Django 5", "dlib Face Recognition", "React / TypeScript"],
-    link: "https://github.com/Anurag9689/Quizzer-Backend"
-  },
-  {
-    title: "FCN-DP Globally Optimal Video Object Tracker & DECODE.IT Steganography",
+    title: "FCN-DP Video Object Tracker & DECODE.IT Steganography",
     category: "scratch",
     categoryLabel: "From-Scratch & GPU",
     date: "May 2025",
-    highlight: "Vectorized Dynamic Programming Trajectory Solver · Self-Replicating PNG Code",
-    desc: "Implemented 'Globally Optimal Object Tracking with Fully Convolutional Networks' using FP16 FCN_ResNet50 21-class semantic probability maps and vectorized Dynamic Programming (sliding_window_view backpointers). Also built DECODE.IT, a steganographic 'digital ouroboros' PNG that embeds and reconstructs its own Python source code byte-for-byte.",
-    tags: ["PyTorch FP16", "Vectorized Dynamic Programming", "OpenCV", "zlib Steganography", "NumPy"],
+    highlight: "Vectorized Dynamic Programming · Self-Replicating PNG Code",
+    desc: "Implemented globally optimal video object tracking using FP16 FCN_ResNet50 probability maps and vectorized Dynamic Programming, plus DECODE.IT — a PNG that embeds and reconstructs its own Python source code.",
+    tags: ["PyTorch FP16", "Dynamic Programming", "OpenCV", "Steganography"],
     link: "https://github.com/Anurag9689/CV-experiments"
   },
   {
-    title: "CUDA C++ Procedural Mathematical Flame Renderer & CuPy Deep MLP",
-    category: "scratch",
-    categoryLabel: "From-Scratch & GPU",
-    date: "2024 – Sep 2025",
-    highlight: "Native CUDA C++ (__constant__ Memory & Fast-Math) · Framework-Free CuPy MLP",
-    desc: "Ported a 50-iteration non-linear trigonometric/exponential procedural art renderer (1800×1200) to native CUDA C++ using host-precomputed __constant__ memory tables, #pragma unroll 10, and hardware fast-math intrinsics (__sinf, __cosf, __expf). Also built an arbitrary-depth GPU-accelerated MLP from scratch in pure CuPy/NumPy on MNIST.",
-    tags: ["CUDA C++", "nvcc", "CuPy", "GPU Memory Optimization", "NumPy From-Scratch"],
-    link: ""
-  },
-  {
-    title: "From-Scratch MiniGPT (Flash SDPA) & SumTree Prioritized Replay DQN",
+    title: "CUDA C++ Fractal Renderer, MiniGPT & SumTree PER-DQN",
     category: "scratch",
     categoryLabel: "From-Scratch & GPU",
     date: "2024 – 2025",
-    highlight: "100 / 100 Perfect CartPole-v1 Test Episodes (499.0 Reward) · Causal GPT + CuPy Word2Vec",
-    desc: "Built a 4-layer causal MiniGPT language model with Flash SDPA and mixed precision alongside a pure NumPy/CuPy 3-layer ContextualEmbedder from scratch. In Reinforcement Learning, built a custom binary SumTree and Prioritized Experience Replay (PER) DQN with importance-sampling annealing, achieving 100/100 consecutive perfect test episodes.",
-    tags: ["PyTorch Flash SDPA", "Reinforcement Learning (PER-DQN)", "Binary SumTree", "FAISS Vector Search"],
+    highlight: "Native CUDA C++ · 100/100 Perfect CartPole Episodes · CuPy MLP",
+    desc: "Built a native CUDA C++ procedural flame renderer (__constant__ memory & fast-math intrinsics), a 4-layer causal MiniGPT with Flash SDPA, a framework-free CuPy MLP on MNIST, and a custom SumTree PER-DQN.",
+    tags: ["CUDA C++", "CuPy", "PyTorch Flash SDPA", "Reinforcement Learning"],
     link: ""
   }
 ];
@@ -228,7 +188,6 @@ function renderProjects(filter = "all", query = "") {
     .join("");
 }
 
-// Initialize filter buttons & search
 document.addEventListener("DOMContentLoaded", () => {
   let activeFilter = "all";
   let searchQuery = "";
@@ -256,7 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initPointCloudCanvas();
 });
 
-// Subtle 3D Point-Cloud & Geometric Wireframe Canvas Background
 function initPointCloudCanvas() {
   const canvas = document.getElementById("bg-canvas");
   if (!canvas) return;
@@ -275,7 +233,6 @@ function initPointCloudCanvas() {
   const radius = Math.min(width, height) * 0.44;
 
   for (let i = 0; i < numPoints; i++) {
-    // Golden ratio sphere distribution (inspired by reach_check_j6.py!)
     const y = 1 - (i / (numPoints - 1)) * 2;
     const r = Math.sqrt(1 - y * y);
     const theta = ((2 * Math.PI) / 1.61803398875) * i;
@@ -323,7 +280,6 @@ function initPointCloudCanvas() {
       };
     });
 
-    // Draw edges between nearby 3D points
     for (let i = 0; i < projected.length; i++) {
       for (let j = i + 1; j < projected.length; j++) {
         const dx = projected[i].x - projected[j].x;
@@ -341,7 +297,6 @@ function initPointCloudCanvas() {
       }
     }
 
-    // Draw vertices
     for (const pt of projected) {
       ctx.fillStyle = "rgba(129, 140, 248, 0.55)";
       ctx.beginPath();
