@@ -212,6 +212,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const avatarToggle = document.getElementById("avatar-toggle");
+  const mainPortrait = document.getElementById("main-portrait");
+  const thumbPortrait = document.getElementById("thumb-portrait");
+  const switcherLabel = document.getElementById("switcher-label");
+  const switcherSub = document.getElementById("switcher-sub");
+
+  if (avatarToggle && mainPortrait && thumbPortrait) {
+    let showingAvatar = false;
+    avatarToggle.addEventListener("click", () => {
+      showingAvatar = !showingAvatar;
+      if (showingAvatar) {
+        mainPortrait.src = "assets/AnuragAvatar1.jpeg";
+        thumbPortrait.src = "assets/20220822_002536.jpg";
+        switcherLabel.textContent = "Anurag Pandey";
+        switcherSub.textContent = "Tap for real photo";
+      } else {
+        mainPortrait.src = "assets/20220822_002536.jpg";
+        thumbPortrait.src = "assets/AnuragAvatar1.jpeg";
+        switcherLabel.textContent = "@feignbird";
+        switcherSub.textContent = "Tap to view avatar";
+      }
+    });
+  }
+
   initPointCloudCanvas();
 });
 

@@ -19,7 +19,7 @@
   <nav class="navbar">
     <div class="container nav-inner">
       <a href="#top" class="brand">
-        <span class="brand-mark">AP</span>
+        <img src="assets/AnuragAvatar1.jpeg" alt="feignbird avatar" class="brand-avatar" />
         <span>Anurag Pandey</span>
         <span class="brand-handle">@feignbird</span>
       </a>
@@ -39,29 +39,62 @@
   <!-- HERO -->
   <header id="top" class="hero">
     <div class="container">
-      <div class="status-pill">
-        <span class="status-dot"></span>
-        <span>Open to AI/ML, 3D Computer Vision, Robotics &amp; Backend Roles</span>
-      </div>
+      <div class="hero-split">
+        <div>
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            <span>Open to AI/ML, 3D Computer Vision, Robotics &amp; Backend Roles</span>
+          </div>
 
-      <h1 class="hero-title">
-        Building <span class="gradient-text">3D Vision, Robotic Intelligence</span> &amp; Scalable Backends.
-      </h1>
+          <h1 class="hero-title">
+            Building <span class="gradient-text">3D Vision, Robotic Intelligence</span> &amp; Scalable Backends.
+          </h1>
 
-      <p class="hero-subtitle">
-        AI/ML &amp; 3D Computer Vision Engineer · B.Tech AIML @ USAR, GGSIPU · Ex-Terafac, AttentionVerse &amp; Samsung Display
-      </p>
+          <p class="hero-subtitle">
+            AI/ML &amp; 3D Computer Vision Engineer · B.Tech AIML @ USAR, GGSIPU · Ex-Terafac, AttentionVerse &amp; Samsung Display
+          </p>
 
-      <p class="hero-bio">
-        I build production 3D perception pipelines, robotic simulation environments, and high-throughput backend systems. Previously led core 3D vision and tactile robotic welding pipelines at <strong>Terafac Technologies</strong> (<strong>0.3 mm precision</strong>) and built AI developer platforms and enterprise backends at <strong>AttentionVerse</strong>.
-      </p>
+          <p class="hero-bio">
+            I build production 3D perception pipelines, robotic simulation environments, and high-throughput backend systems. Previously led core 3D vision and tactile robotic welding pipelines at <strong>Terafac Technologies</strong> (<strong>0.3 mm precision</strong>) and built AI developer platforms and enterprise backends at <strong>AttentionVerse</strong>.
+          </p>
 
-      <div class="hero-actions">
-        <a href="resume.html" class="btn btn-primary">View 1-Page Printable Resume →</a>
-        <a href="Anurag_Pandey_Resume.tex" download class="btn btn-outline">Download LaTeX (.tex)</a>
-        <a href="https://github.com/Anurag9689" target="_blank" rel="noopener" class="btn btn-outline">GitHub (@Anurag9689)</a>
-        <a href="https://www.linkedin.com/in/-anurag-pandey-" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
-        <a href="mailto:anuragpandey9689@gmail.com" class="btn btn-outline">Email</a>
+          <div class="hero-actions">
+            <a href="resume.html" class="btn btn-primary">View 1-Page Printable Resume →</a>
+            <a href="Anurag_Pandey_Resume.tex" download class="btn btn-outline">Download LaTeX (.tex)</a>
+            <a href="https://github.com/Anurag9689" target="_blank" rel="noopener" class="btn btn-outline">GitHub (@Anurag9689)</a>
+            <a href="https://www.linkedin.com/in/-anurag-pandey-" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+            <a href="mailto:anuragpandey9689@gmail.com" class="btn btn-outline">Email</a>
+          </div>
+        </div>
+
+        <!-- PROFILE PHOTO & FEIGNBIRD AVATAR -->
+        <div class="portrait-card">
+          <div class="portrait-frame">
+            <img
+              id="main-portrait"
+              src="assets/20220822_002536.jpg"
+              alt="Anurag Pandey"
+              class="portrait-img"
+            />
+          </div>
+          <button
+            type="button"
+            class="avatar-switcher"
+            id="avatar-toggle"
+            title="Click to switch between Real Photo and @feignbird Avatar"
+          >
+            <img
+              id="thumb-portrait"
+              src="assets/AnuragAvatar1.jpeg"
+              alt="feignbird avatar"
+              class="avatar-thumb"
+            />
+            <div class="avatar-switcher-text">
+              <span class="avatar-switcher-label" id="switcher-label">@feignbird</span>
+              <span class="avatar-switcher-sub" id="switcher-sub">Tap to view avatar</span>
+            </div>
+          </button>
+        </div>
       </div>
 
       <!-- KEY IMPACT METRICS -->
@@ -135,7 +168,7 @@
               <ul class="exp-bullets">
                 <li><strong>Vision-Tactile 6D Pose Calibration:</strong> Combined RealSense RGB-D, FoundationPose, and Kabsch/SVD plane fitting to <strong>reduce weld seam error by 85–90% (4.5 mm → 0.3 mm)</strong> in 18–22s.</li>
                 <li><strong>Coarse-Touch &amp; Analytical IK:</strong> Built wall-probing alignment with joint-window tracking, tightening search windows to 12 mm and <strong>cutting calibration time by 79% (282s → 58s)</strong>.</li>
-                <li><strong>Fixture &amp; Camera Calibration:</strong> Designed object-frame path calibration (<strong>0.000 mm</strong> drift) and STag fiducial PnP camera-to-torch drift compensation.</li>
+                <li><strong>Camera-to-Torch Calibration:</strong> Built a sub-pixel STag fiducial PnP calibrator for automatic camera mount drift compensation.</li>
               </ul>
             </div>
 
@@ -374,7 +407,7 @@
         <a href="mailto:anuragpandey9689@gmail.com">anuragpandey9689@gmail.com</a>
         <a href="tel:+917217841908">+91-7217841908</a>
       </div>
-      <p>© 2026 Anurag Pandey (feignbird).</p>
+      <p>© 2026 Anurag Pandey (@feignbird).</p>
     </div>
   </footer>
 
