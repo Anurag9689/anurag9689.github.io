@@ -1,335 +1,682 @@
-const PROJECTS = [
-  {
-    title: "Vision-Tactile Guided Robotic Welding in MuJoCo",
-    category: "robotics",
-    categoryLabel: "3D Vision & Robotics",
-    date: "Feb 2026 – May 2026",
-    highlight: "85–90% Error Reduction (4.5 mm → 0.3 mm) · 36/40 (#1 in Batch)",
-    desc: "Closed-loop robotic welding pipeline for the ABB IRB 1520ID in MuJoCo 3.x. Combines RealSense RGB-D and FoundationPose with BFS raycast surface probing, Kabsch/SVD plane fitting, and 3-plane intersection to achieve sub-millimeter weld precision in 18–22s.",
-    tags: ["MuJoCo 3.x", "Open3D", "FoundationPose", "Kabsch / SVD", "Python"],
-    link: ""
-  },
-  {
-    title: "DexGraspVLA MuJoCo Simulation Bridge",
-    category: "robotics",
-    categoryLabel: "3D Vision & Robotics",
-    date: "Nov 2025 – Dec 2025",
-    highlight: "7-DoF Franka Panda + 18-DoF Shadow Hand VLA Control",
-    desc: "Ported the DexGraspVLA grasping policy to MuJoCo 3.x with a custom 6D-to-18D kinematic hand joint mapper, SAM 2 + Cutie video mask tracking, and a multi-head DINOv2 attention heatmap visualizer.",
-    tags: ["MuJoCo 3.x", "PyTorch", "SAM 2", "Cutie", "DINOv2"],
-    link: ""
-  },
-  {
-    title: "obj_maker — 3D CAD/STEP Compiler & Gemini Multi-Agent Pipeline",
-    category: "robotics",
-    categoryLabel: "3D Vision & Robotics",
-    date: "Sep 2026",
-    highlight: "20+ Primitives · Watertight ISO AP214 STEP Exporter",
-    desc: "Parametric 3D geometry compiler and Three.js builder for welded industrial assemblies, paired with a Vertex AI Gemini multi-agent pipeline that reconstructs 3D CAD models from manufacturer photos.",
-    tags: ["Node.js", "Three.js", "STEP B-Rep", "Vertex AI Gemini"],
-    link: ""
-  },
-  {
-    title: "3D Point Cloud Registration & Hemisphere Reachability",
-    category: "robotics",
-    categoryLabel: "3D Vision & Robotics",
-    date: "2024 – 2026",
-    highlight: "Batched 64-Ray Hemisphere Raycasting · RANSAC + ICP Fusion",
-    desc: "Built batched Golden-Ratio Spiral hemisphere raycasting with SLERP corner extrapolation to orient parts within robot wrist limits, plus multi-camera FPFH + RANSAC + Point-to-Plane ICP registration.",
-    tags: ["Open3D", "Trimesh / PyEmbree", "RANSAC + ICP", "three-mesh-bvh"],
-    link: ""
-  },
-  {
-    title: "Terafac ML Challenge 2026 — FOOD-101 Ensemble",
-    category: "aiml",
-    categoryLabel: "AI / ML & Competitions",
-    date: "Jan 2026",
-    highlight: "84.24% Top-1 Accuracy on 101k Images (+23.8% over Baseline)",
-    desc: "4-stage deep learning pipeline on 101 food classes combining ResNet-50, a custom Squeeze-and-Excitation ResNet-50 with Grad-CAM explainability, and Google ViT in a weighted ensemble.",
-    tags: ["PyTorch", "ViT", "Custom SE-ResNet-50", "Grad-CAM"],
-    link: "https://github.com/Anurag9689/Terafac_ML_Challenge_2026"
-  },
-  {
-    title: "Amazon ML Challenge 2025 — Multimodal Product Pricing",
-    category: "aiml",
-    categoryLabel: "AI / ML & Competitions",
-    date: "Oct 2025",
-    highlight: "150k Products · Custom Differentiable SMAPELoss + LightGBM",
-    desc: "Two-phase multimodal pricing model fusing DeBERTa-v3 text embeddings, ViT image features, and regex pack quantities under a custom HybridLoss (SMAPE + MAE), stacked with a 2,500-tree LightGBM regressor.",
-    tags: ["DeBERTa-v3", "ViT", "Custom SMAPELoss", "LightGBM", "PyTorch"],
-    link: ""
-  },
-  {
-    title: "I2V 24-Hour Vehicle Classification & ONNX Challenge",
-    category: "aiml",
-    categoryLabel: "AI / ML & Competitions",
-    date: "Jan 2026",
-    highlight: "86.35% Accuracy · 86.80% F1 · Verified ONNX Runtime Export",
-    desc: "Cleaned a severely imbalanced 12-class Indian traffic dataset using CleanVision, trained ResNet-50 with WeightedRandomSampler and label smoothing, and exported to ONNX Runtime with numerical parity.",
-    tags: ["PyTorch", "ResNet-50", "CleanVision", "ONNX Runtime"],
-    link: ""
-  },
-  {
-    title: "Spoken Grammar Scoring Engine (SHL Assessment)",
-    category: "aiml",
-    categoryLabel: "AI / ML & Competitions",
-    date: "Apr 2025",
-    highlight: "0.763 Validation MAE · 0.625 Pearson Correlation",
-    desc: "Evaluates spoken English grammar from voice recordings using OpenAI Whisper transcription, Flan-T5-Large grammatical edit ratios, spaCy linguistic features, and fine-tuned DistilBERT regression.",
-    tags: ["OpenAI Whisper", "Flan-T5-Large", "DistilBERT", "LightGBM"],
-    link: ""
-  },
-  {
-    title: "Gemini 3 Pro Multimodal Book-to-Podcast Tutor",
-    category: "aiml",
-    categoryLabel: "AI / ML & Competitions",
-    date: "Nov 2025",
-    highlight: "High-Reasoning Page Analysis · Multi-Speaker FLAC Audio",
-    desc: "Converts technical PDF textbooks into page-by-page multi-speaker podcasts using Gemini 3 Pro for equation/diagram reasoning and Gemini 2.5 Flash TTS with background page prefetching.",
-    tags: ["Gemini 3 Pro", "Multi-Speaker TTS", "PyMuPDF", "FLAC"],
-    link: ""
-  },
-  {
-    title: "Chess Stream Arena — 1v1 Video & Chess Platform",
-    category: "systems",
-    categoryLabel: "Backend, WebRTC & Agents",
-    date: "Oct 2026",
-    highlight: "Go Matchmaking Server · Flutter App · WebRTC Data Channels",
-    desc: "Cross-platform Flutter client and stateless Go matchmaking/JWT coordinator streaming low-latency 1v1 camera video over LiveKit WebRTC SFU while syncing chess moves and clocks over lossless Data Channels.",
-    tags: ["Go", "Flutter (Dart)", "LiveKit WebRTC", "Data Channels"],
-    link: "https://github.com/Anurag9689/chess_stream"
-  },
-  {
-    title: "NPC World — Persistent 2D Multiplayer AI World",
-    category: "systems",
-    categoryLabel: "Backend, WebRTC & Agents",
-    date: "Aug 2026",
-    highlight: "Authoritative WebSockets · Episodic Memory · 7-D Relationship State",
-    desc: "2D multiplayer world (Godot 4.7 + FastAPI WebSockets + PostgreSQL/pgvector) where LLM-powered NPCs form episodic memories, update 7-dimensional player relationship vectors, and initiate proactive dialogue.",
-    tags: ["FastAPI", "WebSockets", "PostgreSQL + pgvector", "LiteLLM", "Godot 4.7"],
-    link: ""
-  },
-  {
-    title: "SyncHub (Dew Computing Storage) & Quizzer (Go Real-Time Engine)",
-    category: "systems",
-    categoryLabel: "Backend, WebRTC & Agents",
-    date: "2024 – 2025",
-    highlight: "Offline-First Edge-to-S3 Sync · Concurrent Go WebSocket Hub",
-    desc: "Built SyncHub, an offline-first LAN object storage system with a background daemon that auto-syncs local buckets to AWS S3; and Quizzer-Backend in Go using Gorilla WebSockets and channels for live multiplayer quizzes.",
-    tags: ["Go", "Python / Flask", "Gorilla WebSockets", "AWS S3", "React"],
-    link: "https://github.com/Anurag9689/SyncHub"
-  },
-  {
-    title: "FCN-DP Video Object Tracker & DECODE.IT Steganography",
-    category: "scratch",
-    categoryLabel: "From-Scratch & GPU",
-    date: "May 2025",
-    highlight: "Vectorized Dynamic Programming · Self-Replicating PNG Code",
-    desc: "Implemented globally optimal video object tracking using FP16 FCN_ResNet50 probability maps and vectorized Dynamic Programming, plus DECODE.IT — a PNG that embeds and reconstructs its own Python source code.",
-    tags: ["PyTorch FP16", "Dynamic Programming", "OpenCV", "Steganography"],
-    link: "https://github.com/Anurag9689/CV-experiments"
-  },
-  {
-    title: "CUDA C++ Fractal Renderer, MiniGPT & SumTree PER-DQN",
-    category: "scratch",
-    categoryLabel: "From-Scratch & GPU",
-    date: "2024 – 2025",
-    highlight: "Native CUDA C++ · 100/100 Perfect CartPole Episodes · CuPy MLP",
-    desc: "Built a native CUDA C++ procedural flame renderer (__constant__ memory & fast-math intrinsics), a 4-layer causal MiniGPT with Flash SDPA, a framework-free CuPy MLP on MNIST, and a custom SumTree PER-DQN.",
-    tags: ["CUDA C++", "CuPy", "PyTorch Flash SDPA", "Reinforcement Learning"],
-    link: ""
-  }
-];
+// ============================================================================
+// ANURAG PANDEY (@feignbird) — WORKBENCH CONTROLLER & TECHNICAL INSPECTOR
+// ============================================================================
 
-function renderProjects(filter = "all", query = "") {
-  const grid = document.getElementById("projects-grid");
-  const normalizedQuery = query.trim().toLowerCase();
+document.addEventListener('DOMContentLoaded', () => {
+  const DATA = window.INSPECTOR_DATA || {};
+  const SKILLS = window.SKILL_NODES || [];
+  const orderedIds = Object.keys(DATA);
+  let currentInspectId = null;
 
-  const filtered = PROJECTS.filter((p) => {
-    const matchesCat = filter === "all" || p.category === filter;
-    const hay = `${p.title} ${p.highlight} ${p.desc} ${p.tags.join(" ")}`.toLowerCase();
-    const matchesQuery = !normalizedQuery || hay.includes(normalizedQuery);
-    return matchesCat && matchesQuery;
-  });
+  // --------------------------------------------------------------------------
+  // 1. SLIDE-OVER TECHNICAL INSPECTOR DRAWER
+  // --------------------------------------------------------------------------
+  const drawer = document.getElementById('inspector-drawer');
+  const backdrop = document.getElementById('drawer-backdrop');
+  const drawerBody = document.getElementById('drawer-body');
+  const drawerCode = document.getElementById('drawer-code');
+  const drawerCat = document.getElementById('drawer-category');
+  const prevBtn = document.getElementById('drawer-prev-btn');
+  const nextBtn = document.getElementById('drawer-next-btn');
+  const closeBtn = document.getElementById('drawer-close-btn');
 
-  if (filtered.length === 0) {
-    grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 40px; color: var(--text-muted);">No matching projects found for "${query}".</div>`;
-    return;
+  function formatInlineCode(str) {
+    if (!str) return '';
+    return str.replace(/`([^`]+)`/g, '<code style="font-family:var(--font-mono);font-size:0.8em;color:var(--accent-cyan);background:rgba(56,189,248,0.1);padding:1px 5px;border-radius:4px;">$1</code>');
   }
 
-  grid.innerHTML = filtered
-    .map(
-      (p) => `
-      <article class="project-card">
-        <div>
-          <div class="project-meta">
-            <span class="project-cat">${p.categoryLabel}</span>
-            <span class="project-date">${p.date}</span>
-          </div>
-          <h3 class="project-title">${p.title}</h3>
-          <div class="project-highlight">${p.highlight}</div>
-          <p class="project-desc">${p.desc}</p>
+  function openInspector(id, pushHash = true) {
+    const item = DATA[id];
+    if (!item) return;
+
+    currentInspectId = id;
+    drawerCode.textContent = item.code || 'SYS // INSPECTOR';
+    drawerCat.textContent = item.category || 'Technical Dossier';
+
+    // Build Pipeline HTML
+    let pipelineHtml = '';
+    if (item.pipeline && item.pipeline.length) {
+      pipelineHtml = `
+        <div class="d-section-label">01 // Architecture &amp; Execution Pipeline</div>
+        <div class="d-pipeline">
+          ${item.pipeline.map(p => `
+            <div class="d-pipe-node">
+              <span class="d-pipe-step">STEP ${p.step}</span>
+              <div class="d-pipe-name">${formatInlineCode(p.name)}</div>
+              <div class="d-pipe-desc">${formatInlineCode(p.desc)}</div>
+            </div>
+          `).join('')}
         </div>
-        <div>
-          <div class="tag-row" style="margin-top:0; margin-bottom: 12px;">
-            ${p.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
+      `;
+    }
+
+    // Build Visual Artifact Showcase HTML (if visualAsset exists)
+    let visualHtml = '';
+    if (item.visualAsset) {
+      visualHtml = `
+        <div class="d-section-label">Visual Output Artifact</div>
+        <div class="d-visual-box">
+          <div class="d-visual-grid">
+            <img src="${item.visualAsset}" alt="${item.title}" class="d-visual-img" />
+            ${item.secondaryAsset ? `<img src="${item.secondaryAsset}" alt="${item.title} output 2" class="d-visual-img" />` : ''}
           </div>
-          ${
-            p.link
-              ? `<div class="project-footer">
-                  <a href="${p.link}" target="_blank" rel="noopener" class="project-link">View Repository on GitHub ↗</a>
-                </div>`
-              : ""
-          }
+          <p class="d-visual-caption">${formatInlineCode(item.visualCaption || '')}</p>
         </div>
-      </article>
-    `
-    )
-    .join("");
-}
+      `;
+    }
 
-document.addEventListener("DOMContentLoaded", () => {
-  let activeFilter = "all";
-  let searchQuery = "";
+    // Build Deep Dive HTML
+    let deepDiveHtml = '';
+    if (item.deepDive && item.deepDive.length) {
+      deepDiveHtml = `
+        <div class="d-section-label">02 // Deep Technical &amp; Mathematical Breakdown</div>
+        <div class="d-deep-list">
+          ${item.deepDive.map(d => `
+            <div class="d-deep-item">
+              <div class="d-deep-title">${formatInlineCode(d.title)}</div>
+              <div class="d-deep-detail">${formatInlineCode(d.detail)}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
 
-  renderProjects(activeFilter, searchQuery);
+    // Build Quantitative Benchmarks HTML
+    let benchHtml = '';
+    if (item.benchmarks && item.benchmarks.length) {
+      benchHtml = `
+        <div class="d-section-label">03 // Quantitative Benchmarks &amp; Verification</div>
+        <table class="d-bench-table">
+          <thead>
+            <tr>
+              <th>Metric / Evaluation Case</th>
+              <th>Baseline / Context</th>
+              <th>Measured Result</th>
+              <th>Impact / Delta</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${item.benchmarks.map(b => `
+              <tr>
+                <td>${formatInlineCode(b.metric)}</td>
+                <td>${formatInlineCode(b.baseline)}</td>
+                <td class="d-res">${formatInlineCode(b.result)}</td>
+                <td class="d-delta">${formatInlineCode(b.delta)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    }
 
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      filterBtns.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      activeFilter = btn.dataset.filter;
-      renderProjects(activeFilter, searchQuery);
+    // Build Stack HTML
+    let stackHtml = '';
+    if (item.stack && item.stack.length) {
+      stackHtml = `
+        <div class="d-section-label">04 // Technology &amp; Mathematical Stack</div>
+        <div class="d-stack-wrap">
+          ${item.stack.map(s => `<span class="d-stack-pill">${s}</span>`).join('')}
+        </div>
+      `;
+    }
+
+    // Build Links HTML
+    let linksHtml = '';
+    if (item.links && item.links.length) {
+      linksHtml = `
+        <div class="d-links-row">
+          ${item.links.map(l => {
+            if (l.url.startsWith('#inspect=')) {
+              const targetId = l.url.replace('#inspect=', '');
+              return `<button type="button" class="btn btn-primary btn-sm" data-inspect-inner="${targetId}">${l.label} →</button>`;
+            }
+            return `<a href="${l.url}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">${l.label} ↗</a>`;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    drawerBody.innerHTML = `
+      <h2 class="d-title">${formatInlineCode(item.title)}</h2>
+      <div class="d-subtitle">${formatInlineCode(item.subtitle)}</div>
+
+      <div class="d-meta-strip">
+        <span class="d-meta-pill">Timeline: <strong>${item.timeline}</strong></span>
+        <span class="d-meta-pill">Scope: <strong>${item.commits}</strong></span>
+        <span class="d-meta-pill">Role: <strong>${item.role}</strong></span>
+      </div>
+
+      <div class="d-summary-box">
+        ${formatInlineCode(item.summary)}
+      </div>
+
+      ${item.problem ? `
+        <div class="d-section-label">00 // Engineering Problem &amp; Constraints</div>
+        <p class="d-problem-text">${formatInlineCode(item.problem)}</p>
+      ` : ''}
+
+      ${visualHtml}
+      ${pipelineHtml}
+      ${deepDiveHtml}
+      ${benchHtml}
+      ${stackHtml}
+      ${linksHtml}
+    `;
+
+    // Bind any inner inspect buttons
+    drawerBody.querySelectorAll('[data-inspect-inner]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        openInspector(btn.getAttribute('data-inspect-inner'));
+      });
     });
-  });
 
-  const searchInput = document.getElementById("project-search");
-  if (searchInput) {
-    searchInput.addEventListener("input", (e) => {
-      searchQuery = e.target.value;
-      renderProjects(activeFilter, searchQuery);
-    });
+    drawerBody.scrollTop = 0;
+    drawer.classList.add('open');
+    backdrop.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('drawer-open');
+
+    if (pushHash) {
+      history.replaceState(null, '', `#inspect=${id}`);
+    }
   }
 
-  const avatarToggle = document.getElementById("avatar-toggle");
-  const mainPortrait = document.getElementById("main-portrait");
-  const thumbPortrait = document.getElementById("thumb-portrait");
-  const switcherLabel = document.getElementById("switcher-label");
-  const switcherSub = document.getElementById("switcher-sub");
+  // Open Skill Node Inspector
+  function openSkillInspector(skillObj) {
+    currentInspectId = null;
+    drawerCode.textContent = 'SKILL // GRAPH';
+    drawerCat.textContent = skillObj.category;
 
-  if (avatarToggle && mainPortrait && thumbPortrait) {
-    let showingAvatar = false;
-    avatarToggle.addEventListener("click", () => {
-      showingAvatar = !showingAvatar;
-      if (showingAvatar) {
-        mainPortrait.src = "assets/AnuragAvatar1.jpeg";
-        thumbPortrait.src = "assets/20220822_002536.jpg";
-        switcherLabel.textContent = "Anurag Pandey";
-        switcherSub.textContent = "Tap for real photo";
-      } else {
-        mainPortrait.src = "assets/20220822_002536.jpg";
-        thumbPortrait.src = "assets/AnuragAvatar1.jpeg";
-        switcherLabel.textContent = "@feignbird";
-        switcherSub.textContent = "Tap to view avatar";
+    const linkedItems = (skillObj.items || [])
+      .map(id => DATA[id])
+      .filter(Boolean);
+
+    drawerBody.innerHTML = `
+      <h2 class="d-title">${skillObj.name}</h2>
+      <div class="d-subtitle">Production Repositories, Dissertations &amp; Systems Built With This Technology</div>
+
+      <div class="d-summary-box">
+        Verified across <strong>${linkedItems.length} core engineering systems</strong> in Anurag Pandey's portfolio. Click any system below to open its full architectural breakdown and benchmarks.
+      </div>
+
+      <div class="d-section-label">Connected Production Systems &amp; Projects (${linkedItems.length})</div>
+      <div class="d-deep-list">
+        ${linkedItems.map(item => `
+          <div class="d-deep-item" style="cursor:pointer;border-color:rgba(56,189,248,0.28);" data-skill-target="${item.id}">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:4px;">
+              <span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--accent-cyan);">${item.code} · ${item.timeline}</span>
+              <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--accent-emerald);">Open Dossier →</span>
+            </div>
+            <div class="d-deep-title">${formatInlineCode(item.title)}</div>
+            <div class="d-deep-detail">${formatInlineCode(item.summary)}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+
+    drawerBody.querySelectorAll('[data-skill-target]').forEach(card => {
+      card.addEventListener('click', () => {
+        openInspector(card.getAttribute('data-skill-target'));
+      });
+    });
+
+    drawerBody.scrollTop = 0;
+    drawer.classList.add('open');
+    backdrop.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('drawer-open');
+  }
+
+  function closeInspector() {
+    drawer.classList.remove('open');
+    backdrop.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('drawer-open');
+    if (window.location.hash.startsWith('#inspect=')) {
+      history.replaceState(null, '', window.location.pathname);
+    }
+  }
+
+  function cycleInspector(dir) {
+    if (!orderedIds.length) return;
+    const idx = currentInspectId ? orderedIds.indexOf(currentInspectId) : 0;
+    const nextIdx = (idx + dir + orderedIds.length) % orderedIds.length;
+    openInspector(orderedIds[nextIdx]);
+  }
+
+  // Bind all [data-inspect] elements across the page
+  document.querySelectorAll('[data-inspect]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const id = el.getAttribute('data-inspect');
+      if (id) {
+        e.preventDefault();
+        openInspector(id);
       }
     });
-  }
-
-  initPointCloudCanvas();
-});
-
-function initPointCloudCanvas() {
-  const canvas = document.getElementById("bg-canvas");
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d");
-
-  let width = (canvas.width = window.innerWidth);
-  let height = (canvas.height = window.innerHeight);
-
-  window.addEventListener("resize", () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
   });
 
-  const numPoints = 72;
-  const points = [];
-  const radius = Math.min(width, height) * 0.44;
+  closeBtn.addEventListener('click', closeInspector);
+  backdrop.addEventListener('click', closeInspector);
+  prevBtn.addEventListener('click', () => cycleInspector(-1));
+  nextBtn.addEventListener('click', () => cycleInspector(1));
 
-  for (let i = 0; i < numPoints; i++) {
-    const y = 1 - (i / (numPoints - 1)) * 2;
-    const r = Math.sqrt(1 - y * y);
-    const theta = ((2 * Math.PI) / 1.61803398875) * i;
-    points.push({
-      x: Math.cos(theta) * r * radius,
-      y: y * radius,
-      z: Math.sin(theta) * r * radius
+  // Render Interactive Skill Nodes
+  const skillContainer = document.getElementById('skill-nodes-container');
+  if (skillContainer && SKILLS.length) {
+    skillContainer.innerHTML = SKILLS.map((s, idx) => `
+      <button type="button" class="skill-node-btn spotlight-card" data-skill-idx="${idx}">
+        <div class="skill-node-left">
+          <span class="skill-node-cat">${s.category}</span>
+          <span class="skill-node-name">${s.name}</span>
+        </div>
+        <span class="skill-node-count">${s.items.length} systems →</span>
+      </button>
+    `).join('');
+
+    skillContainer.querySelectorAll('[data-skill-idx]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-skill-idx'), 10);
+        if (SKILLS[idx]) openSkillInspector(SKILLS[idx]);
+      });
     });
   }
 
-  let angleY = 0;
-  let angleX = 0.2;
-  let targetY = 0;
-  let targetX = 0.2;
+  // Check URL hash on initial load (e.g., #inspect=vision-301)
+  if (window.location.hash.startsWith('#inspect=')) {
+    const initialId = window.location.hash.replace('#inspect=', '');
+    if (DATA[initialId]) {
+      setTimeout(() => openInspector(initialId, false), 150);
+    }
+  }
 
-  window.addEventListener("mousemove", (e) => {
-    targetY = ((e.clientX / width) - 0.5) * 0.6;
-    targetX = ((e.clientY / height) - 0.5) * 0.4;
-  });
+  // --------------------------------------------------------------------------
+  // 2. ⌘K / CTRL+K COMMAND PALETTE MODAL
+  // --------------------------------------------------------------------------
+  const cmdkBackdrop = document.getElementById('cmdk-backdrop');
+  const cmdkInput = document.getElementById('cmdk-input');
+  const cmdkResults = document.getElementById('cmdk-results');
+  const cmdkOpenBtn = document.getElementById('cmdk-open-btn');
+  const heroCmdkBtn = document.getElementById('hero-cmdk-btn');
+  const cmdkCloseBtn = document.getElementById('cmdk-close-btn');
+  let cmdkActiveIdx = 0;
+  let currentCmdkList = [];
 
-  function animate() {
-    ctx.clearRect(0, 0, width, height);
-
-    angleY += 0.0022 + (targetY - angleY) * 0.02;
-    angleX += (targetX - angleX) * 0.02;
-
-    const cosY = Math.cos(angleY);
-    const sinY = Math.sin(angleY);
-    const cosX = Math.cos(angleX);
-    const sinX = Math.sin(angleX);
-
-    const projected = points.map((p) => {
-      const x1 = p.x * cosY - p.z * sinY;
-      const z1 = p.z * cosY + p.x * sinY;
-      const y1 = p.y * cosX - z1 * sinX;
-      const z2 = z1 * cosX + p.y * sinX;
-
-      const fov = 700;
-      const scale = fov / (fov + z2 + 450);
+  function buildSearchCorpus() {
+    const items = orderedIds.map(id => {
+      const d = DATA[id];
       return {
-        x: width * 0.5 + x1 * scale,
-        y: height * 0.48 + y1 * scale,
-        z: z2,
-        scale
+        type: 'inspect',
+        id: d.id,
+        code: d.code,
+        title: d.title,
+        subtitle: `${d.category} · ${d.timeline} · ${d.commits}`,
+        searchBlob: `${d.title} ${d.subtitle} ${d.summary} ${(d.stack || []).join(' ')} ${d.category}`.toLowerCase()
       };
     });
 
-    for (let i = 0; i < projected.length; i++) {
-      for (let j = i + 1; j < projected.length; j++) {
-        const dx = projected[i].x - projected[j].x;
-        const dy = projected[i].y - projected[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 135) {
-          const alpha = (1 - dist / 135) * 0.16;
-          ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(projected[i].x, projected[i].y);
-          ctx.lineTo(projected[j].x, projected[j].y);
-          ctx.stroke();
-        }
+    SKILLS.forEach((s, idx) => {
+      items.push({
+        type: 'skill',
+        skillIdx: idx,
+        code: 'SKILL // NODE',
+        title: `Skill: ${s.name}`,
+        subtitle: `${s.category} · Inspect ${s.items.length} connected systems`,
+        searchBlob: `${s.name} ${s.category}`.toLowerCase()
+      });
+    });
+
+    items.push(
+      {
+        type: 'link',
+        url: 'resume.html',
+        code: 'DOC // PDF',
+        title: 'Open Printable 1-Page CV / Resume',
+        subtitle: 'ATS-friendly 1-page engineering resume',
+        searchBlob: 'resume cv pdf print 1-page'
+      },
+      {
+        type: 'link',
+        url: 'Anurag_Pandey_Resume.tex',
+        code: 'DOC // LATEX',
+        title: 'Download LaTeX Resume Source (.tex)',
+        subtitle: 'Anurag_Pandey_Resume.tex',
+        searchBlob: 'latex tex source resume download'
       }
-    }
-
-    for (const pt of projected) {
-      ctx.fillStyle = "rgba(129, 140, 248, 0.55)";
-      ctx.beginPath();
-      ctx.arc(pt.x, pt.y, Math.max(1.2, 2.4 * pt.scale), 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    requestAnimationFrame(animate);
+    );
+    return items;
   }
 
-  animate();
-}
+  const corpus = buildSearchCorpus();
+
+  function renderCmdkResults(query = '') {
+    const q = query.trim().toLowerCase();
+    currentCmdkList = q
+      ? corpus.filter(item => item.searchBlob.includes(q))
+      : corpus.slice(0, 14);
+
+    cmdkActiveIdx = 0;
+
+    if (!currentCmdkList.length) {
+      cmdkResults.innerHTML = `<div style="padding:18px;text-align:center;color:var(--text-muted);font-family:var(--font-mono);font-size:0.8rem;">No matching systems found for "${query}"</div>`;
+      return;
+    }
+
+    cmdkResults.innerHTML = currentCmdkList.map((item, i) => `
+      <button type="button" class="cmdk-item ${i === 0 ? 'active' : ''}" data-cmdk-idx="${i}">
+        <div class="cmdk-item-left">
+          <span class="cmdk-item-title">${item.title}</span>
+          <span class="cmdk-item-sub">${item.subtitle}</span>
+        </div>
+        <span class="cmdk-item-code">${item.code} →</span>
+      </button>
+    `).join('');
+
+    cmdkResults.querySelectorAll('.cmdk-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-cmdk-idx'), 10);
+        triggerCmdkItem(currentCmdkList[idx]);
+      });
+    });
+  }
+
+  function triggerCmdkItem(item) {
+    if (!item) return;
+    closeCmdk();
+    if (item.type === 'inspect') {
+      openInspector(item.id);
+    } else if (item.type === 'skill') {
+      openSkillInspector(SKILLS[item.skillIdx]);
+    } else if (item.type === 'link') {
+      window.open(item.url, '_blank');
+    }
+  }
+
+  function openCmdk() {
+    cmdkBackdrop.classList.add('open');
+    cmdkBackdrop.setAttribute('aria-hidden', 'false');
+    cmdkInput.value = '';
+    renderCmdkResults('');
+    setTimeout(() => cmdkInput.focus(), 40);
+  }
+
+  function closeCmdk() {
+    cmdkBackdrop.classList.remove('open');
+    cmdkBackdrop.setAttribute('aria-hidden', 'true');
+  }
+
+  if (cmdkOpenBtn) cmdkOpenBtn.addEventListener('click', openCmdk);
+  if (heroCmdkBtn) heroCmdkBtn.addEventListener('click', openCmdk);
+  if (cmdkCloseBtn) cmdkCloseBtn.addEventListener('click', closeCmdk);
+  if (cmdkBackdrop) {
+    cmdkBackdrop.addEventListener('click', (e) => {
+      if (e.target === cmdkBackdrop) closeCmdk();
+    });
+  }
+
+  if (cmdkInput) {
+    cmdkInput.addEventListener('input', (e) => {
+      renderCmdkResults(e.target.value);
+    });
+  }
+
+  // Global Keyboard Shortcuts (⌘K / Ctrl+K, Esc, ←, →, ↑, ↓, Enter)
+  window.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (cmdkBackdrop.classList.contains('open')) {
+        closeCmdk();
+      } else {
+        openCmdk();
+      }
+      return;
+    }
+
+    if (cmdkBackdrop.classList.contains('open')) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeCmdk();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (currentCmdkList.length) {
+          cmdkActiveIdx = (cmdkActiveIdx + 1) % currentCmdkList.length;
+          updateCmdkHighlight();
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (currentCmdkList.length) {
+          cmdkActiveIdx = (cmdkActiveIdx - 1 + currentCmdkList.length) % currentCmdkList.length;
+          updateCmdkHighlight();
+        }
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (currentCmdkList[cmdkActiveIdx]) {
+          triggerCmdkItem(currentCmdkList[cmdkActiveIdx]);
+        }
+      }
+      return;
+    }
+
+    if (drawer.classList.contains('open')) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeInspector();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        cycleInspector(-1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        cycleInspector(1);
+      }
+    }
+  });
+
+  function updateCmdkHighlight() {
+    const buttons = cmdkResults.querySelectorAll('.cmdk-item');
+    buttons.forEach((b, idx) => {
+      b.classList.toggle('active', idx === cmdkActiveIdx);
+      if (idx === cmdkActiveIdx) {
+        b.scrollIntoView({ block: 'nearest' });
+      }
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 3. PROFILE PHOTO vs. @FEIGNBIRD AVATAR HUD SWITCHER
+  // --------------------------------------------------------------------------
+  const switchBtns = document.querySelectorAll('.switch-btn');
+  const imgReal = document.getElementById('profile-img-real');
+  const imgAvatar = document.getElementById('profile-img-avatar');
+  const caption = document.getElementById('profile-caption');
+  const hudMode = document.getElementById('hud-mode-label');
+
+  switchBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      switchBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.getAttribute('data-target');
+      if (target === 'avatar') {
+        imgReal.classList.remove('active');
+        imgAvatar.classList.add('active');
+        caption.textContent = '@feignbird · GitHub & Systems Alias';
+        if (hudMode) hudMode.textContent = 'MODE: SYNTH_AVATAR';
+      } else {
+        imgAvatar.classList.remove('active');
+        imgReal.classList.add('active');
+        caption.textContent = 'Anurag Pandey · Delhi / Chandigarh';
+        if (hudMode) hudMode.textContent = 'MODE: REAL_OPTICAL';
+      }
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // 4. PROJECT CATEGORY FILTER TABS
+  // --------------------------------------------------------------------------
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.bento-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+
+      projectCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // 5. CURSOR-TRACKING RADIAL SPOTLIGHT ON CARDS
+  // --------------------------------------------------------------------------
+  document.addEventListener('mousemove', (e) => {
+    document.querySelectorAll('.spotlight-card').forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // 6. 3D POINT-CLOUD BACKGROUND + BOTTOM-LEFT SE(3) COORDINATE TRIAD HUD
+  // --------------------------------------------------------------------------
+  const canvas = document.getElementById('bg-canvas');
+  const triadCanvas = document.getElementById('triad-canvas');
+  const triadCoords = document.getElementById('triad-coords');
+
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    const tCtx = triadCanvas ? triadCanvas.getContext('2d') : null;
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const numPoints = Math.min(75, Math.floor((width * height) / 18000));
+    const points = [];
+
+    for (let i = 0; i < numPoints; i++) {
+      points.push({
+        x: (Math.random() - 0.5) * width * 1.1,
+        y: (Math.random() - 0.5) * height * 1.1,
+        z: Math.random() * 400 + 100,
+        vx: (Math.random() - 0.5) * 0.28,
+        vy: (Math.random() - 0.5) * 0.28
+      });
+    }
+
+    let angleX = 0.25;
+    let angleY = 0.4;
+
+    window.addEventListener('mousemove', (e) => {
+      const nx = (e.clientX / width - 0.5) * 2;
+      const ny = (e.clientY / height - 0.5) * 2;
+      angleY = nx * 0.65;
+      angleX = ny * 0.45;
+    });
+
+    function drawTriad(yaw, pitch) {
+      if (!tCtx) return;
+      tCtx.clearRect(0, 0, 54, 54);
+      const cx = 27;
+      const cy = 27;
+      const len = 18;
+
+      const axes = [
+        { label: 'X', color: '#f87171', v: [1, 0, 0] },
+        { label: 'Y', color: '#34d399', v: [0, -1, 0] },
+        { label: 'Z', color: '#38bdf8', v: [0, 0, 1] }
+      ];
+
+      const cyaw = Math.cos(yaw), syaw = Math.sin(yaw);
+      const cp = Math.cos(pitch), sp = Math.sin(pitch);
+
+      axes.forEach(ax => {
+        const [x, y, z] = ax.v;
+        // Rotate Y then X
+        const rx = x * cyaw + z * syaw;
+        const rz = -x * syaw + z * cyaw;
+        const ry = y * cp - rz * sp;
+
+        const ex = cx + rx * len;
+        const ey = cy + ry * len;
+
+        tCtx.strokeStyle = ax.color;
+        tCtx.lineWidth = 1.8;
+        tCtx.beginPath();
+        tCtx.moveTo(cx, cy);
+        tCtx.lineTo(ex, ey);
+        tCtx.stroke();
+
+        tCtx.fillStyle = ax.color;
+        tCtx.font = 'bold 8px JetBrains Mono, monospace';
+        tCtx.fillText(ax.label, ex + (rx >= 0 ? 2 : -7), ey + (ry >= 0 ? 7 : -2));
+      });
+    }
+
+    let tick = 0;
+    function animate() {
+      tick += 0.006;
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < points.length; i++) {
+        const p = points[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < -width * 0.6 || p.x > width * 0.6) p.vx *= -1;
+        if (p.y < -height * 0.6 || p.y > height * 0.6) p.vy *= -1;
+
+        const sx = width / 2 + p.x;
+        const sy = height / 2 + p.y;
+
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.42)';
+        ctx.beginPath();
+        ctx.arc(sx, sy, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < points.length; j++) {
+          const p2 = points[j];
+          const s2x = width / 2 + p2.x;
+          const s2y = height / 2 + p2.y;
+          const dx = sx - s2x;
+          const dy = sy - s2y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 135) {
+            const alpha = (1 - dist / 135) * 0.14;
+            ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
+            ctx.lineWidth = 0.75;
+            ctx.beginPath();
+            ctx.moveTo(sx, sy);
+            ctx.lineTo(s2x, s2y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      const yaw = tick + angleY;
+      const pitch = 0.35 + angleX;
+      drawTriad(yaw, pitch);
+
+      if (triadCoords && Math.floor(tick * 100) % 4 === 0) {
+        const degY = ((yaw * 180 / Math.PI) % 360).toFixed(1);
+        const degP = ((pitch * 180 / Math.PI) % 360).toFixed(1);
+        triadCoords.textContent = `RPY: ${degP}° / ${degY}° · PTS: ${numPoints}`;
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  }
+});

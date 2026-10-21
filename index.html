@@ -3,414 +3,740 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anurag Pandey | AI/ML, 3D Computer Vision &amp; Backend Engineer</title>
-  <meta name="description" content="Portfolio of Anurag Pandey (feignbird / Anurag9689) — AI/ML & 3D Computer Vision Engineer, Robotics Perception, and Backend Systems Developer." />
+  <title>Anurag Pandey (@feignbird) — AI/ML, 3D Computer Vision &amp; Robotics Systems Engineer</title>
+  <meta name="description" content="Systems & AI Engineering Workbench of Anurag Pandey (@feignbird / Anurag9689) — AI/ML, 3D Computer Vision, Robotics & Backend Systems Engineer. 1,300+ production commits across 6-DoF pose estimation, tactile robotic welding, MuJoCo simulation, and distributed microservices." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Interactive 3D Point-Cloud Canvas Background -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-  <canvas id="bg-canvas"></canvas>
-  <div class="bg-glow"></div>
+  <!-- Blueprint Grid Overlay -->
+  <div class="blueprint-grid" aria-hidden="true"></div>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="container nav-inner">
-      <a href="#top" class="brand">
-        <img src="assets/AnuragAvatar1.jpeg" alt="feignbird avatar" class="brand-avatar" />
-        <span>Anurag Pandey</span>
-        <span class="brand-handle">@feignbird</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#education">Education</a></li>
-      </ul>
-      <div class="nav-cta">
-        <a href="Anurag_Pandey_Resume.tex" download class="btn btn-outline btn-sm">.TEX Source</a>
-        <a href="resume.html" class="btn btn-primary btn-sm">1-Page Resume / PDF</a>
-      </div>
+  <!-- Bottom-Left 3D Coordinate Triad HUD -->
+  <div class="hud-triad" aria-hidden="true" title="Live 3D Point-Cloud Telemetry">
+    <canvas id="triad-canvas" width="54" height="54"></canvas>
+    <div class="triad-meta">
+      <span class="triad-title">6-DoF SE(3) FIELD</span>
+      <span class="triad-coords" id="triad-coords">RPY: 0.0° / 0.0° · PTS: 75</span>
     </div>
-  </nav>
+  </div>
 
-  <!-- HERO -->
-  <header id="top" class="hero">
-    <div class="container">
-      <div class="hero-split">
-        <div>
-          <div class="status-pill">
-            <span class="status-dot"></span>
-            <span>Open to AI/ML, 3D Computer Vision, Robotics &amp; Backend Roles</span>
-          </div>
-
-          <h1 class="hero-title">
-            Building <span class="gradient-text">3D Vision, Robotic Intelligence</span> &amp; Scalable Backends.
-          </h1>
-
-          <p class="hero-subtitle">
-            AI/ML &amp; 3D Computer Vision Engineer · B.Tech AIML @ USAR, GGSIPU · Ex-Terafac, AttentionVerse &amp; Samsung Display
-          </p>
-
-          <p class="hero-bio">
-            I build production 3D perception pipelines, robotic simulation environments, and high-throughput backend systems. Previously led core 3D vision and tactile robotic welding pipelines at <strong>Terafac Technologies</strong> (<strong>0.3 mm precision</strong>) and built AI developer platforms and enterprise backends at <strong>AttentionVerse</strong>.
-          </p>
-
-          <div class="hero-actions">
-            <a href="resume.html" class="btn btn-primary">View 1-Page Printable Resume →</a>
-            <a href="Anurag_Pandey_Resume.tex" download class="btn btn-outline">Download LaTeX (.tex)</a>
-            <a href="https://github.com/Anurag9689" target="_blank" rel="noopener" class="btn btn-outline">GitHub (@Anurag9689)</a>
-            <a href="https://www.linkedin.com/in/-anurag-pandey-" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
-            <a href="mailto:anuragpandey9689@gmail.com" class="btn btn-outline">Email</a>
-          </div>
-        </div>
-
-        <!-- PROFILE PHOTO & FEIGNBIRD AVATAR -->
-        <div class="portrait-card">
-          <div class="portrait-frame">
-            <img
-              id="main-portrait"
-              src="assets/20220822_002536.jpg"
-              alt="Anurag Pandey"
-              class="portrait-img"
-            />
-          </div>
-          <button
-            type="button"
-            class="avatar-switcher"
-            id="avatar-toggle"
-            title="Click to switch between Real Photo and @feignbird Avatar"
-          >
-            <img
-              id="thumb-portrait"
-              src="assets/AnuragAvatar1.jpeg"
-              alt="feignbird avatar"
-              class="avatar-thumb"
-            />
-            <div class="avatar-switcher-text">
-              <span class="avatar-switcher-label" id="switcher-label">@feignbird</span>
-              <span class="avatar-switcher-sub" id="switcher-sub">Tap to view avatar</span>
-            </div>
-          </button>
+  <!-- Top IDE / HUD Telemetry Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="#top" class="brand">
+          <span class="brand-bracket">[</span>
+          <span class="brand-name">anurag.pandey</span>
+          <span class="brand-alias">// @feignbird</span>
+          <span class="brand-bracket">]</span>
+        </a>
+        <div class="telemetry-pill hide-mobile">
+          <span class="status-led"></span>
+          <span>SYS: ONLINE · 1,300+ COMMITS</span>
         </div>
       </div>
 
-      <!-- KEY IMPACT METRICS -->
-      <div class="metrics-grid">
-        <div class="metric-card">
-          <div class="metric-value">1,300+</div>
-          <div class="metric-label">Production Commits</div>
-          <div class="metric-sub">790+ at Terafac &amp; 500+ at AttentionVerse</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-value">0.3 mm</div>
-          <div class="metric-label">Weld Seam Precision</div>
-          <div class="metric-sub">85–90% pose error reduction via Vision-Tactile fusion</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-value">79% Faster</div>
-          <div class="metric-label">Tactile Calibration</div>
-          <div class="metric-sub">Cut fixture search from 282s to 58s via Coarse-Touch IK</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-value">25× Smaller</div>
-          <div class="metric-label">SAM Mask Payloads</div>
-          <div class="metric-sub">Sparse mask compression &amp; 4 GB VRAM / Orin NX optimization</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-value">36 / 40</div>
-          <div class="metric-label">#1 Ranked Dissertation</div>
-          <div class="metric-sub">Highest 8th-Sem Major Project score in USAR AIML batch</div>
-        </div>
+      <nav class="nav-links">
+        <a href="#experience"><span class="nav-idx">01.</span>Systems</a>
+        <a href="#projects"><span class="nav-idx">02.</span>Projects</a>
+        <a href="#skills"><span class="nav-idx">03.</span>Stack</a>
+        <a href="#education"><span class="nav-idx">04.</span>Education</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="cmdk-trigger" id="cmdk-open-btn" title="Open Command Palette (Ctrl+K / ⌘K)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Inspect / Search...</span>
+          <kbd>⌘K</kbd>
+        </button>
+        <a href="resume.html" target="_blank" class="btn btn-primary btn-sm">1-Page CV</a>
+        <a href="Anurag_Pandey_Resume.tex" download class="btn btn-outline btn-sm hide-sm" title="Download LaTeX Resume Source">.TEX</a>
       </div>
     </div>
   </header>
 
-  <!-- WORK EXPERIENCE -->
-  <section id="experience" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">01 // Experience</div>
-        <h2 class="section-title">Work Experience</h2>
+  <main id="top" class="workbench-shell">
+    <!-- ====================================================================
+         [00 // HERO & TELEMETRY WORKBENCH]
+         ==================================================================== -->
+    <section class="hero-section blueprint-cell">
+      <span class="crosshair ch-tl">+</span>
+      <span class="crosshair ch-tr">+</span>
+      <span class="crosshair ch-bl">+</span>
+      <span class="crosshair ch-br">+</span>
+
+      <div class="coord-bar">
+        <span class="coord-tag">[00 // WORKBENCH_OVERVIEW]</span>
+        <span class="coord-hint">
+          <span class="pulse-dot"></span>
+          Progressive Disclosure Mode: Click any card, chip, metric, or skill to open the <strong>Technical Inspector Drawer →</strong>
+        </span>
       </div>
 
-      <div class="timeline">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            Available for AI/ML, Computer Vision, Robotics &amp; Backend Engineering Roles
+          </div>
 
-        <!-- TERAFAC -->
-        <article class="exp-card">
+          <h1 class="hero-title">
+            Engineering <span class="gradient-text">3D Vision, Robotic Control</span> &amp; High-Throughput AI Systems.
+          </h1>
+
+          <p class="hero-subtitle">
+            I’m <strong>Anurag Pandey</strong> (<span class="mono-accent">@feignbird</span>) — an AI/ML, Computer Vision &amp; Backend Systems Engineer with <strong>1,300+ production commits</strong> across industrial 6-DoF pose estimation, sub-millimeter tactile robotic welding, low-VRAM CUDA microservices, and real-time distributed platforms.
+          </p>
+
+          <div class="hero-cta">
+            <button type="button" class="btn btn-primary" data-inspect="vision-301">
+              <span>Inspect Flagship System (vision-301)</span>
+              <span class="btn-arrow">→</span>
+            </button>
+            <a href="resume.html" target="_blank" class="btn btn-secondary">
+              View Printable 1-Page Resume
+            </a>
+            <button type="button" class="btn btn-ghost" id="hero-cmdk-btn">
+              <span>Press <kbd>⌘K</kbd> to Explore All 25+ Systems</span>
+            </button>
+          </div>
+
+          <div class="quick-links">
+            <a href="mailto:anuragpandey9689@gmail.com" class="quick-link">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              anuragpandey9689@gmail.com
+            </a>
+            <a href="tel:+917217841908" class="quick-link">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +91-7217841908
+            </a>
+            <a href="https://github.com/Anurag9689" target="_blank" rel="noopener" class="quick-link">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              github.com/Anurag9689
+            </a>
+            <a href="https://www.linkedin.com/in/-anurag-pandey-/" target="_blank" rel="noopener" class="quick-link">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <!-- Technical HUD Portrait & @feignbird Avatar Frame -->
+        <div class="hero-profile-card spotlight-card">
+          <div class="hud-header">
+            <span class="hud-id">ID // ANURAG_PANDEY</span>
+            <span class="hud-mode" id="hud-mode-label">MODE: REAL_OPTICAL</span>
+          </div>
+          <div class="profile-image-frame">
+            <span class="hud-corner hc-tl"></span>
+            <span class="hud-corner hc-tr"></span>
+            <span class="hud-corner hc-bl"></span>
+            <span class="hud-corner hc-br"></span>
+            <img id="profile-img-real" src="assets/20220822_002536.jpg" alt="Anurag Pandey" class="profile-img active" />
+            <img id="profile-img-avatar" src="assets/AnuragAvatar1.jpeg" alt="feignbird Avatar" class="profile-img" />
+            <div class="profile-badge-overlay">
+              <span class="badge-tag" id="profile-caption">Anurag Pandey · Delhi / Chandigarh</span>
+            </div>
+          </div>
+          <div class="profile-switcher" role="group" aria-label="Switch between photo and avatar">
+            <button type="button" class="switch-btn active" data-target="real">
+              Photo (Anurag)
+            </button>
+            <button type="button" class="switch-btn" data-target="avatar">
+              @feignbird Avatar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 Interactive Telemetry Metric Cards (Click to Inspect Proof) -->
+      <div class="metrics-bar">
+        <button type="button" class="metric-card spotlight-card" data-inspect="metric-commits">
+          <div class="metric-top">
+            <span class="metric-value">1,300+</span>
+            <span class="inspect-cue">Proof →</span>
+          </div>
+          <span class="metric-label">Production Commits Across 24+ Repos</span>
+        </button>
+
+        <button type="button" class="metric-card spotlight-card" data-inspect="metric-precision">
+          <div class="metric-top">
+            <span class="metric-value">0.3–0.5 mm</span>
+            <span class="inspect-cue">Proof →</span>
+          </div>
+          <span class="metric-label">Weld Seam Error (85–90% Reduction)</span>
+        </button>
+
+        <button type="button" class="metric-card spotlight-card" data-inspect="metric-calibration">
+          <div class="metric-top">
+            <span class="metric-value">79% Faster</span>
+            <span class="inspect-cue">Proof →</span>
+          </div>
+          <span class="metric-label">Fixture Search Cycle (282s → 58s)</span>
+        </button>
+
+        <button type="button" class="metric-card spotlight-card" data-inspect="metric-compression">
+          <div class="metric-top">
+            <span class="metric-value">25×</span>
+            <span class="inspect-cue">Proof →</span>
+          </div>
+          <span class="metric-label">SAM 3 Mask Payload Compression</span>
+        </button>
+
+        <button type="button" class="metric-card spotlight-card" data-inspect="metric-dissertation">
+          <div class="metric-top">
+            <span class="metric-value">36 / 40</span>
+            <span class="inspect-cue">Proof →</span>
+          </div>
+          <span class="metric-label">8th-Sem Dissertation (1st in Batch)</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         [01 // WORK EXPERIENCE — ABSTRACT SURFACE + SUBSYSTEM CHIPS]
+         ==================================================================== -->
+    <section id="experience" class="section blueprint-cell">
+      <span class="crosshair ch-bl">+</span>
+      <span class="crosshair ch-br">+</span>
+
+      <div class="section-header">
+        <div class="section-title-row">
+          <div>
+            <span class="section-tag">[01 // PRODUCTION_EXPERIENCE]</span>
+            <h2 class="section-title">Work Experience &amp; Inspectable Subsystems</h2>
+          </div>
+          <span class="section-hint">Click any subsystem chip below to open its full architecture &amp; benchmarks →</span>
+        </div>
+      </div>
+
+      <div class="exp-stack">
+        <!-- 1. Terafac Technologies -->
+        <article class="exp-card spotlight-card">
           <div class="exp-top">
             <div>
-              <div class="exp-company">
-                <span>Terafac Technologies Pvt. Ltd.</span>
-                <span class="commit-badge">790+ Commits · #1 Core Contributor</span>
+              <div class="exp-company-row">
+                <h3 class="exp-company">Terafac Technologies Pvt. Ltd.</h3>
+                <span class="commit-pill">790+ Git Commits · #1 Core Author</span>
+                <span class="ppo-pill">₹10 LPA PPO Offer</span>
               </div>
-              <div class="exp-roles">
-                <div class="exp-role-row">
-                  <span>Jr. Software Engineer — AI/ML &amp; Vision</span>
-                  <span class="exp-date">Jan 2026 – Sep 2026 · Chandigarh</span>
-                </div>
-                <div class="exp-role-row">
-                  <span>AI/ML &amp; Vision Engineer Intern</span>
-                  <span class="exp-date">Jun 2024 – Dec 2025 · Chandigarh</span>
-                </div>
-              </div>
+              <p class="exp-roles">
+                <strong>Jr. Software Engineer — AI/ML &amp; Vision</strong> <span class="dim">(Jan 2026 – Sep 2026)</span> &nbsp;·&nbsp;
+                <strong>AI/ML &amp; Vision Intern</strong> <span class="dim">(Jun 2024 – Dec 2025)</span>
+              </p>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-date">Jun 2024 – Sep 2026</span>
+              <span class="exp-loc">Chandigarh, India (PU Incubation Center)</span>
             </div>
           </div>
 
-          <div class="subsystems-grid">
-            <div class="subsystem-box">
-              <div class="subsystem-head">
-                <span class="subsystem-name">vision-301 (3D Vision &amp; Tactile Calibration)</span>
-                <span class="subsystem-commits">446 Commits</span>
-              </div>
-              <ul class="exp-bullets">
-                <li><strong>Vision-Tactile 6D Pose Calibration:</strong> Combined RealSense RGB-D, FoundationPose, and Kabsch/SVD plane fitting to <strong>reduce weld seam error by 85–90% (4.5 mm → 0.3 mm)</strong> in 18–22s.</li>
-                <li><strong>Coarse-Touch &amp; Analytical IK:</strong> Built wall-probing alignment with joint-window tracking, tightening search windows to 12 mm and <strong>cutting calibration time by 79% (282s → 58s)</strong>.</li>
-                <li><strong>Camera-to-Torch Calibration:</strong> Built a sub-pixel STag fiducial PnP calibrator for automatic camera mount drift compensation.</li>
-              </ul>
-            </div>
+          <p class="exp-abstract">
+            Architected the core 3D computer vision, tactile wire-probing calibration, 6-DoF FoundationPose inference server, and cloud/edge reachability backend deployed across <strong>5 industrial manufacturing sites</strong> (Faridabad, Ludhiana, Parwanoo, Havells, CS Electric).
+          </p>
 
-            <div class="subsystem-box">
-              <div class="subsystem-head">
-                <span class="subsystem-name">api-103, vision-6, SAM 3 &amp; obj_maker</span>
-                <span class="subsystem-commits">340+ Commits</span>
-              </div>
-              <ul class="exp-bullets">
-                <li><strong>Cloud/Edge Backend (<code>api-103</code>):</strong> Built Flask + Socket.IO + S3 backend managing 2,000+ weld cycles, plus a batched 3D hemisphere raycaster to orient parts within wrist limits.</li>
-                <li><strong>Low-VRAM 6D Pose &amp; SAM 3 Servers:</strong> Optimized FoundationPose and Meta SAM 3 / FastSAM for <strong>4 GB VRAM &amp; Jetson Orin NX</strong>, compressing mask payloads by <strong>25×</strong>.</li>
-                <li><strong>3D CAD Generator (<code>obj_maker</code>):</strong> Built a parametric Three.js/STEP compiler and Gemini multi-agent pipeline to reconstruct 3D welded assemblies from photos.</li>
-              </ul>
-            </div>
-          </div>
+          <div class="subsystem-label">CLICK A SUBSYSTEM TO INSPECT ARCHITECTURE, MATH &amp; BENCHMARKS:</div>
+          <div class="subsystem-grid">
+            <button type="button" class="subsystem-chip" data-inspect="vision-301">
+              <span class="chip-code">SYS-TF-01</span>
+              <span class="chip-name"><strong>vision-301</strong> · 3D Vision &amp; Tactile Engine</span>
+              <span class="chip-stat">446 commits · 0.3mm →</span>
+            </button>
 
-          <div class="tag-row">
-            <span class="tag">Python</span>
-            <span class="tag">PyTorch</span>
-            <span class="tag">Open3D</span>
-            <span class="tag">OpenCV</span>
-            <span class="tag">FoundationPose</span>
-            <span class="tag">Meta SAM 3</span>
-            <span class="tag">MuJoCo</span>
-            <span class="tag">CUDA</span>
-            <span class="tag">RealSense RGB-D</span>
-            <span class="tag">Flask / FastAPI</span>
-            <span class="tag">Socket.IO</span>
-            <span class="tag">Three.js</span>
-            <span class="tag">AWS EC2 &amp; S3</span>
+            <button type="button" class="subsystem-chip" data-inspect="api-103">
+              <span class="chip-code">SYS-TF-02</span>
+              <span class="chip-name"><strong>api-103 &amp; pnc-api</strong> · Cloud Hub &amp; 64-Ray J6 Raycaster</span>
+              <span class="chip-stat">104 commits · 2,045+ cycles →</span>
+            </button>
+
+            <button type="button" class="subsystem-chip" data-inspect="vision-106">
+              <span class="chip-code">SYS-TF-03</span>
+              <span class="chip-name"><strong>vision-106</strong> · Low-VRAM (4GB) &amp; Orin NX 6D Pose Server</span>
+              <span class="chip-stat">60 commits · CUDA 12.6 →</span>
+            </button>
+
+            <button type="button" class="subsystem-chip" data-inspect="sam-microservices">
+              <span class="chip-code">SYS-TF-04</span>
+              <span class="chip-name"><strong>sam-101..106</strong> · SAM 3.1 Video &amp; 25× Mask Compression</span>
+              <span class="chip-stat">61 commits · Hu Moments →</span>
+            </button>
+
+            <button type="button" class="subsystem-chip" data-inspect="obj-maker">
+              <span class="chip-code">SYS-TF-05</span>
+              <span class="chip-name"><strong>obj_maker</strong> · ISO-10303 STEP Compiler &amp; Gemini 3.5 Agents</span>
+              <span class="chip-stat">23 commits · 100% Author →</span>
+            </button>
+
+            <button type="button" class="subsystem-chip" data-inspect="sim-pnc-301">
+              <span class="chip-code">SYS-TF-06</span>
+              <span class="chip-name"><strong>sim-301 &amp; pnc-301</strong> · MuJoCo Digital Twin &amp; BVH Seam Ranker</span>
+              <span class="chip-stat">ABB IRB 1520ID →</span>
+            </button>
           </div>
         </article>
 
-        <!-- ATTENTIONVERSE -->
-        <article class="exp-card">
+        <!-- 2. AttentionVerse & Enterprise Client Systems -->
+        <article class="exp-card spotlight-card">
           <div class="exp-top">
             <div>
-              <div class="exp-company">
-                <span>AttentionVerse (TheCoder &amp; Enterprise Platforms)</span>
-                <span class="commit-badge">500+ Commits</span>
+              <div class="exp-company-row">
+                <h3 class="exp-company">AttentionVerse (TheCoder) &amp; Enterprise Client Systems</h3>
+                <span class="commit-pill">500+ Git Commits across 10+ Repos</span>
               </div>
-              <div class="exp-roles">
-                <div class="exp-role-row">
-                  <span>Software Engineer — Backend &amp; AI Systems</span>
-                  <span class="exp-date">Jan 2022 – Apr 2024 · Delhi</span>
-                </div>
-              </div>
+              <p class="exp-roles">
+                <strong>Software Engineer — Backend &amp; AI Systems</strong> <span class="dim">(TheCoder · IIT Mandi iHUB · Coal India · GAIL India)</span>
+              </p>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-date">Jan 2022 – Jan 2025</span>
+              <span class="exp-loc">Delhi, India</span>
             </div>
           </div>
 
-          <ul class="exp-bullets">
-            <li><strong>TheCoder App &amp; Backend Generator:</strong> Built <code>thecoder-backend</code> and <code>thecoder-ai</code> (Django, Celery, Redis, OpenAI) to dynamically spin up live REST APIs, DB schemas, and Nginx reverse proxies from natural language prompts.</li>
-            <li><strong>Semantic Code Search (<code>thecoder-search-2</code>):</strong> Built an AST-based GitHub code search engine using Python <code>ast</code>, LangChain, and <strong>ChromaDB</strong>.</li>
-            <li><strong>IIT Mandi iHUB Health API:</strong> Built a Django REST + PostgreSQL backend with OpenCV OCR medical report scanning and automated Firebase push alerts for doctors.</li>
-            <li><strong>Enterprise AI &amp; Automation:</strong> Built <strong>Act Master</strong> (local Falcon-Q4 RAG chatbot for Coal India mining regulations) and <strong>GAIL India's</strong> automated PDF/Excel pricing and freight extraction backend on AWS EC2.</li>
-          </ul>
+          <p class="exp-abstract">
+            Built dynamic meta-backends that synthesize live Django REST + Nginx services on the fly, AST-based semantic code search engines, offline quantized-LLM legal RAG platforms, and enterprise PDF/OCR automation pipelines.
+          </p>
 
-          <div class="tag-row">
-            <span class="tag">Django &amp; DRF</span>
-            <span class="tag">FastAPI / Flask</span>
-            <span class="tag">Celery &amp; Redis</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">ChromaDB</span>
-            <span class="tag">LangChain</span>
-            <span class="tag">Next.js</span>
-            <span class="tag">AWS EC2 / S3 / Nginx</span>
+          <div class="subsystem-label">CLICK A PLATFORM MODULE TO INSPECT ARCHITECTURE &amp; IMPLEMENTATION:</div>
+          <div class="subsystem-grid">
+            <button type="button" class="subsystem-chip" data-inspect="thecoder-ecosystem">
+              <span class="chip-code">SYS-AV-01</span>
+              <span class="chip-name"><strong>thecoder-*</strong> · Dynamic DRF/Nginx Generator &amp; C Parser</span>
+              <span class="chip-stat">310+ commits →</span>
+            </button>
+
+            <button type="button" class="subsystem-chip" data-inspect="thecoder-search">
+              <span class="chip-code">SYS-AV-02</span>
+              <span class="chip-name"><strong>thecoder-search-2</strong> · AST + Call-Graph ChromaDB Search</span>
+              <span class="chip-stat">31 commits →</span>
+            </button>
+
+            <button type="button" class="subsystem-chip" data-inspect="iit-mandi-health">
+              <span class="chip-code">SYS-AV-03</span>
+              <span class="chip-name"><strong>iitmandi-health-api</strong> · Medical OCR &amp; Doctor Alert Backend</span>
+              <span class="chip-stat">51 commits · IIT Mandi →</span>
+            </button>
+
+            <button type="button" class="subsystem-chip" data-inspect="coal-india-rag">
+              <span class="chip-code">SYS-AV-04</span>
+              <span class="chip-name"><strong>Act Master</strong> · Coal India Local Falcon-Q4 RAG Chatbot</span>
+              <span class="chip-stat">Offline GGML + ChromaDB →</span>
+            </button>
+
+            <button type="button" class="subsystem-chip" data-inspect="gail-backend">
+              <span class="chip-code">SYS-CL-05</span>
+              <span class="chip-name"><strong>gail-backend</strong> · GAIL India PDF &amp; SAP Freight Automation</span>
+              <span class="chip-stat">RapidFuzz ≥0.95 · AWS EC2 →</span>
+            </button>
+
+            <button type="button" class="subsystem-chip" data-inspect="repetition-cerebro">
+              <span class="chip-code">SYS-AV-06</span>
+              <span class="chip-name"><strong>repetition &amp; cerebro</strong> · Spaced-Repetition &amp; Socratic Bots</span>
+              <span class="chip-stat">67 commits · Next.js 13 →</span>
+            </button>
           </div>
         </article>
 
-        <!-- SAMSUNG DISPLAY -->
-        <article class="exp-card">
+        <!-- 3. Samsung Display -->
+        <article class="exp-card exp-card-compact spotlight-card" data-inspect="samsung-display">
           <div class="exp-top">
             <div>
-              <div class="exp-company">
-                <span>Samsung Display Noida Pvt. Ltd.</span>
-                <span class="commit-badge">Manufacturing / Core</span>
+              <div class="exp-company-row">
+                <h3 class="exp-company">Samsung Display Noida Pvt. Ltd.</h3>
+                <span class="commit-pill">OLB Core Manufacturing Unit</span>
               </div>
-              <div class="exp-roles">
-                <div class="exp-role-row">
-                  <span>Assistant Engineer — Outer Lead Bonding (OLB) Unit</span>
-                  <span class="exp-date">Apr 2021 – Jan 2022 · Noida</span>
-                </div>
-              </div>
+              <p class="exp-roles">
+                <strong>Assistant Engineer — Outer Lead Bonding (OLB)</strong> &nbsp;·&nbsp; <span class="dim">Collaborated with South Korean equipment engineers on OLED bonding QA, PLC diagnostics &amp; yield optimization.</span>
+              </p>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-date">Apr 2021 – Jan 2022</span>
+              <span class="inspect-inline-btn">Inspect Role →</span>
             </div>
           </div>
+        </article>
+      </div>
+    </section>
 
-          <ul class="exp-bullets">
-            <li>Worked with South Korean engineers in the OLB unit on automated bonding machine troubleshooting, PLC diagnostics, and display panel yield optimization.</li>
-          </ul>
+    <!-- ====================================================================
+         [02 // PROJECTS, DISSERTATIONS & ML COMPETITIONS — COMPACT BENTO]
+         ==================================================================== -->
+    <section id="projects" class="section blueprint-cell">
+      <span class="crosshair ch-bl">+</span>
+      <span class="crosshair ch-br">+</span>
 
-          <div class="tag-row">
-            <span class="tag">PLC Diagnostics</span>
-            <span class="tag">OLB Bonding</span>
-            <span class="tag">Quality Assurance</span>
+      <div class="section-header">
+        <div class="section-title-row">
+          <div>
+            <span class="section-tag">[02 // RESEARCH_COMPETITIONS_SYSTEMS]</span>
+            <h2 class="section-title">Dissertations, ML Challenges &amp; Systems Architecture</h2>
+          </div>
+          <div class="filter-tabs" role="tablist">
+            <button type="button" class="filter-btn active" data-filter="all">All (12)</button>
+            <button type="button" class="filter-btn" data-filter="robotics">3D Vision &amp; Robotics</button>
+            <button type="button" class="filter-btn" data-filter="aiml">AI/ML &amp; Competitions</button>
+            <button type="button" class="filter-btn" data-filter="systems">Backend, WebRTC &amp; Agents</button>
+            <button type="button" class="filter-btn" data-filter="scratch">From-Scratch &amp; CUDA</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects-bento" id="projects-grid">
+        <!-- 1. 8th Sem Dissertation -->
+        <article class="bento-card spotlight-card" data-category="robotics" data-inspect="proj-welding-mujoco">
+          <div class="bento-top">
+            <span class="bento-code">PROJ // 01 · 3D VISION &amp; ROBOTICS</span>
+            <span class="bento-metric">0.3–0.5 mm Error · 36/40 (#1)</span>
+          </div>
+          <h3 class="bento-title">Vision-Tactile Guided Robotic Welding in MuJoCo</h3>
+          <p class="bento-abstract">
+            5-module closed-loop ABB IRB 1520ID welding pipeline combining `&lt;3s` BFS raycast grid scanning, 9-point `MoveT` wire probing, and lever-arm gated Kabsch/SVD 3-plane intersection.
+          </p>
+          <div class="bento-footer">
+            <div class="bento-tags">
+              <span>MuJoCo 3.x</span><span>Open3D</span><span>FoundationPose</span><span>Kabsch SVD</span>
+            </div>
+            <span class="bento-trigger">Inspect System →</span>
           </div>
         </article>
 
-      </div>
-    </div>
-  </section>
+        <!-- 2. DexGraspVLA -->
+        <article class="bento-card spotlight-card" data-category="robotics" data-inspect="proj-dexgraspvla">
+          <div class="bento-top">
+            <span class="bento-code">PROJ // 02 · VLA &amp; MANIPULATION</span>
+            <span class="bento-metric">6-DoF ↔ 18-DoF Shadow Hand</span>
+          </div>
+          <h3 class="bento-title">DexGraspVLA MuJoCo Bridge (25-DoF Dexterous Grasping)</h3>
+          <p class="bento-abstract">
+            Custom MuJoCo 3.x simulation bridge driving a 7-DoF Franka Panda + 18-DoF Shadow Hand with bidirectional kinematic mapping, SAM 2 + Cutie tracking, and live DINOv2 attention heatmaps.
+          </p>
+          <div class="bento-footer">
+            <div class="bento-tags">
+              <span>MuJoCo 3.x</span><span>SAM 2 + Cutie</span><span>DINOv2</span><span>Diffusion Policy</span>
+            </div>
+            <span class="bento-trigger">Inspect System →</span>
+          </div>
+        </article>
 
-  <!-- PROJECTS & COMPETITIONS -->
-  <section id="projects" class="section">
-    <div class="container">
+        <!-- 3. FOOD-101 -->
+        <article class="bento-card spotlight-card" data-category="aiml" data-inspect="proj-food101">
+          <div class="bento-top">
+            <span class="bento-code">PROJ // 03 · TERAFAC ML CHALLENGE</span>
+            <span class="bento-metric">84.24% Top-1 (+23.81% Gain)</span>
+          </div>
+          <h3 class="bento-title">FOOD-101 4-Stage Progressive Vision Pipeline</h3>
+          <p class="bento-abstract">
+            Scaled 101-class accuracy across 101,000 images from a 60.43% baseline to 84.24% via custom Squeeze-and-Excitation `SE-ResNet-50`, Grad-CAM explainability, and `ViT-B/16` ensemble fusion.
+          </p>
+          <div class="bento-footer">
+            <div class="bento-tags">
+              <span>PyTorch</span><span>ViT-B/16</span><span>SE-ResNet-50</span><span>Grad-CAM</span>
+            </div>
+            <span class="bento-trigger">Inspect System →</span>
+          </div>
+        </article>
+
+        <!-- 4. I2V Challenge -->
+        <article class="bento-card spotlight-card" data-category="aiml" data-inspect="proj-i2v">
+          <div class="bento-top">
+            <span class="bento-code">PROJ // 04 · 24-HR VISION CHALLENGE</span>
+            <span class="bento-metric">88.27% Precision · ONNX &lt;6.9e-4</span>
+          </div>
+          <h3 class="bento-title">I2V Indian Vehicle Classification &amp; ONNX Runtime Export</h3>
+          <p class="bento-abstract">
+            Audited a noisy 12-class Indian traffic dataset with `CleanVision`, trained an imbalance-aware `ResNet-50` to 86.35% accuracy / 88.27% precision, and verified ONNX Runtime numerical parity.
+          </p>
+          <div class="bento-footer">
+            <div class="bento-tags">
+              <span>PyTorch</span><span>ONNX Runtime</span><span>CleanVision</span><span>ResNet-50</span>
+            </div>
+            <span class="bento-trigger">Inspect System →</span>
+          </div>
+        </article>
+
+        <!-- 5. Amazon ML 2025 -->
+        <article class="bento-card spotlight-card" data-category="aiml" data-inspect="proj-amazon-ml">
+          <div class="bento-top">
+            <span class="bento-code">PROJ // 05 · AMAZON ML CHALLENGE</span>
+            <span class="bento-metric">150k Products · Hybrid SMAPE</span>
+          </div>
+          <h3 class="bento-title">Two-Phase Multimodal Product Pricing Engine</h3>
+          <p class="bento-abstract">
+            Fine-tuned a joint `DeBERTa-v3 + ViT` neural extractor on 150,000 products using a custom differentiable `SMAPELoss + MAE HybridLoss` ($\alpha=0.7$) stacked with a 2,500-tree `LightGBM` regressor.
+          </p>
+          <div class="bento-footer">
+            <div class="bento-tags">
+              <span>DeBERTa-v3</span><span>ViT</span><span>LightGBM</span><span>Custom SMAPE Loss</span>
+            </div>
+            <span class="bento-trigger">Inspect System →</span>
+          </div>
+        </article>
+
+        <!-- 6. Spoken Grammar Engine -->
+        <article class="bento-card spotlight-card" data-category="aiml" data-inspect="proj-grammar-engine">
+          <div class="bento-top">
+            <span class="bento-code">PROJ // 06 · SHL SPEECH ASSESSMENT</span>
+            <span class="bento-metric">0.763 MAE · 0.625 Pearson r</span>
+          </div>
+          <h3 class="bento-title">Spoken Grammar Scoring Engine (Whisper + Flan-T5 + BERT)</h3>
+          <p class="bento-abstract">
+            Combined verbatim Whisper ASR transcripts with `Flan-T5-Large` grammatical edit-distance ratios, `spaCy` syntactic features, and fine-tuned `DistilBERT` meta-ensembles.
+          </p>
+          <div class="bento-footer">
+            <div class="bento-tags">
+              <span>Whisper</span><span>Flan-T5-Large</span><span>DistilBERT</span><span>XGBoost</span>
+            </div>
+            <span class="bento-trigger">Inspect System →</span>
+          </div>
+        </article>
+
+        <!-- 7. chess_stream -->
+        <article class="bento-card spotlight-card" data-category="systems" data-inspect="proj-chess-stream">
+          <div class="bento-top">
+            <span class="bento-code">PROJ // 07 · REAL-TIME WEBRTC</span>
+            <span class="bento-metric">Go + Flutter + LiveKit SFU</span>
+          </div>
+          <h3 class="bento-title">chess_stream — 1v1 Live Video &amp; WebRTC Data-Channel Chess</h3>
+          <p class="bento-abstract">
+            Stateless Go matchmaking coordinator (`sync.Map` queues + room codes) and a 3,293-LOC Flutter 3.x client streaming 1v1 camera video and lossless P2P chess moves over WebRTC Data Channels.
+          </p>
+          <div class="bento-footer">
+            <div class="bento-tags">
+              <span>Go 1.20+</span><span>Flutter 3.x</span><span>LiveKit WebRTC</span><span>Data Channels</span>
+            </div>
+            <span class="bento-trigger">Inspect System →</span>
+          </div>
+        </article>
+
+        <!-- 8. npc_world -->
+        <article class="bento-card spotlight-card" data-category="systems" data-inspect="proj-npc-world">
+          <div class="bento-top">
+            <span class="bento-code">PROJ // 08 · AGENTIC MULTIPLAYER</span>
+            <span class="bento-metric">pgvector + 7D Social Vectors</span>
+          </div>
+          <h3 class="bento-title">npc_world — Persistent AI Multiplayer World</h3>
+          <p class="bento-abstract">
+            Server-authoritative FastAPI + WebSockets + Godot 4.7 world where autonomous NPCs store episodic memories in `pgvector` and evolve a 7-dimensional relationship vector per player.
+          </p>
+          <div class="bento-footer">
+            <div class="bento-tags">
+              <span>FastAPI</span><span>pgvector</span><span>AWS Bedrock</span><span>Godot 4.7</span>
+            </div>
+            <span class="bento-trigger">Inspect System →</span>
+          </div>
+        </article>
+
+        <!-- 9. gemini_tutor -->
+        <article class="bento-card spotlight-card" data-category="systems" data-inspect="proj-gemini-tutor">
+          <div class="bento-top">
+            <span class="bento-code">PROJ // 09 · MULTIMODAL GEN-AI</span>
+            <span class="bento-metric">Gemini 3 Pro + 24kHz FLAC</span>
+          </div>
+          <h3 class="bento-title">gemini_tutor — Textbook-to-Podcast &amp; Visual STEM Tutor</h3>
+          <p class="bento-abstract">
+            Renders 2× DPI textbook PDFs, uses high-reasoning Gemini 3 Pro to script a 2-host dialogue (*Liam &amp; Dr. Anya*), and synthesizes lossless 24kHz multi-speaker FLAC audio with daemon prefetching.
+          </p>
+          <div class="bento-footer">
+            <div class="bento-tags">
+              <span>Gemini 3 Pro</span><span>Multi-Speaker TTS</span><span>PyMuPDF</span><span>FLAC</span>
+            </div>
+            <span class="bento-trigger">Inspect System →</span>
+          </div>
+        </article>
+
+        <!-- 10. SyncHub & Quizzer -->
+        <article class="bento-card spotlight-card" data-category="systems" data-inspect="proj-synchub">
+          <div class="bento-top">
+            <span class="bento-code">PROJ // 10 · DEW COMPUTING &amp; EDGE</span>
+            <span class="bento-metric">Offline LAN ↔ 60s S3 Sync</span>
+          </div>
+          <h3 class="bento-title">SyncHub — Offline-First Edge Object Storage &amp; S3 Daemon</h3>
+          <p class="bento-abstract">
+            Self-referential bucket/folder tree storage with `8.8.8.8:53` connectivity-aware OTP/JWT auth and a 60s `APScheduler` daemon that auto-provisions and syncs deltas to AWS S3.
+          </p>
+          <div class="bento-footer">
+            <div class="bento-tags">
+              <span>Flask</span><span>SQLAlchemy</span><span>AWS S3</span><span>React + Three.js</span>
+            </div>
+            <span class="bento-trigger">Inspect System →</span>
+          </div>
+        </article>
+
+        <!-- 11. FCN-DP & DECODE.IT -->
+        <article class="bento-card spotlight-card" data-category="scratch" data-inspect="proj-fcn-decode">
+          <div class="bento-top">
+            <span class="bento-code">PROJ // 11 · COMPUTER VISION &amp; QUINE</span>
+            <span class="bento-metric">Global Viterbi DP + Visual Preview</span>
+          </div>
+          <h3 class="bento-title">FCN-DP Global Video Tracker, PromptDA &amp; DECODE.IT Quine</h3>
+          <p class="bento-abstract">
+            Globally optimal video tracking via FP16 `FCN_ResNet50` and vectorized `sliding_window_view` Dynamic Programming, plus `DECODE.IT`—a self-replicating steganographic PNG image.
+          </p>
+          <div class="bento-footer">
+            <div class="bento-tags">
+              <span>FP16 FCN_ResNet50</span><span>Vectorized DP</span><span>Steganography</span><span>PromptDA</span>
+            </div>
+            <span class="bento-trigger">Inspect + View Image →</span>
+          </div>
+        </article>
+
+        <!-- 12. CUDA C++ Fractal & RL -->
+        <article class="bento-card spotlight-card" data-category="scratch" data-inspect="proj-cuda-fractal">
+          <div class="bento-top">
+            <span class="bento-code">PROJ // 12 · GPU KERNELS &amp; FROM-SCRATCH DL</span>
+            <span class="bento-metric">CUDA C++ · 100/100 PER-DQN</span>
+          </div>
+          <h3 class="bento-title">CUDA C++ Flame Renderer, SumTree PER-DQN &amp; MiniGPT</h3>
+          <p class="bento-abstract">
+            Custom CUDA C++ kernel (`__constant__` memory + `__sinf/__cosf`), binary `SumTree` Prioritized Replay DQN (100/100 perfect CartPole episodes), and from-scratch Flash-SDPA MiniGPT &amp; CuPy MLP.
+          </p>
+          <div class="bento-footer">
+            <div class="bento-tags">
+              <span>CUDA C++</span><span>SumTree PER-DQN</span><span>MiniGPT</span><span>CuPy</span>
+            </div>
+            <span class="bento-trigger">Inspect + View Render →</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         [03 // INTERACTIVE SKILL MATRIX — CLICK TO INSPECT REPOS]
+         ==================================================================== -->
+    <section id="skills" class="section blueprint-cell">
+      <span class="crosshair ch-bl">+</span>
+      <span class="crosshair ch-br">+</span>
+
       <div class="section-header">
-        <div class="section-eyebrow">02 // Projects &amp; Competitions</div>
-        <h2 class="section-title">Featured Projects</h2>
-      </div>
-
-      <div class="project-controls">
-        <div class="filter-tabs" id="filter-tabs">
-          <button class="filter-btn active" data-filter="all">All (14)</button>
-          <button class="filter-btn" data-filter="robotics">3D Vision &amp; Robotics (4)</button>
-          <button class="filter-btn" data-filter="aiml">AI / ML &amp; Competitions (5)</button>
-          <button class="filter-btn" data-filter="systems">Backend, WebRTC &amp; Agents (3)</button>
-          <button class="filter-btn" data-filter="scratch">From-Scratch &amp; GPU (2)</button>
-        </div>
-        <div class="search-box">
-          <input type="text" id="project-search" class="search-input" placeholder="Search by tech (e.g. MuJoCo, Go, CUDA, ViT)..." />
+        <div class="section-title-row">
+          <div>
+            <span class="section-tag">[03 // INTERACTIVE_SKILL_GRAPH]</span>
+            <h2 class="section-title">Technical Arsenal (Click Any Node to See Production Proof)</h2>
+          </div>
+          <span class="section-hint">Every skill pill is wired to the repositories and systems built with it →</span>
         </div>
       </div>
 
-      <div class="projects-grid" id="projects-grid"></div>
-    </div>
-  </section>
+      <div class="skill-nodes-grid" id="skill-nodes-container">
+        <!-- Populated dynamically from window.SKILL_NODES in script.js -->
+      </div>
+    </section>
 
-  <!-- SKILLS MATRIX -->
-  <section id="skills" class="section">
-    <div class="container">
+    <!-- ====================================================================
+         [04 // EDUCATION & ACADEMIC CREDENTIALS]
+         ==================================================================== -->
+    <section id="education" class="section blueprint-cell">
+      <span class="crosshair ch-bl">+</span>
+      <span class="crosshair ch-br">+</span>
+
       <div class="section-header">
-        <div class="section-eyebrow">03 // Tech Stack</div>
-        <h2 class="section-title">Skills</h2>
-      </div>
-
-      <div class="skills-grid">
-        <div class="skill-group">
-          <h3>3D Vision &amp; Robotics</h3>
-          <div class="tag-row">
-            <span class="tag">Open3D (ICP / FPFH / Raycast)</span>
-            <span class="tag">OpenCV (solvePnP / ArUco)</span>
-            <span class="tag">FoundationPose</span>
-            <span class="tag">Meta SAM 2 / SAM 3 / FastSAM</span>
-            <span class="tag">MuJoCo 3.x</span>
-            <span class="tag">Analytical IK / IKFast</span>
-            <span class="tag">Intel RealSense RGB-D</span>
-            <span class="tag">Trimesh &amp; PyEmbree</span>
-            <span class="tag">Kabsch / SVD / Quaternions</span>
+        <div class="section-title-row">
+          <div>
+            <span class="section-tag">[04 // ACADEMIC_CREDENTIALS]</span>
+            <h2 class="section-title">Education &amp; Academic Distinctions</h2>
           </div>
+          <span class="section-hint">Click either degree card to inspect semester SGPA trajectory &amp; 'O' grade labs →</span>
         </div>
-
-        <div class="skill-group">
-          <h3>Deep Learning &amp; AI</h3>
-          <div class="tag-row">
-            <span class="tag">PyTorch (AMP / Flash SDPA)</span>
-            <span class="tag">ViT &amp; DINOv2</span>
-            <span class="tag">DeBERTa-v3 &amp; DistilBERT</span>
-            <span class="tag">DexGraspVLA &amp; Cutie</span>
-            <span class="tag">OpenAI Whisper &amp; F5-TTS</span>
-            <span class="tag">Gemini 3 Pro &amp; Vertex AI</span>
-            <span class="tag">LiteLLM &amp; AWS Bedrock</span>
-            <span class="tag">LightGBM &amp; XGBoost</span>
-            <span class="tag">ONNX Runtime, FAISS &amp; ChromaDB</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3>Backend, Real-Time &amp; Cloud</h3>
-          <div class="tag-row">
-            <span class="tag">FastAPI, Flask &amp; Django/DRF</span>
-            <span class="tag">Go (Gorilla WebSockets, Mux, GORM)</span>
-            <span class="tag">LiveKit WebRTC &amp; Data Channels</span>
-            <span class="tag">Socket.IO</span>
-            <span class="tag">PostgreSQL (pgvector) &amp; MySQL</span>
-            <span class="tag">Celery &amp; Redis</span>
-            <span class="tag">AWS (EC2, S3)</span>
-            <span class="tag">Docker, Nginx &amp; Linux</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3>Languages &amp; Frontend</h3>
-          <div class="tag-row">
-            <span class="tag">Python</span>
-            <span class="tag">Go (Golang)</span>
-            <span class="tag">C++ &amp; CUDA</span>
-            <span class="tag">CuPy &amp; NumPy</span>
-            <span class="tag">JavaScript / TypeScript</span>
-            <span class="tag">Dart &amp; Flutter</span>
-            <span class="tag">React, Next.js &amp; Three.js</span>
-            <span class="tag">Godot 4.7</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">04 // Education</div>
-        <h2 class="section-title">Education &amp; Leadership</h2>
       </div>
 
       <div class="edu-grid">
-        <div class="edu-card">
-          <div class="edu-degree">B.Tech in Artificial Intelligence &amp; Machine Learning</div>
-          <div class="edu-school">University School of Automation &amp; Robotics (USAR), GGSIPU · Delhi</div>
-          <div class="exp-date" style="display:inline-block; margin-bottom:14px;">Aug 2023 – Aug 2026 · CGPA: 7.43 / 10</div>
-          <ul class="exp-bullets">
-            <li><strong>Major Project Evaluation: 36 / 40 (1st in Batch)</strong> for <em>"Vision-Tactile Guided Robotic Welding in MuJoCo"</em>.</li>
-            <li><strong>Cloud Computing Team Lead, AWS Cloud Club GGSIPU (2024–2025):</strong> Led cloud projects and workshops on AWS.</li>
-          </ul>
-        </div>
+        <article class="edu-card spotlight-card" data-inspect="edu-ggsipu">
+          <div class="edu-top">
+            <span class="edu-date">Aug 2023 – Aug 2026</span>
+            <span class="edu-badge">8th-Sem Dissertation: 36/40 (1st in Batch)</span>
+          </div>
+          <h3 class="edu-degree">B.Tech in Artificial Intelligence &amp; Machine Learning</h3>
+          <p class="edu-school">University School of Automation &amp; Robotics (USAR), GGSIPU · East Delhi</p>
+          <p class="edu-details">
+            Lateral Entry · CGPA: <strong>7.43 / 10</strong> (SGPA progression: <code>6.92 → 7.43 → 7.92</code>) · <strong>9 'O' (Outstanding ≥90/100)</strong> Lab &amp; Course Grades · Cloud Computing Team Lead at <strong>AWS Cloud Club GGSIPU</strong>.
+          </p>
+          <span class="bento-trigger">Inspect Full Academic Transcript &amp; Labs →</span>
+        </article>
 
-        <div class="edu-card">
-          <div class="edu-degree">Diploma in Digital Electronics</div>
-          <div class="edu-school">Ambedkar Institute of Technology · BTE Delhi</div>
-          <div class="exp-date" style="display:inline-block; margin-bottom:14px;">2017 – 2020 · Percentage: 80.98%</div>
-          <ul class="exp-bullets">
-            <li>Focused on digital electronics, microcontrollers, embedded systems, and industrial instrumentation.</li>
-          </ul>
-        </div>
+        <article class="edu-card spotlight-card" data-inspect="edu-diploma">
+          <div class="edu-top">
+            <span class="edu-date">2017 – 2020</span>
+            <span class="edu-badge">80.98% (First Division with Distinction)</span>
+          </div>
+          <h3 class="edu-degree">Diploma in Digital Electronics (Electrical &amp; Electronics Eng.)</h3>
+          <p class="edu-school">Ambedkar Institute of Technology, Shakarpur, Delhi (BTE Delhi)</p>
+          <p class="edu-details">
+            Core training in digital logic design, microcontrollers, embedded instrumentation, and industrial control systems—forming the hardware bridge to Samsung Display and Terafac Robotics.
+          </p>
+          <span class="bento-trigger">Inspect Diploma Details →</span>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       RIGHT-SIDE SLIDE-OVER TECHNICAL INSPECTOR DRAWER
+       ====================================================================== -->
+  <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
+  <aside class="inspector-drawer" id="inspector-drawer" aria-label="Technical System Inspector" aria-hidden="true">
+    <div class="drawer-topbar">
+      <div class="drawer-topbar-left">
+        <span class="drawer-sys-led"></span>
+        <span class="drawer-code" id="drawer-code">SYS // INSPECTOR</span>
+        <span class="drawer-category" id="drawer-category">System Dossier</span>
+      </div>
+      <div class="drawer-nav-controls">
+        <button type="button" class="drawer-nav-btn" id="drawer-prev-btn" title="Previous System (←)">← Prev</button>
+        <button type="button" class="drawer-nav-btn" id="drawer-next-btn" title="Next System (→)">Next →</button>
+        <button type="button" class="drawer-close-btn" id="drawer-close-btn" title="Close Inspector (Esc)">
+          <span>ESC</span> ✕
+        </button>
       </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-links">
-        <a href="resume.html">1-Page Printable Resume</a>
-        <a href="Anurag_Pandey_Resume.tex" download>Download LaTeX (.tex)</a>
-        <a href="https://github.com/Anurag9689" target="_blank" rel="noopener">GitHub (@Anurag9689)</a>
-        <a href="https://www.linkedin.com/in/-anurag-pandey-" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:anuragpandey9689@gmail.com">anuragpandey9689@gmail.com</a>
-        <a href="tel:+917217841908">+91-7217841908</a>
+    <div class="drawer-body" id="drawer-body">
+      <!-- Populated dynamically by script.js when any item is clicked -->
+    </div>
+  </aside>
+
+  <!-- ======================================================================
+       ⌘K / CTRL+K DEVELOPER COMMAND PALETTE MODAL
+       ====================================================================== -->
+  <div class="cmdk-backdrop" id="cmdk-backdrop" aria-hidden="true">
+    <div class="cmdk-modal" role="dialog" aria-modal="true" aria-label="Command Palette">
+      <div class="cmdk-input-wrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="cmdk-input" placeholder="Search 25+ systems, repos, metrics, or skills (e.g., 'vision-301', 'mujoco', 'sam 3', 'go', 'cuda', 'gail')..." autocomplete="off" />
+        <button type="button" class="cmdk-esc" id="cmdk-close-btn">ESC</button>
       </div>
-      <p>© 2026 Anurag Pandey (@feignbird).</p>
+      <div class="cmdk-results" id="cmdk-results"></div>
+      <div class="cmdk-footer">
+        <span><kbd>↑</kbd> <kbd>↓</kbd> Navigate</span>
+        <span><kbd>↵</kbd> Open in Technical Inspector</span>
+        <span><kbd>ESC</kbd> Close</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <span class="brand-name">Anurag Pandey</span> <span class="brand-alias">(@feignbird / Anurag9689)</span>
+        <p class="footer-copy">AI/ML, 3D Computer Vision, Robotics &amp; Backend Systems Engineer · Press <kbd>⌘K</kbd> anytime to inspect any system.</p>
+      </div>
+      <div class="footer-links">
+        <a href="resume.html" target="_blank">1-Page Resume</a>
+        <a href="Anurag_Pandey_Resume.tex" download>LaTeX (.tex)</a>
+        <a href="https://github.com/Anurag9689" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/-anurag-pandey-/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:anuragpandey9689@gmail.com">Email</a>
+      </div>
     </div>
   </footer>
 
+  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
