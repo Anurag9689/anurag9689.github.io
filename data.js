@@ -549,13 +549,13 @@ window.INSPECTOR_DATA = {
 
   "coal-india-rag": {
     id: "coal-india-rag",
-    code: "SYS-AV // 04",
-    category: "Offline Enterprise RAG",
+    code: "SYS-CL // 02",
+    category: "Client & College R&D",
     title: "Act Master — Coal India Mining Regulations Local RAG Chatbot",
     subtitle: "Quantized Falcon-Q4 Local LLM + ChromaDB Vector Retrieval for Legal Compliance",
     timeline: "Sep 2023 – Jun 2024",
     commits: "coal-india-chatbot",
-    role: "AI / RAG Engineer",
+    role: "Independent AI / RAG Engineer (College R&D)",
     summary: "An air-gapped / local Retrieval-Augmented Generation (RAG) compliance assistant built to query Indian mining acts, safety circulars, and statutory regulations using a quantized local Falcon LLM and ChromaDB.",
     problem: "Public-sector mining officers needed rapid, citation-backed answers across hundreds of pages of Indian mining laws without sending sensitive internal queries to external cloud APIs.",
     pipeline: [
@@ -579,8 +579,8 @@ window.INSPECTOR_DATA = {
 
   "gail-backend": {
     id: "gail-backend",
-    code: "SYS-CL // 05",
-    category: "Enterprise Document Automation",
+    code: "SYS-CL // 01",
+    category: "Client & College R&D",
     title: "GAIL (India) Limited — Petrochemical Pricing PDF & Freight Automation Engine",
     subtitle: "Automated Multi-Table PDF Extraction, RapidFuzz Normalization & SAP Grade Joining",
     timeline: "Nov 2024 – Jan 2025",
@@ -614,7 +614,7 @@ window.INSPECTOR_DATA = {
 
   "repetition-cerebro": {
     id: "repetition-cerebro",
-    code: "SYS-AV // 06",
+    code: "SYS-AV // 04",
     category: "EdTech & Socratic AI Agents",
     title: "Repetition & Cerebro Coach — AI Spaced-Repetition & Socratic Discord Ecosystem",
     subtitle: "67+ Git Commits · Django + Next.js 13 + Multi-Agent Discord Socratic Tutors",
