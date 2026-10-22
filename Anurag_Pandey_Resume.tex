@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[empty]{fullpage}
-\usepackage[top=0.45in, bottom=0.45in, left=0.5in, right=0.5in]{geometry}
+\usepackage[top=0.38in, bottom=0.38in, left=0.45in, right=0.45in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
@@ -93,12 +93,10 @@
       {AI/ML \& Vision Intern}{Jan 2026 -- Jul 2026}
       {AI/ML \& Vision Engineer (Contract)}{Jun 2024 -- Dec 2025}
       \resumeItemListStart
-        \resumeItem{Led development of core 3D vision (\texttt{vision-301}), cloud/edge backend (\texttt{api-103}), and 6D pose estimation (\texttt{vision-106}) across 5 industrial robotic welding sites.}
-        \resumeItem{Built a closed-loop \textbf{Vision-Tactile 6D Pose Calibration} pipeline combining RealSense RGB-D, FoundationPose, and Kabsch/SVD plane fitting, \textbf{reducing weld seam error by 85--90\% (from 4.5 mm to 0.3 mm)} in 18--22s.}
-        \resumeItem{Engineered a coarse-touch alignment and analytical IK follower that tightened probe search windows to 12 mm, \textbf{cutting calibration cycle time by 79\% (282s $\to$ 58s)}.}
-        \resumeItem{Built a sub-pixel STag fiducial PnP calibrator for automatic camera-to-torch mount drift compensation.}
-        \resumeItem{Architected \texttt{api-103} (Flask, Socket.IO, SQLAlchemy, AWS S3) and a batched 3D hemisphere raycaster to automatically orient parts within robot wrist limits.}
-        \resumeItem{Optimized \textbf{FoundationPose} and \textbf{Meta SAM 3 / FastSAM} microservices for \textbf{4 GB VRAM / Jetson Orin NX}, compressing mask payloads by \textbf{25$\times$}; built a Gemini multi-agent 3D CAD/STEP generator (\texttt{obj\_maker}).}
+        \resumeItem{Led development of core 3D vision (\texttt{vision-301}), cloud/edge backend (\texttt{api-103}), and 6D pose estimation (\texttt{vision-106}) deployed across 5 industrial robotic welding sites.}
+        \resumeItem{Built a closed-loop \textbf{Vision-Tactile 6D Pose Calibration} pipeline combining RealSense RGB-D, FoundationPose, Kabsch/SVD plane fitting, and sub-pixel STag fiducial PnP drift compensation, \textbf{cutting seam error by 85--90\% (4.5mm $\to$ 0.3mm)} in 18--22s.}
+        \resumeItem{Engineered a coarse-touch alignment and analytical IK follower tightening probe search windows to 12 mm, \textbf{cutting calibration cycle time by 79\% (282s $\to$ 58s)}.}
+        \resumeItem{Architected \texttt{api-103} with batched 64-ray J6 hemisphere raycasting, optimized FoundationPose \& SAM 3 microservices for \textbf{4 GB VRAM / Jetson Orin NX} (\textbf{25$\times$} mask compression), and built the \texttt{obj\_maker} Gemini CAD/STEP compiler.}
       \resumeItemListEnd
 
     \resumeSubheading
@@ -127,25 +125,25 @@
     \resumeProjectHeading
       {\textbf{DexGraspVLA MuJoCo Simulation Bridge} $|$ \emph{MuJoCo, PyTorch, SAM 2, Cutie, DINOv2}}{Nov 2025 -- Dec 2025}
       \resumeItemListStart
-        \resumeItem{Ported the DexGraspVLA grasping policy to MuJoCo using a \textbf{7-DoF Franka Panda arm + 18-DoF Shadow Hand}, custom \textbf{6D-to-18D kinematic joint mapping}, SAM 2 + Cutie mask tracking, and a multi-head ViT attention visualizer.}
+        \resumeItem{Ported the DexGraspVLA policy to MuJoCo with a \textbf{7-DoF Panda arm + 18-DoF Shadow Hand}, custom \textbf{6D-to-18D kinematic mapping}, SAM 2 + Cutie mask tracking, and a live DINOv2 attention heatmap visualizer.}
       \resumeItemListEnd
 
     \resumeProjectHeading
-      {\textbf{Chess Stream Arena \& NPC World} $|$ \emph{Go, Flutter, LiveKit WebRTC, FastAPI, PostgreSQL (\texttt{pgvector}), Godot}}{\href{https://github.com/Anurag9689/chess_stream}{GitHub} $|$ 2026}
+      {\textbf{Chess Stream Arena \& NPC World} $|$ \emph{Go, Flutter, LiveKit WebRTC, FastAPI, pgvector, Godot}}{\href{https://github.com/Anurag9689/chess_stream}{GitHub} $|$ 2026}
       \resumeItemListStart
-        \resumeItem{Built \textbf{Chess Stream} (Go matchmaking server + Flutter app) streaming 1v1 video and syncing chess moves via \textbf{WebRTC Data Channels}; built \textbf{NPC World}, a 2D multiplayer server where LLM NPCs store episodic memories and 7-D relationship vectors.}
+        \resumeItem{Built \textbf{Chess Stream} (Go matchmaking + Flutter) streaming 1v1 video and chess moves over \textbf{WebRTC Data Channels}; built \textbf{NPC World}, a 2D multiplayer engine where LLM NPCs persist episodic \texttt{pgvector} memories and 7-D social vectors.}
       \resumeItemListEnd
 
     \resumeProjectHeading
-      {\textbf{SyncHub (Dew Computing Storage) \& Quizzer (Go Real-Time Engine)} $|$ \emph{Flask, Go, WebSockets, AWS S3}}{\href{https://github.com/Anurag9689/SyncHub}{GitHub} $|$ 2024 -- 2025}
+      {\textbf{SyncHub (Dew Storage) \& Quizzer (Go Engine)} $|$ \emph{Flask, Go, WebSockets, AWS S3}}{\href{https://github.com/Anurag9689/SyncHub}{GitHub} $|$ 2024 -- 2025}
       \resumeItemListStart
-        \resumeItem{Built \textbf{SyncHub}, an offline-first LAN storage platform with a background daemon that auto-syncs local buckets to AWS S3; built \textbf{Quizzer-Backend} in Go using Gorilla WebSockets and channels for live multiplayer quizzes.}
+        \resumeItem{Built \textbf{SyncHub}, an offline-first LAN object store auto-syncing local buckets to AWS S3, and \textbf{Quizzer-Backend}, a concurrent Go 1.23 WebSocket server using channels and mutex-guarded session hubs for multiplayer quizzes.}
       \resumeItemListEnd
 
     \resumeProjectHeading
-      {\textbf{ML Competitions} $|$ \emph{PyTorch, ViT, DeBERTa-v3, SE-ResNet-50, Whisper, LightGBM}}{2025 -- 2026}
+      {\textbf{ML Competitions (FOOD-101, I2V, Amazon ML)} $|$ \emph{PyTorch, ViT, DeBERTa-v3, SE-ResNet-50, LightGBM}}{2025 -- 2026}
       \resumeItemListStart
-        \resumeItem{\textbf{Terafac ML Challenge (FOOD-101):} Achieved \textbf{84.24\% accuracy} on 101k images with a \texttt{ViT + SE-ResNet-50 + ResNet-50} ensemble. \textbf{I2V Challenge:} Scored \textbf{86.80\% F1} on 12-class vehicle detection with ONNX export. \textbf{Amazon ML 2025:} Built a \texttt{DeBERTa-v3 + ViT + LightGBM} pricing model with custom \texttt{SMAPELoss} on 150k products.}
+        \resumeItem{\textbf{FOOD-101:} Reached \textbf{84.24\% Top-1 accuracy} via a ViT + SE-ResNet-50 ensemble. \textbf{I2V Challenge:} Achieved \textbf{86.80\% F1} on 12-class vehicle detection with ONNX export. \textbf{Amazon ML:} Built a DeBERTa-v3 + ViT + LightGBM pricing model with custom \texttt{SMAPELoss}.}
       \resumeItemListEnd
 
   \end{itemize}
@@ -154,12 +152,10 @@
 %-----------EDUCATION & LEADERSHIP-----------
 \section{EDUCATION \& LEADERSHIP}
   \begin{itemize}[leftmargin=0.05in, label={}]
-    \resumeSubheading
+    \resumeDualSubheading
       {University School of Automation \& Robotics (USAR), GGSIPU}{Delhi, India}
-      {B.Tech in Artificial Intelligence \& Machine Learning (CGPA: 7.43/10 $|$ Major Project: 36/40, 1st in Batch)}{Aug 2023 -- Aug 2026}
-      \resumeItemListStart
-        \resumeItem{\textbf{Cloud Computing Team Lead, AWS Cloud Club GGSIPU (May 2024 -- Jan 2025):} Led cloud deployments and technical workshops on AWS.}
-      \resumeItemListEnd
+      {B.Tech in Artificial Intelligence \& Machine Learning (CGPA: 7.43/10 $|$ 8th-Sem Project: 36/40, 1st in Batch)}{Aug 2023 -- Aug 2026}
+      {Cloud Computing Team Lead, AWS Cloud Club GGSIPU}{May 2024 -- Jan 2025}
     \resumeSubheading
       {Ambedkar Institute of Technology (BTE Delhi)}{Delhi, India}
       {Diploma in Digital Electronics (Percentage: 80.98\%)}{2017 -- 2020}

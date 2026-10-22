@@ -237,7 +237,7 @@
         width: 100%;
         min-height: auto;
         box-shadow: none;
-        padding: 11mm 12mm;
+        padding: 8.5mm 10.5mm;
       }
     }
 
@@ -309,12 +309,10 @@
           <span>Jun 2024 – Dec 2025</span>
         </div>
         <ul class="bullets">
-          <li>Led development of core 3D vision (<code>vision-301</code>), cloud/edge backend (<code>api-103</code>), and 6D pose estimation (<code>vision-106</code>) across 5 industrial robotic welding sites.</li>
-          <li>Built a closed-loop <strong>Vision-Tactile 6D Pose Calibration</strong> pipeline combining RealSense RGB-D, FoundationPose, and Kabsch/SVD plane fitting, <strong>reducing weld seam error by 85–90% (from 4.5 mm to 0.3 mm)</strong> in 18–22s.</li>
-          <li>Engineered a coarse-touch alignment and analytical IK follower that tightened probe search windows to 12 mm, <strong>cutting calibration cycle time by 79% (282s → 58s)</strong>.</li>
-          <li>Built a sub-pixel STag fiducial PnP calibrator for automatic camera-to-torch mount drift compensation.</li>
-          <li>Architected <code>api-103</code> (Flask, Socket.IO, SQLAlchemy, AWS S3) and a batched 3D hemisphere raycaster to automatically orient parts within robot wrist limits.</li>
-          <li>Optimized <strong>FoundationPose</strong> and <strong>Meta SAM 3 / FastSAM</strong> microservices for <strong>4 GB VRAM / Jetson Orin NX</strong>, compressing mask payloads by <strong>25×</strong>; built a Gemini multi-agent 3D CAD/STEP generator (<code>obj_maker</code>).</li>
+          <li>Led development of core 3D vision (<code>vision-301</code>), cloud/edge backend (<code>api-103</code>), and 6D pose estimation (<code>vision-106</code>) deployed across 5 industrial robotic welding sites.</li>
+          <li>Built a closed-loop <strong>Vision-Tactile 6D Pose Calibration</strong> pipeline combining RealSense RGB-D, FoundationPose, Kabsch/SVD plane fitting, and sub-pixel STag fiducial PnP drift compensation, <strong>cutting seam error by 85–90% (4.5mm → 0.3mm)</strong> in 18–22s.</li>
+          <li>Engineered a coarse-touch alignment and analytical IK follower tightening probe search windows to 12 mm, <strong>cutting calibration cycle time by 79% (282s → 58s)</strong>.</li>
+          <li>Architected <code>api-103</code> with batched 64-ray J6 hemisphere raycasting, optimized FoundationPose &amp; SAM 3 microservices for <strong>4 GB VRAM / Jetson Orin NX</strong> (<strong>25×</strong> mask compression), and built the <code>obj_maker</code> Gemini CAD/STEP compiler.</li>
         </ul>
       </div>
 
@@ -359,37 +357,37 @@
           <span><em>Nov 2025 – Dec 2025</em></span>
         </div>
         <ul class="bullets">
-          <li>Ported the DexGraspVLA grasping policy to MuJoCo using a <strong>7-DoF Franka Panda arm + 18-DoF Shadow Hand</strong>, custom <strong>6D-to-18D kinematic joint mapping</strong>, SAM 2 + Cutie mask tracking, and a multi-head ViT attention visualizer.</li>
+          <li>Ported the DexGraspVLA policy to MuJoCo with a <strong>7-DoF Panda arm + 18-DoF Shadow Hand</strong>, custom <strong>6D-to-18D kinematic mapping</strong>, SAM 2 + Cutie mask tracking, and a live DINOv2 attention heatmap visualizer.</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="project-header">
-          <span><strong>Chess Stream Arena &amp; NPC World</strong> &nbsp;|&nbsp; <em>Go, Flutter, LiveKit WebRTC, FastAPI, PostgreSQL (<code>pgvector</code>), Godot</em></span>
+          <span><strong>Chess Stream Arena &amp; NPC World</strong> &nbsp;|&nbsp; <em>Go, Flutter, LiveKit WebRTC, FastAPI, pgvector, Godot</em></span>
           <span><a href="https://github.com/Anurag9689/chess_stream" target="_blank">GitHub</a> &nbsp;|&nbsp; <em>2026</em></span>
         </div>
         <ul class="bullets">
-          <li>Built <strong>Chess Stream</strong> (Go matchmaking server + Flutter app) streaming 1v1 video and syncing chess moves via <strong>WebRTC Data Channels</strong>; built <strong>NPC World</strong>, a 2D multiplayer server where LLM NPCs store episodic memories and 7-D relationship vectors.</li>
+          <li>Built <strong>Chess Stream</strong> (Go matchmaking + Flutter) streaming 1v1 video and chess moves over <strong>WebRTC Data Channels</strong>; built <strong>NPC World</strong>, a 2D multiplayer engine where LLM NPCs persist episodic <code>pgvector</code> memories and 7-D social vectors.</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="project-header">
-          <span><strong>SyncHub (Dew Computing Storage) &amp; Quizzer (Go Real-Time Engine)</strong> &nbsp;|&nbsp; <em>Flask, Go, WebSockets, AWS S3</em></span>
+          <span><strong>SyncHub (Dew Storage) &amp; Quizzer (Go Engine)</strong> &nbsp;|&nbsp; <em>Flask, Go, WebSockets, AWS S3</em></span>
           <span><a href="https://github.com/Anurag9689/SyncHub" target="_blank">GitHub</a> &nbsp;|&nbsp; <em>2024 – 2025</em></span>
         </div>
         <ul class="bullets">
-          <li>Built <strong>SyncHub</strong>, an offline-first LAN storage platform with a background daemon that auto-syncs local buckets to AWS S3; built <strong>Quizzer-Backend</strong> in Go using Gorilla WebSockets and channels for live multiplayer quizzes.</li>
+          <li>Built <strong>SyncHub</strong>, an offline-first LAN object store auto-syncing local buckets to AWS S3, and <strong>Quizzer-Backend</strong>, a concurrent Go 1.23 WebSocket server using channels and mutex-guarded session hubs for multiplayer quizzes.</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="project-header">
-          <span><strong>ML Competitions</strong> &nbsp;|&nbsp; <em>PyTorch, ViT, DeBERTa-v3, SE-ResNet-50, Whisper, LightGBM</em></span>
+          <span><strong>ML Competitions (FOOD-101, I2V, Amazon ML)</strong> &nbsp;|&nbsp; <em>PyTorch, ViT, DeBERTa-v3, SE-ResNet-50, LightGBM</em></span>
           <span><em>2025 – 2026</em></span>
         </div>
         <ul class="bullets">
-          <li><strong>Terafac ML Challenge (FOOD-101):</strong> Achieved <strong>84.24% accuracy</strong> on 101k images with a <code>ViT + SE-ResNet-50 + ResNet-50</code> ensemble. <strong>I2V Challenge:</strong> Scored <strong>86.80% F1</strong> on 12-class vehicle detection with ONNX export. <strong>Amazon ML 2025:</strong> Built a <code>DeBERTa-v3 + ViT + LightGBM</code> pricing model with custom <code>SMAPELoss</code> on 150k products.</li>
+          <li><strong>FOOD-101:</strong> Reached <strong>84.24% Top-1 accuracy</strong> via a ViT + SE-ResNet-50 ensemble. <strong>I2V Challenge:</strong> Achieved <strong>86.80% F1</strong> on 12-class vehicle detection with ONNX export. <strong>Amazon ML:</strong> Built a DeBERTa-v3 + ViT + LightGBM pricing model with custom <code>SMAPELoss</code>.</li>
         </ul>
       </div>
     </section>
@@ -404,12 +402,13 @@
           <span class="entry-location">Delhi, India</span>
         </div>
         <div class="entry-subheader">
-          <span>B.Tech in Artificial Intelligence &amp; Machine Learning (CGPA: 7.43/10 &nbsp;|&nbsp; Major Project: 36/40, 1st in Batch)</span>
+          <span>B.Tech in Artificial Intelligence &amp; Machine Learning (CGPA: 7.43/10 &nbsp;|&nbsp; 8th-Sem Project: 36/40, 1st in Batch)</span>
           <span>Aug 2023 – Aug 2026</span>
         </div>
-        <ul class="bullets">
-          <li><strong>Cloud Computing Team Lead, AWS Cloud Club GGSIPU (May 2024 – Jan 2025):</strong> Led cloud deployments and technical workshops on AWS.</li>
-        </ul>
+        <div class="entry-subheader">
+          <span>Cloud Computing Team Lead, AWS Cloud Club GGSIPU</span>
+          <span>May 2024 – Jan 2025</span>
+        </div>
       </div>
 
       <div class="entry" style="margin-bottom: 0;">
