@@ -211,7 +211,7 @@ window.INSPECTOR_DATA = {
     subtitle: "446 Git Commits (#1 Author) · Deployed across 5 Industrial Manufacturing Sites",
     timeline: "Jun 2024 – Sep 2026",
     commits: "446 Commits (#1 Author)",
-    role: "Jr. Software Engineer — AI/ML & Vision",
+    role: "Jr. Software Engineer — AI/ML & Vision (Contract → Intern → Jr. SWE)",
     summary: "The core perception and geometric calibration engine powering Terafac's autonomous robotic welding workcells, fusing RealSense RGB-D 6D pose estimation with physical wire touch-sensing (`MoveT`).",
     problem: "Industrial steel sub-assemblies vary by ±5–50 mm in clamping position and suffer from specular glare that degrades RGB-D depth sensors to 2.5–4.5 mm error—far too coarse for 1–2 mm MIG welding seams.",
     pipeline: [
@@ -448,7 +448,7 @@ window.INSPECTOR_DATA = {
     subtitle: "310+ Git Commits across 6 Repositories (`thecoder-backend`, `thecoder-ai`, `thecoder-feign`, `thecoder-json`)",
     timeline: "Jan 2022 – Apr 2024",
     commits: "310+ Commits",
-    role: "Software Engineer — Backend & AI Systems",
+    role: "Software Engineer (Contract) — Backend & AI Systems",
     summary: "A meta-backend and conversational AI platform that turns natural-language prompts or JSON schemas into live, deployed Django REST Framework backends, custom databases, and multi-screen mobile apps on the fly.",
     problem: "Non-technical founders and rapid prototyping teams needed a system that could synthesize not just static UI mockups, but real running REST APIs, database tables, admin panels, and reverse-proxy routes in seconds.",
     pipeline: [

@@ -39,6 +39,16 @@
     \end{tabular*}\vspace{-5pt}
 }
 
+\newcommand{\resumeTripleSubheading}[8]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.99\textwidth}[t]{@{}l@{\extracolsep{\fill}}r@{}}
+      \textbf{#1} & \textit{\small #2} \\
+      \textit{\small #3} & \textit{\small #4} \\
+      \textit{\small #5} & \textit{\small #6} \\
+      \textit{\small #7} & \textit{\small #8} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
 \newcommand{\resumeProjectHeading}[2]{
     \vspace{-1pt}\item
     \begin{tabular*}{0.99\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
@@ -77,10 +87,11 @@
 \section{WORK EXPERIENCE}
   \begin{itemize}[leftmargin=0.05in, label={}]
 
-    \resumeDualSubheading
+    \resumeTripleSubheading
       {Terafac Technologies Pvt. Ltd.}{Chandigarh, India}
-      {Jr. Software Engineer -- AI/ML \& Vision}{Jan 2026 -- Sep 2026}
-      {AI/ML \& Vision Engineer Intern}{Jun 2024 -- Dec 2025}
+      {Jr. Software Engineer -- AI/ML \& Vision}{Jul 2026 -- Sep 2026}
+      {AI/ML \& Vision Intern}{Jan 2026 -- Jul 2026}
+      {AI/ML \& Vision Engineer (Contract)}{Jun 2024 -- Dec 2025}
       \resumeItemListStart
         \resumeItem{Led development of core 3D vision (\texttt{vision-301}), cloud/edge backend (\texttt{api-103}), and 6D pose estimation (\texttt{vision-106}) across 5 industrial robotic welding sites.}
         \resumeItem{Built a closed-loop \textbf{Vision-Tactile 6D Pose Calibration} pipeline combining RealSense RGB-D, FoundationPose, and Kabsch/SVD plane fitting, \textbf{reducing weld seam error by 85--90\% (from 4.5 mm to 0.3 mm)} in 18--22s.}
@@ -92,7 +103,7 @@
 
     \resumeSubheading
       {AttentionVerse (TheCoder)}{Delhi, India}
-      {Software Engineer -- Backend \& AI Systems}{Jan 2022 -- Apr 2024}
+      {Software Engineer (Contract) -- Backend \& AI Systems}{Jan 2022 -- Apr 2024}
       \resumeItemListStart
         \resumeItem{Built \texttt{thecoder-backend} and \texttt{thecoder-ai} (Django, Celery, Redis, OpenAI) to dynamically generate live REST APIs, database schemas, and Nginx reverse proxies from natural language prompts.}
         \resumeItem{Developed \texttt{thecoder-search-2}, an AST-based semantic GitHub code search engine using Python \texttt{ast}, LangChain, and \textbf{ChromaDB}.}
