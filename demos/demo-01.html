@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo 01 — Editorial Serif & Grid | Anurag Pandey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #faf9f6; --fg: #18181b; --muted: #71717a; --line: #e4e4e7; --accent: #18181b; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: 'Inter', system-ui, sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 72px 24px 100px; }
+  header { margin-bottom: 56px; }
+  .name { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; }
+  .serif-intro { font-family: 'Newsreader', Georgia, serif; font-size: 26px; line-height: 1.38; margin-top: 16px; color: #27272a; font-weight: 400; }
+  .serif-intro em { font-style: italic; color: #000; }
+  .links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 22px; font-size: 14px; }
+  .links a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: color .15s, border-color .15s; }
+  .links a:hover { color: var(--fg); border-color: var(--fg); }
+  section { margin-top: 52px; }
+  h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 500; margin-bottom: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 28px; }
+  .col-item h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .col-item p { font-size: 14px; color: #52525b; }
+  .col-meta { font-size: 12px; color: var(--muted); margin-bottom: 6px; display: block; }
+  .exp-item { padding: 18px 0; border-top: 1px solid var(--line); }
+  .exp-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+  .exp-head h3 { font-size: 16px; font-weight: 600; }
+  .exp-loc { font-size: 13px; color: var(--muted); }
+  .role-row { display: flex; justify-content: space-between; font-size: 14px; color: #3f3f46; margin-top: 4px; flex-wrap: wrap; gap: 8px; }
+  .role-date { color: var(--muted); font-size: 13px; }
+  .bullets { margin-top: 10px; padding-left: 18px; font-size: 14px; color: #52525b; }
+  .bullets li { margin-bottom: 5px; }
+  .edu-row, .skill-row { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 14px; flex-wrap: wrap; }
+  .edu-sub, .edu-date, .skill-cat { color: var(--muted); font-size: 13px; }
+  .skill-cat { min-width: 130px; font-weight: 500; color: var(--fg); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="name">Anurag Pandey</div>
+    <p class="serif-intro">AI/ML &amp; 3D Computer Vision Engineer crafting <em>closed-loop robotic perception</em>, edge inference microservices, and resilient backend systems.</p>
+    <div class="links">
+      <a href="../Anurag_Pandey_Resume.pdf" target="_blank">Resume (PDF)</a>
+      <a href="../resume.html" target="_blank">Resume (HTML)</a>
+      <a href="https://github.com/Anurag9689" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/-anurag-pandey-/" target="_blank">LinkedIn</a>
+      <a href="mailto:anuragpandey9689@gmail.com">Email</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Selected Systems</h2>
+    <div class="grid-3">
+      <div class="col-item"><span class="col-meta">85–90% Error Cut · 2024–2026</span><h3>Vision-Tactile 6D Calibration (vision-301)</h3><p>Closed-loop RGB-D 6-DoF pose estimation fused with tactile wire touch-sensing, Kabsch/SVD plane fitting, and STag PnP drift compensation across 5 factory sites.</p></div><div class="col-item"><span class="col-meta">7-DoF + 18-DoF Hand · 2025</span><h3>DexGraspVLA MuJoCo Simulation Bridge</h3><p>Ported DexGraspVLA policy to MuJoCo with a Panda arm + Shadow Hand, 6D-to-18D kinematic mapping, SAM 2 + Cutie tracking, and live DINOv2 attention heatmaps.</p></div><div class="col-item"><span class="col-meta">AWS EC2 Production · 2024–2025</span><h3>GAIL India PDF &amp; Freight ETL Engine</h3><p>Automated Django 5 + OpenCV/Camelot pipeline extracting multi-page petrochemical pricing PDFs, normalizing shifting schemas via RapidFuzz (≥0.95), and joining SAP Excel sheets.</p></div><div class="col-item"><span class="col-meta">Offline Falcon-Q4 RAG · 2023–2024</span><h3>Act Master — Coal India RAG Chatbot</h3><p>Local Retrieval-Augmented Generation platform (Django, FastAPI, ChromaDB, quantized Falcon-Q4) answering legal &amp; compliance queries over Indian mining regulations.</p></div><div class="col-item"><span class="col-meta">WebRTC + pgvector · 2026</span><h3>Chess Stream Arena &amp; NPC World</h3><p>Go matchmaking + Flutter app streaming 1v1 video &amp; moves over WebRTC Data Channels; 2D multiplayer engine where LLM NPCs persist episodic pgvector memories.</p></div><div class="col-item"><span class="col-meta">Offline-First S3 Sync · 2024–2025</span><h3>SyncHub (Dew Storage) &amp; Quizzer</h3><p>Offline-first LAN object store auto-syncing local buckets to AWS S3, plus a concurrent Go 1.23 WebSocket quiz engine using channels and mutex-guarded hubs.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    
+        <article class="exp-item">
+          <div class="exp-head">
+            <h3>Terafac Technologies Pvt. Ltd.</h3>
+            <span class="exp-loc">Chandigarh, India</span>
+          </div>
+          <div class="roles"><div class="role-row"><span class="role-title">Jr. Software Engineer — AI/ML &amp; Vision</span><span class="role-date">Jul 2026 – Sep 2026</span></div><div class="role-row"><span class="role-title">AI/ML &amp; Vision Intern</span><span class="role-date">Jan 2026 – Jul 2026</span></div><div class="role-row"><span class="role-title">AI/ML &amp; Vision Engineer (Contract)</span><span class="role-date">Jun 2024 – Dec 2025</span></div></div>
+          <ul class="bullets"><li>Built closed-loop Vision-Tactile 6D Pose Calibration (RealSense RGB-D, FoundationPose, Kabsch/SVD, STag PnP), cutting seam error by 85–90% (4.5mm → 0.3mm) in 18–22s.</li><li>Engineered coarse-touch alignment &amp; analytical IK follower, cutting fixture calibration cycle time by 79% (282s → 58s).</li><li>Architected api-103 with batched 64-ray J6 hemisphere raycasting and optimized FoundationPose/SAM 3 microservices for 4 GB VRAM / Jetson Orin NX (25× mask compression).</li></ul>
+        </article>
+        
+
+        <article class="exp-item">
+          <div class="exp-head">
+            <h3>AttentionVerse (TheCoder)</h3>
+            <span class="exp-loc">Delhi, India</span>
+          </div>
+          <div class="roles"><div class="role-row"><span class="role-title">Software Engineer (Contract) — Backend &amp; AI Systems</span><span class="role-date">Jan 2022 – Apr 2024</span></div></div>
+          <ul class="bullets"><li>Built thecoder-backend &amp; thecoder-ai (Django, Celery, Redis, OpenAI) to dynamically generate live REST APIs, database schemas, and Nginx reverse proxies from prompts.</li><li>Developed thecoder-search-2, an AST-based semantic GitHub code search engine using Python ast, LangChain, and ChromaDB.</li><li>Built the IIT Mandi iHUB Health API (Django REST, PostgreSQL, OpenCV OCR, Firebase Push) to scan medical reports and alert doctors on abnormal vitals.</li></ul>
+        </article>
+        
+
+        <article class="exp-item">
+          <div class="exp-head">
+            <h3>Samsung Display Noida Pvt. Ltd.</h3>
+            <span class="exp-loc">Noida, India</span>
+          </div>
+          <div class="roles"><div class="role-row"><span class="role-title">Assistant Engineer (Manufacturing / OLB Core)</span><span class="role-date">Apr 2021 – Jan 2022</span></div></div>
+          <ul class="bullets"><li>Executed PLC telemetry diagnostics and hardware troubleshooting on automated OLB display manufacturing lines.</li></ul>
+        </article>
+        
+  </section>
+
+  <section>
+    <h2>Education &amp; Leadership</h2>
+    <div class="edu-row"><div><strong>University School of Automation &amp; Robotics (USAR), GGSIPU</strong><div class="edu-sub">B.Tech in AI &amp; Machine Learning · CGPA: 7.43/10 · 8th-Sem Project: 36/40 (1st in Batch)</div></div><span class="edu-date">Aug 2023 – Aug 2026</span></div>
+<div class="edu-row"><div><strong>AWS Cloud Club GGSIPU</strong><div class="edu-sub">Cloud Computing Team Lead — Mentored students on AWS EC2, S3, IAM &amp; Nginx deployments</div></div><span class="edu-date">May 2024 – Jan 2025</span></div>
+<div class="edu-row"><div><strong>Ambedkar Institute of Technology (BTE Delhi)</strong><div class="edu-sub">Diploma in Digital Electronics · 80.98%</div></div><span class="edu-date">2017 – 2020</span></div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skill-row"><span class="skill-cat">Languages</span><span class="skill-vals">Python, Go, C++, CUDA, JavaScript/TypeScript, Dart, SQL</span></div>
+<div class="skill-row"><span class="skill-cat">AI &amp; 3D Vision</span><span class="skill-vals">PyTorch, Open3D, OpenCV, MuJoCo, FoundationPose, SAM 2/3, DINOv2, ViT</span></div>
+<div class="skill-row"><span class="skill-cat">Backend &amp; Cloud</span><span class="skill-vals">FastAPI, Flask, Django/DRF, PostgreSQL, pgvector, Redis, AWS (EC2, S3), Docker, Nginx, Linux</span></div>
+  </section>
+</div>
+
+<div id="demo-switcher" style="position:fixed;bottom:16px;right:16px;z-index:9999;display:flex;align-items:center;gap:8px;background:rgba(15,23,42,0.92);color:#f8fafc;padding:8px 12px;border-radius:999px;font-family:Inter,system-ui,sans-serif;font-size:12px;box-shadow:0 8px 24px rgba(0,0,0,0.22);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.12);">
+  <a href="index.html" style="color:#38bdf8;text-decoration:none;font-weight:600;">← All 10 Demos</a>
+  <span style="opacity:0.35;">|</span>
+  <span style="opacity:0.85;">Demo 01 · Editorial Serif (Paco + Mitchell)</span>
+</div>
+
+</body></html>

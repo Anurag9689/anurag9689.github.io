@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo 04 — Academic AI Researcher | Anurag Pandey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  body { background: #ffffff; color: #222; font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; line-height: 1.6; max-width: 740px; margin: 0 auto; padding: 56px 22px 96px; font-size: 15px; }
+  .top { display: flex; align-items: center; gap: 22px; margin-bottom: 32px; flex-wrap: wrap; }
+  .top img { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 1px solid #e5e7eb; }
+  h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+  .sub { color: #555; font-size: 14px; }
+  .navlinks { margin-top: 8px; font-size: 14px; }
+  .navlinks a { color: #1d4ed8; text-decoration: none; margin-right: 14px; }
+  .navlinks a:hover { text-decoration: underline; }
+  h2 { font-size: 17px; font-weight: 700; margin: 36px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #e5e7eb; }
+  .timeline-item { margin-bottom: 18px; }
+  .tl-head { display: flex; justify-content: space-between; font-weight: 600; flex-wrap: wrap; gap: 8px; }
+  .tl-date { color: #666; font-weight: 400; font-size: 13px; }
+  .tl-sub { font-size: 13.5px; color: #444; font-style: italic; }
+  ul.compact { padding-left: 18px; margin-top: 6px; color: #333; font-size: 14px; }
+  ul.compact li { margin-bottom: 4px; }
+  .pub-row { margin-bottom: 12px; font-size: 14.5px; }
+  .pub-row strong { font-weight: 600; }
+  .pub-tag { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #1d4ed8; background: #eff6ff; padding: 1px 6px; border-radius: 3px; margin-left: 6px; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <img src="../assets/20220822_002536.jpg" alt="Anurag Pandey">
+    <div>
+      <h1>Anurag Pandey</h1>
+      <div class="sub">B.Tech AI &amp; ML (USAR, GGSIPU) · AI/ML, 3D Computer Vision &amp; Robotics Engineer</div>
+      <div class="navlinks">
+        <a href="../Anurag_Pandey_Resume.pdf" target="_blank">CV (PDF)</a>
+        <a href="https://github.com/Anurag9689" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/-anurag-pandey-/" target="_blank">LinkedIn</a>
+        <a href="mailto:anuragpandey9689@gmail.com">anuragpandey9689@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  <p>I build production 3D computer vision, robotic calibration, and distributed AI backend systems. Most recently at <strong>Terafac Technologies</strong>, I led 3D vision (<code>vision-301</code>), 6D pose servers (<code>vision-106</code>), and telemetry backends across 5 industrial welding deployments.</p>
+
+  <h2>Experience</h2>
+  <div class="timeline-item"><div class="tl-head"><span>Terafac Technologies Pvt. Ltd. — Jr. Software Engineer — AI/ML &amp; Vision</span><span class="tl-date">Jun 2024 – Sep 2026</span></div><div class="tl-sub">Chandigarh, India</div><ul class="compact"><li>Built closed-loop Vision-Tactile 6D Pose Calibration (RealSense RGB-D, FoundationPose, Kabsch/SVD, STag PnP), cutting seam error by 85–90% (4.5mm → 0.3mm) in 18–22s.</li><li>Engineered coarse-touch alignment &amp; analytical IK follower, cutting fixture calibration cycle time by 79% (282s → 58s).</li><li>Architected api-103 with batched 64-ray J6 hemisphere raycasting and optimized FoundationPose/SAM 3 microservices for 4 GB VRAM / Jetson Orin NX (25× mask compression).</li></ul></div><div class="timeline-item"><div class="tl-head"><span>AttentionVerse (TheCoder) — Software Engineer (Contract) — Backend &amp; AI Systems</span><span class="tl-date">Jan 2022 – Apr 2024</span></div><div class="tl-sub">Delhi, India</div><ul class="compact"><li>Built thecoder-backend &amp; thecoder-ai (Django, Celery, Redis, OpenAI) to dynamically generate live REST APIs, database schemas, and Nginx reverse proxies from prompts.</li><li>Developed thecoder-search-2, an AST-based semantic GitHub code search engine using Python ast, LangChain, and ChromaDB.</li><li>Built the IIT Mandi iHUB Health API (Django REST, PostgreSQL, OpenCV OCR, Firebase Push) to scan medical reports and alert doctors on abnormal vitals.</li></ul></div><div class="timeline-item"><div class="tl-head"><span>Samsung Display Noida Pvt. Ltd. — Assistant Engineer (Manufacturing / OLB Core)</span><span class="tl-date">Apr 2021 – Jan 2022</span></div><div class="tl-sub">Noida, India</div><ul class="compact"><li>Executed PLC telemetry diagnostics and hardware troubleshooting on automated OLB display manufacturing lines.</li></ul></div>
+
+  <h2>Selected Projects &amp; Competitions</h2>
+  <div class="pub-row"><strong>Vision-Tactile 6D Calibration (vision-301)</strong><span class="pub-tag">85–90% Error Cut</span><br><span style="color:#444;font-size:14px;">Closed-loop RGB-D 6-DoF pose estimation fused with tactile wire touch-sensing, Kabsch/SVD plane fitting, and STag PnP drift compensation across 5 factory sites.</span></div><div class="pub-row"><strong>DexGraspVLA MuJoCo Simulation Bridge</strong><span class="pub-tag">7-DoF + 18-DoF Hand</span><br><span style="color:#444;font-size:14px;">Ported DexGraspVLA policy to MuJoCo with a Panda arm + Shadow Hand, 6D-to-18D kinematic mapping, SAM 2 + Cutie tracking, and live DINOv2 attention heatmaps.</span></div><div class="pub-row"><strong>GAIL India PDF &amp; Freight ETL Engine</strong><span class="pub-tag">AWS EC2 Production</span><br><span style="color:#444;font-size:14px;">Automated Django 5 + OpenCV/Camelot pipeline extracting multi-page petrochemical pricing PDFs, normalizing shifting schemas via RapidFuzz (≥0.95), and joining SAP Excel sheets.</span></div><div class="pub-row"><strong>Act Master — Coal India RAG Chatbot</strong><span class="pub-tag">Offline Falcon-Q4 RAG</span><br><span style="color:#444;font-size:14px;">Local Retrieval-Augmented Generation platform (Django, FastAPI, ChromaDB, quantized Falcon-Q4) answering legal &amp; compliance queries over Indian mining regulations.</span></div><div class="pub-row"><strong>Chess Stream Arena &amp; NPC World</strong><span class="pub-tag">WebRTC + pgvector</span><br><span style="color:#444;font-size:14px;">Go matchmaking + Flutter app streaming 1v1 video &amp; moves over WebRTC Data Channels; 2D multiplayer engine where LLM NPCs persist episodic pgvector memories.</span></div><div class="pub-row"><strong>SyncHub (Dew Storage) &amp; Quizzer</strong><span class="pub-tag">Offline-First S3 Sync</span><br><span style="color:#444;font-size:14px;">Offline-first LAN object store auto-syncing local buckets to AWS S3, plus a concurrent Go 1.23 WebSocket quiz engine using channels and mutex-guarded hubs.</span></div><div class="pub-row"><strong>ML Competitions (Amazon ML, FOOD-101, I2V)</strong><span class="pub-tag">86.80% F1 / 84.24% Top-1</span><br><span style="color:#444;font-size:14px;">FOOD-101 ViT + SE-ResNet-50 ensemble (84.24% Top-1); I2V 12-class vehicle detection (86.80% F1); Amazon ML 150k-listing DeBERTa-v3 + ViT + LightGBM pricing model.</span></div>
+
+  <h2>Education &amp; Technical Stack</h2>
+  <div class="pub-row"><strong>University School of Automation &amp; Robotics (USAR), GGSIPU</strong> (Aug 2023 – Aug 2026) — B.Tech in AI &amp; Machine Learning · CGPA: 7.43/10 · 8th-Sem Project: 36/40 (1st in Batch)</div><div class="pub-row"><strong>AWS Cloud Club GGSIPU</strong> (May 2024 – Jan 2025) — Cloud Computing Team Lead — Mentored students on AWS EC2, S3, IAM &amp; Nginx deployments</div><div class="pub-row"><strong>Ambedkar Institute of Technology (BTE Delhi)</strong> (2017 – 2020) — Diploma in Digital Electronics · 80.98%</div>
+  <div style="margin-top:14px;font-size:14px;color:#333;">
+    <div><strong>Languages:</strong> Python, Go, C++, CUDA, JavaScript/TypeScript, Dart, SQL</div><div><strong>AI &amp; 3D Vision:</strong> PyTorch, Open3D, OpenCV, MuJoCo, FoundationPose, SAM 2/3, DINOv2, ViT</div><div><strong>Backend &amp; Cloud:</strong> FastAPI, Flask, Django/DRF, PostgreSQL, pgvector, Redis, AWS (EC2, S3), Docker, Nginx, Linux</div>
+  </div>
+
+<div id="demo-switcher" style="position:fixed;bottom:16px;right:16px;z-index:9999;display:flex;align-items:center;gap:8px;background:rgba(15,23,42,0.92);color:#f8fafc;padding:8px 12px;border-radius:999px;font-family:Inter,system-ui,sans-serif;font-size:12px;box-shadow:0 8px 24px rgba(0,0,0,0.22);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.12);">
+  <a href="index.html" style="color:#38bdf8;text-decoration:none;font-weight:600;">← All 10 Demos</a>
+  <span style="opacity:0.35;">|</span>
+  <span style="opacity:0.85;">Demo 04 · Academic AI Researcher (Karpathy)</span>
+</div>
+
+</body></html>

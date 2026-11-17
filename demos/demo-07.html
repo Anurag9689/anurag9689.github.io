@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo 07 — Searchable System Index | Anurag Pandey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  body { background: #fdfdfd; color: #1f2937; font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 56px 24px 100px; }
+  h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+  .meta { color: #6b7280; font-size: 14px; margin-top: 6px; }
+  .meta a { color: #2563eb; text-decoration: none; margin-right: 12px; }
+  .search-box { width: 100%; padding: 12px 16px; font-size: 15px; border: 1px solid #d1d5db; border-radius: 8px; margin: 28px 0 20px; outline: none; font-family: inherit; }
+  .search-box:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+  .proj-card { padding: 16px 0; border-bottom: 1px solid #e5e7eb; }
+  .proj-top { display: flex; justify-content: space-between; font-size: 12px; color: #6b7280; }
+  .proj-metric { color: #2563eb; font-weight: 600; }
+  .proj-card h3 { font-size: 16px; font-weight: 600; margin-top: 3px; }
+  .proj-card p { font-size: 14px; color: #4b5563; margin-top: 4px; }
+  .proj-foot { display: flex; justify-content: space-between; margin-top: 8px; }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag { font-size: 11px; background: #f3f4f6; padding: 2px 8px; border-radius: 4px; color: #4b5563; }
+  .proj-link { font-size: 13px; color: #2563eb; text-decoration: none; }
+  h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; color: #6b7280; margin: 44px 0 16px; }
+  .exp-item { margin-bottom: 22px; }
+  .exp-head { display: flex; justify-content: space-between; font-size: 15px; font-weight: 600; }
+  .exp-loc, .role-date { font-size: 13px; color: #6b7280; font-weight: 400; }
+  .role-row { display: flex; justify-content: space-between; font-size: 14px; color: #374151; margin-top: 2px; }
+  .bullets { margin-top: 6px; padding-left: 18px; font-size: 14px; color: #4b5563; }
+  .edu-row, .skill-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e5e7eb; font-size: 14px; flex-wrap: wrap; gap: 8px; }
+  .edu-sub, .edu-date { color: #6b7280; font-size: 13px; }
+</style>
+</head>
+<body>
+  <h1>Anurag Pandey — Engineering Index</h1>
+  <div class="meta">AI/ML, 3D Vision &amp; Backend Systems · <a href="../Anurag_Pandey_Resume.pdf" target="_blank">PDF Resume</a> <a href="https://github.com/Anurag9689" target="_blank">GitHub</a> <a href="mailto:anuragpandey9689@gmail.com">Email</a></div>
+  <input class="search-box" type="search" placeholder="Filter systems &amp; skills instantly (e.g., MuJoCo, Go, AWS, SAM, FastAPI)..." oninput="filterIdx(this.value)">
+  <div id="proj-list">
+        <article class="proj-card" data-cat="Robotics &amp; Vision" data-search="vision-tactile 6d calibration (vision-301) closed-loop rgb-d 6-dof pose estimation fused with tactile wire touch-sensing, kabsch/svd plane fitting, and stag pnp drift compensation across 5 factory sites. python open3d foundationpose opencv">
+          <div class="proj-top">
+            <span class="proj-meta">Robotics &amp; Vision · 2024–2026</span>
+            <span class="proj-metric">85–90% Error Cut</span>
+          </div>
+          <h3>Vision-Tactile 6D Calibration (vision-301)</h3>
+          <p>Closed-loop RGB-D 6-DoF pose estimation fused with tactile wire touch-sensing, Kabsch/SVD plane fitting, and STag PnP drift compensation across 5 factory sites.</p>
+          <div class="proj-foot">
+            <div class="tags"><span class="tag">Python</span><span class="tag">Open3D</span><span class="tag">FoundationPose</span><span class="tag">OpenCV</span></div>
+            
+          </div>
+        </article>
+        
+
+        <article class="proj-card" data-cat="Robotics &amp; Vision" data-search="dexgraspvla mujoco simulation bridge ported dexgraspvla policy to mujoco with a panda arm + shadow hand, 6d-to-18d kinematic mapping, sam 2 + cutie tracking, and live dinov2 attention heatmaps. mujoco pytorch sam 2 dinov2">
+          <div class="proj-top">
+            <span class="proj-meta">Robotics &amp; Vision · 2025</span>
+            <span class="proj-metric">7-DoF + 18-DoF Hand</span>
+          </div>
+          <h3>DexGraspVLA MuJoCo Simulation Bridge</h3>
+          <p>Ported DexGraspVLA policy to MuJoCo with a Panda arm + Shadow Hand, 6D-to-18D kinematic mapping, SAM 2 + Cutie tracking, and live DINOv2 attention heatmaps.</p>
+          <div class="proj-foot">
+            <div class="tags"><span class="tag">MuJoCo</span><span class="tag">PyTorch</span><span class="tag">SAM 2</span><span class="tag">DINOv2</span></div>
+            
+          </div>
+        </article>
+        
+
+        <article class="proj-card" data-cat="Backend &amp; Data" data-search="gail india pdf &amp; freight etl engine automated django 5 + opencv/camelot pipeline extracting multi-page petrochemical pricing pdfs, normalizing shifting schemas via rapidfuzz (≥0.95), and joining sap excel sheets. django 5 opencv rapidfuzz aws ec2">
+          <div class="proj-top">
+            <span class="proj-meta">Backend &amp; Data · 2024–2025</span>
+            <span class="proj-metric">AWS EC2 Production</span>
+          </div>
+          <h3>GAIL India PDF &amp; Freight ETL Engine</h3>
+          <p>Automated Django 5 + OpenCV/Camelot pipeline extracting multi-page petrochemical pricing PDFs, normalizing shifting schemas via RapidFuzz (≥0.95), and joining SAP Excel sheets.</p>
+          <div class="proj-foot">
+            <div class="tags"><span class="tag">Django 5</span><span class="tag">OpenCV</span><span class="tag">RapidFuzz</span><span class="tag">AWS EC2</span></div>
+            
+          </div>
+        </article>
+        
+
+        <article class="proj-card" data-cat="AI / ML" data-search="act master — coal india rag chatbot local retrieval-augmented generation platform (django, fastapi, chromadb, quantized falcon-q4) answering legal &amp; compliance queries over indian mining regulations. fastapi chromadb langchain ggml">
+          <div class="proj-top">
+            <span class="proj-meta">AI / ML · 2023–2024</span>
+            <span class="proj-metric">Offline Falcon-Q4 RAG</span>
+          </div>
+          <h3>Act Master — Coal India RAG Chatbot</h3>
+          <p>Local Retrieval-Augmented Generation platform (Django, FastAPI, ChromaDB, quantized Falcon-Q4) answering legal &amp; compliance queries over Indian mining regulations.</p>
+          <div class="proj-foot">
+            <div class="tags"><span class="tag">FastAPI</span><span class="tag">ChromaDB</span><span class="tag">LangChain</span><span class="tag">GGML</span></div>
+            
+          </div>
+        </article>
+        
+
+        <article class="proj-card" data-cat="Backend &amp; Data" data-search="chess stream arena &amp; npc world go matchmaking + flutter app streaming 1v1 video &amp; moves over webrtc data channels; 2d multiplayer engine where llm npcs persist episodic pgvector memories. go flutter livekit pgvector">
+          <div class="proj-top">
+            <span class="proj-meta">Backend &amp; Data · 2026</span>
+            <span class="proj-metric">WebRTC + pgvector</span>
+          </div>
+          <h3>Chess Stream Arena &amp; NPC World</h3>
+          <p>Go matchmaking + Flutter app streaming 1v1 video &amp; moves over WebRTC Data Channels; 2D multiplayer engine where LLM NPCs persist episodic pgvector memories.</p>
+          <div class="proj-foot">
+            <div class="tags"><span class="tag">Go</span><span class="tag">Flutter</span><span class="tag">LiveKit</span><span class="tag">pgvector</span></div>
+            <a href="https://github.com/Anurag9689/chess_stream" target="_blank" rel="noopener" class="proj-link">GitHub ↗</a>
+          </div>
+        </article>
+        
+
+        <article class="proj-card" data-cat="Backend &amp; Data" data-search="synchub (dew storage) &amp; quizzer offline-first lan object store auto-syncing local buckets to aws s3, plus a concurrent go 1.23 websocket quiz engine using channels and mutex-guarded hubs. flask go websockets aws s3">
+          <div class="proj-top">
+            <span class="proj-meta">Backend &amp; Data · 2024–2025</span>
+            <span class="proj-metric">Offline-First S3 Sync</span>
+          </div>
+          <h3>SyncHub (Dew Storage) &amp; Quizzer</h3>
+          <p>Offline-first LAN object store auto-syncing local buckets to AWS S3, plus a concurrent Go 1.23 WebSocket quiz engine using channels and mutex-guarded hubs.</p>
+          <div class="proj-foot">
+            <div class="tags"><span class="tag">Flask</span><span class="tag">Go</span><span class="tag">WebSockets</span><span class="tag">AWS S3</span></div>
+            <a href="https://github.com/Anurag9689/SyncHub" target="_blank" rel="noopener" class="proj-link">GitHub ↗</a>
+          </div>
+        </article>
+        
+
+        <article class="proj-card" data-cat="AI / ML" data-search="ml competitions (amazon ml, food-101, i2v) food-101 vit + se-resnet-50 ensemble (84.24% top-1); i2v 12-class vehicle detection (86.80% f1); amazon ml 150k-listing deberta-v3 + vit + lightgbm pricing model. pytorch vit deberta-v3 lightgbm">
+          <div class="proj-top">
+            <span class="proj-meta">AI / ML · 2025–2026</span>
+            <span class="proj-metric">86.80% F1 / 84.24% Top-1</span>
+          </div>
+          <h3>ML Competitions (Amazon ML, FOOD-101, I2V)</h3>
+          <p>FOOD-101 ViT + SE-ResNet-50 ensemble (84.24% Top-1); I2V 12-class vehicle detection (86.80% F1); Amazon ML 150k-listing DeBERTa-v3 + ViT + LightGBM pricing model.</p>
+          <div class="proj-foot">
+            <div class="tags"><span class="tag">PyTorch</span><span class="tag">ViT</span><span class="tag">DeBERTa-v3</span><span class="tag">LightGBM</span></div>
+            
+          </div>
+        </article>
+        </div>
+  <h2>Work Experience</h2>
+        <article class="exp-item">
+          <div class="exp-head">
+            <h3>Terafac Technologies Pvt. Ltd.</h3>
+            <span class="exp-loc">Chandigarh, India</span>
+          </div>
+          <div class="roles"><div class="role-row"><span class="role-title">Jr. Software Engineer — AI/ML &amp; Vision</span><span class="role-date">Jul 2026 – Sep 2026</span></div><div class="role-row"><span class="role-title">AI/ML &amp; Vision Intern</span><span class="role-date">Jan 2026 – Jul 2026</span></div><div class="role-row"><span class="role-title">AI/ML &amp; Vision Engineer (Contract)</span><span class="role-date">Jun 2024 – Dec 2025</span></div></div>
+          <ul class="bullets"><li>Built closed-loop Vision-Tactile 6D Pose Calibration (RealSense RGB-D, FoundationPose, Kabsch/SVD, STag PnP), cutting seam error by 85–90% (4.5mm → 0.3mm) in 18–22s.</li><li>Engineered coarse-touch alignment &amp; analytical IK follower, cutting fixture calibration cycle time by 79% (282s → 58s).</li><li>Architected api-103 with batched 64-ray J6 hemisphere raycasting and optimized FoundationPose/SAM 3 microservices for 4 GB VRAM / Jetson Orin NX (25× mask compression).</li></ul>
+        </article>
+        
+
+        <article class="exp-item">
+          <div class="exp-head">
+            <h3>AttentionVerse (TheCoder)</h3>
+            <span class="exp-loc">Delhi, India</span>
+          </div>
+          <div class="roles"><div class="role-row"><span class="role-title">Software Engineer (Contract) — Backend &amp; AI Systems</span><span class="role-date">Jan 2022 – Apr 2024</span></div></div>
+          <ul class="bullets"><li>Built thecoder-backend &amp; thecoder-ai (Django, Celery, Redis, OpenAI) to dynamically generate live REST APIs, database schemas, and Nginx reverse proxies from prompts.</li><li>Developed thecoder-search-2, an AST-based semantic GitHub code search engine using Python ast, LangChain, and ChromaDB.</li><li>Built the IIT Mandi iHUB Health API (Django REST, PostgreSQL, OpenCV OCR, Firebase Push) to scan medical reports and alert doctors on abnormal vitals.</li></ul>
+        </article>
+        
+
+        <article class="exp-item">
+          <div class="exp-head">
+            <h3>Samsung Display Noida Pvt. Ltd.</h3>
+            <span class="exp-loc">Noida, India</span>
+          </div>
+          <div class="roles"><div class="role-row"><span class="role-title">Assistant Engineer (Manufacturing / OLB Core)</span><span class="role-date">Apr 2021 – Jan 2022</span></div></div>
+          <ul class="bullets"><li>Executed PLC telemetry diagnostics and hardware troubleshooting on automated OLB display manufacturing lines.</li></ul>
+        </article>
+        
+  <h2>Education &amp; Skills</h2><div class="edu-row"><div><strong>University School of Automation &amp; Robotics (USAR), GGSIPU</strong><div class="edu-sub">B.Tech in AI &amp; Machine Learning · CGPA: 7.43/10 · 8th-Sem Project: 36/40 (1st in Batch)</div></div><span class="edu-date">Aug 2023 – Aug 2026</span></div>
+<div class="edu-row"><div><strong>AWS Cloud Club GGSIPU</strong><div class="edu-sub">Cloud Computing Team Lead — Mentored students on AWS EC2, S3, IAM &amp; Nginx deployments</div></div><span class="edu-date">May 2024 – Jan 2025</span></div>
+<div class="edu-row"><div><strong>Ambedkar Institute of Technology (BTE Delhi)</strong><div class="edu-sub">Diploma in Digital Electronics · 80.98%</div></div><span class="edu-date">2017 – 2020</span></div><div style="margin-top:16px;"><div class="skill-row"><span class="skill-cat">Languages</span><span class="skill-vals">Python, Go, C++, CUDA, JavaScript/TypeScript, Dart, SQL</span></div>
+<div class="skill-row"><span class="skill-cat">AI &amp; 3D Vision</span><span class="skill-vals">PyTorch, Open3D, OpenCV, MuJoCo, FoundationPose, SAM 2/3, DINOv2, ViT</span></div>
+<div class="skill-row"><span class="skill-cat">Backend &amp; Cloud</span><span class="skill-vals">FastAPI, Flask, Django/DRF, PostgreSQL, pgvector, Redis, AWS (EC2, S3), Docker, Nginx, Linux</span></div></div>
+<script>
+function filterIdx(q) {
+  q = q.toLowerCase().trim();
+  document.querySelectorAll('.proj-card').forEach(c => {
+    c.style.display = (!q || c.dataset.search.includes(q)) ? 'block' : 'none';
+  });
+}
+</script>
+
+<div id="demo-switcher" style="position:fixed;bottom:16px;right:16px;z-index:9999;display:flex;align-items:center;gap:8px;background:rgba(15,23,42,0.92);color:#f8fafc;padding:8px 12px;border-radius:999px;font-family:Inter,system-ui,sans-serif;font-size:12px;box-shadow:0 8px 24px rgba(0,0,0,0.22);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.12);">
+  <a href="index.html" style="color:#38bdf8;text-decoration:none;font-weight:600;">← All 10 Demos</a>
+  <span style="opacity:0.35;">|</span>
+  <span style="opacity:0.85;">Demo 07 · Searchable System Index (Simon Willison)</span>
+</div>
+
+</body></html>
