@@ -1,6 +1,9 @@
 (function () {
   "use strict";
 
+  const SYSTEMS = window.INSPECTOR_DATA || {};
+  const SKILL_NODES = window.SKILL_NODES || [];
+
   function esc(str) {
     if (!str) return "";
     return String(str)
